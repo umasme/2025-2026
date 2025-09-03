@@ -4,6 +4,16 @@ Robust, ROS 2–based software stack and supporting assets for our lunar excavat
 This repository houses **software, hardware, simulation, datasets, and documentation** to support the NASA Lunabotics 2025 competition.  
 
 ---
+## To Build
+1. Download Docker
+2. Open VS Code and switch to WS directory
+3. Install the dev containers extension
+4. Control + Shift + P to access command palette
+5. Search for Dev Containers: Reopen in Container
+6. Voila
+
+## After Each Commit
+Update DEVLOG.md with a summary of changes. Commits shall be made to the develop branch after main branch docker is working.
 
 ## 📖 Project Overview
 
