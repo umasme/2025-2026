@@ -12,6 +12,18 @@ This repository houses **software, hardware, simulation, datasets, and documenta
 5. Search for Dev Containers: Reopen in Container
 6. Voila
 
+## Sensors
+1. D435i (TBD)
+2. Oak D-lite (TBD)
+3. Power sensor
+4. Encoders
+5. Linear encoders
+6. Cameras
+
+## Actuators
+1. Four motors
+2. Linear Actuators
+
 ## After Each Commit
 Update DEVLOG.md with a summary of changes. Commits shall be made to the develop branch after main branch docker is working.
 
