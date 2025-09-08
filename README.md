@@ -1,4 +1,4 @@
-# 🚀 NASA Lunabotics 2025 — University of Miami ASME
+# 🚀 NASA Lunabotics 2026 — University of Miami ASME
 
 Robust, ROS 2–based software stack and supporting assets for our lunar excavation rover.  
 This repository houses **software, hardware, simulation, datasets, and documentation** to support the NASA Lunabotics 2025 competition.  
