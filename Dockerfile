@@ -1,5 +1,3 @@
-# If you have any question you can contact any of the software subteam leads.
-
 # 1. Starts from the official ROS 2 Humble base image which is the LTS version
 FROM osrf/ros:humble-desktop
 
@@ -20,13 +18,12 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
+# --- Switch to the new user ---
 USER $USERNAME
 WORKDIR /home/$USERNAME/ros2_ws
 
-# 4. Clones the repository and structure the workspace
-RUN git clone --depth 1 https://github.com/umasme/2025-2026.git temp_repo \
-    && mv temp_repo/ws/src . \
-    && rm -rf temp_repo
+# 4. Copy the local workspace source code into the container
+COPY --chown=devuser:devuser ./ws/src ./src
 
 # 5. Builds the workspace
 RUN . /opt/ros/humble/setup.bash && \
