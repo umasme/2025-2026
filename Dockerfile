@@ -26,8 +26,10 @@ WORKDIR /home/$USERNAME/ros2_ws
 COPY --chown=devuser:devuser ./ws/src ./src
 
 # 5. Builds the workspace
+SHELL ["/bin/bash", "-c"] 
 RUN . /opt/ros/humble/setup.bash && \
     colcon build --symlink-install
 
 # 6. Configures the entrypoint
-RUN echo "source /home/$USERNAME/ros2_ws/install/setup.bash" >> /home/$USERNAME/.bashrc
+RUN echo "source /opt/ros/humble/setup.bash" >> /home/$USERNAME/.bashrc && \
+    echo "source /home/$USERNAME/ros2_ws/install/setup.bash" >> /home/$USERNAME/.bashrc
