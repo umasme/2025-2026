@@ -1,0 +1,37 @@
+{
+    "name": "UMASME ROS 2 Dev Container",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "args": {
+            "USERNAME": "devuser"
+        }
+    },
+    "remoteUser": "devuser",
+
+    "workspaceMount": "source=${localWorkspaceFolder},target=/home/devuser/ws,type=bind",
+    "workspaceFolder": "/home/devuser/ws",
+
+    "runArgs": [
+        "--network=host",
+        "--ipc=host",
+        "-e", "DISPLAY=${env:DISPLAY}"
+    ],
+    "mounts": [
+       "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",
+       "source=/dev/dri,target=/dev/dri,type=bind,consistency=cached"
+    ],
+
+    "customizations": {
+        "vscode": {
+            "extensions":[
+                "ms-vscode.cpptools",
+                "ms-vscode.cpptools-themes",
+                "twxs.cmake",
+                "ms-python.python",
+                "eamodio.gitlens",
+                "ms-iot.vscode-ros"
+            ]
+        }
+    },
+    "postCreateCommand": "sudo rosdep init || true && rosdep update && rosdep install --from-paths src --ignore-src -y --rosdistro humble && sudo chown -R $(whoami) /home/devuser/ws"
+}
