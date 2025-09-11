@@ -27,6 +27,7 @@ It is **crucial** that you clone this repository directly into your WSL filesyst
 1.  Open your WSL terminal (e.g., Ubuntu).
 2.  Navigate to where you want to store your projects (e.g., your home directory).
 3.  Clone the repository:
+
     ```bash
     git clone https://github.com/umasme/2025-2026
     ```
