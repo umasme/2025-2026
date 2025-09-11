@@ -16,6 +16,8 @@ Before you begin, ensure you have the following software installed and configure
 
 ---
 
+## Getting Started
+
 Follow these steps to get the development container up and running.
 
 ### Step 1: Clone the Repository into WSL
@@ -26,12 +28,9 @@ It is **crucial** that you clone this repository directly into your WSL filesyst
 2.  Navigate to where you want to store your projects (e.g., your home directory).
 3.  Clone the repository:
     ```bash
-    git clone <your-repository-url>
+    git clone https://github.com/umasme/2025-2026
     ```
-4.  Navigate into the project's workspace directory (the folder containing the `.devcontainer` folder):
-    ```bash
-    cd <repository-name>
-    ```
+4.  Navigate into the project's workspace directory (the folder containing the `.devcontainer` folder).
 
 ### Step 2: Open the Project in VS Code
 
@@ -62,3 +61,37 @@ Once the container is built and running, you can verify that everything is worki
     The Rviz2 window should appear on your Windows desktop.
 
 ---
+
+## Development Workflow
+
+You are now ready to start developing!
+
+* **Building the Workspace:** To compile your ROS 2 packages, run `colcon` from the workspace root (`/home/devuser/ws/`):
+    ```bash
+    colcon build --symlink-install
+    ```
+* **Sourcing Your Workspace:** After a successful build, remember to source your workspace to make your packages available to ROS 2. This is already added to your `.bashrc`, so it will be sourced automatically in any **new** terminal.
+* **Running Your Nodes:** Use `ros2 run` to launch nodes from your packages.
+    ```bash
+    ros2 run your_package_name your_executable_name
+    ```
+* **Committing Code:** Use the **Source Control panel** in the VS Code Activity Bar on the left to stage, commit, and push your changes. This is the direct replacement for using an external tool like GitHub Desktop.
+
+---
+
+## Troubleshooting
+
+### Build Fails or Runs Very Slowly
+
+* **Problem:** The container build fails with a generic error, or the process is extremely slow.
+* **Cause:** This almost always happens because the project folder is located on the Windows filesystem (e.g., `C:\Users\...`) instead of the WSL filesystem.
+* **Solution:** You must move your entire project folder into WSL.
+    1.  Close VS Code.
+    2.  Open a WSL terminal.
+    3.  Use the `mv` (move) command to relocate your project. For example, if your project is in your Windows `Documents` folder, you would run:
+        ```bash
+        # This command moves a folder from your Windows Documents to a 'projects' folder in WSL
+        # Make sure to replace 'YourUser' and 'YourProjectFolder' with your actual folder names
+        mv /mnt/c/Users/YourUser/Documents/YourProjectFolder ~/projects/
+        ```
+    4.  Navigate into the new project location inside WSL and relaunch VS Code with `code .`.
