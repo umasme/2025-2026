@@ -20,9 +20,7 @@ Before you begin, ensure you have the following software installed and configure
 
 Follow these steps to get the development container up and running.
 
-### Step 1: Clone the Repository into WSL
-
-It is **crucial** that you clone this repository directly into your WSL filesystem, not onto your Windows C: drive (`/mnt/c/...`). This ensures the best performance and avoids potential permission issues.
+### Step 1: Clone the Repository into Linux
 
 1.  Open your WSL terminal (e.g., Ubuntu).
 2.  Navigate to where you want to store your projects (e.g., your home directory).
