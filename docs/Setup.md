@@ -1,4 +1,4 @@
-# UMASME Lunabotics - ROS 2 Development Environment
+# University of Miami　ASME Lunabotics - ROS 2 Development Environment
 
 This guide provides step-by-step instructions for setting up and using the ROS 2 development environment for this project. This setup uses a Docker container managed by Visual Studio Code to ensure that every developer has an identical and consistent environment, eliminating "it works on my machine" issues.
 
@@ -53,7 +53,12 @@ Once the container is built and running, you can verify that everything is worki
 
 1.  **Check the Connection:** Look at the bottom-left corner of the VS Code window. It should show a green indicator with the text `Dev Container: UMASME ROS 2 Dev Container`. 
 2.  **Open a Terminal:** Open a new terminal in VS Code (**Ctrl+`**). This terminal is running *inside* the container.
-3.  **Test a GUI Application:** Run `rviz2` to confirm that graphical applications can launch.
+3.  **Add the ROS2 setup:** While in the terminal run the following commands.
+     ```bash
+    echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+    echo "source ~/ws/install/setup.bash" >> ~/.bashrc
+    ```
+4.  **Test a GUI Application:** Run `rviz2` to confirm that graphical applications can launch.
     ```bash
     rviz2
     ```
