@@ -1,4 +1,3 @@
-
 FROM osrf/ros:humble-desktop
 
 ARG USERNAME=devuser
@@ -20,5 +19,8 @@ RUN apt-get update && apt-get upgrade -y && \
     rm -rf /var/lib/apt/lists/*
 
 USER $USERNAME
+
+RUN echo "source /opt/ros/humble/setup.bash" >> /home/${USERNAME}/.bashrc && \
+    echo "source /home/${USERNAME}/ws/install/setup.bash" >> /home/${USERNAME}/.bashrc
 
 CMD ["/bin/bash"]

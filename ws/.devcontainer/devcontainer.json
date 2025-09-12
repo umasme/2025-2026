@@ -1,5 +1,5 @@
 {
-    "name": "UMASME ROS 2 Dev Container",
+    "name": "UM ASME ROS 2 Dev Container",
     "build": {
         "dockerfile": "Dockerfile",
         "args": {
@@ -33,5 +33,5 @@
             ]
         }
     },
-    "postCreateCommand": "sudo rosdep init || true && rosdep update && rosdep install --from-paths src --ignore-src -y --rosdistro humble && sudo chown -R $(whoami) /home/devuser/ws"
+    "postCreateCommand": "sudo rosdep init || true && rosdep update && rosdep install --from-paths src --ignore-src -y --rosdistro humble && colcon build --symlink-install"
 }

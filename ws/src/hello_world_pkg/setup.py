@@ -13,14 +13,14 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='jgiraldo29',
-    maintainer_email='jmg765@miami.edu',
-    description='A simple talker test package',
-    license='Apache License 2.0',
+    maintainer='devuser',
+    maintainer_email='jgiraldonocua@gmail.com',
+    description='TODO: Package description',
+    license='TODO: License declaration',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'talker = hello_world_pkg.talker:main',
+            'talker = hello_world_pkg.talker:main'
         ],
     },
 )
