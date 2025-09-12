@@ -55,6 +55,7 @@ Once the container is built and running, you can verify that everything is worki
 2.  **Open a Terminal:** Open a new terminal in VS Code (**Ctrl+`**). This terminal is running *inside* the container.
 3.  **Add the ROS2 setup:** While in the terminal run the following commands.
      ```bash
+    source /opt/ros/humble/setup.bash
     echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
     echo "source ~/ws/install/setup.bash" >> ~/.bashrc
     ```
