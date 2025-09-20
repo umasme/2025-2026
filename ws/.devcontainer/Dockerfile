@@ -7,6 +7,13 @@ ENV SHELL /bin/bash
 
 RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y --no-install-recommends \
+    ros-humble-ros2-control \
+    ros-humble-ros2-controllers \
+    ros-humble-control-msgs \
+    ros-humble-joint-state-publisher-gui \
+    ros-humble-xacro \
+    ros-humble-gazebo-ros-pkgs \
+    ros-humble-gazebo-ros2-control \
     sudo \
     git \
     python3-pip \
@@ -19,6 +26,10 @@ RUN apt-get update && apt-get upgrade -y && \
     rm -rf /var/lib/apt/lists/*
 
 USER $USERNAME
+
+USER devuser
+WORKDIR /home/devuser/projects/2025-2026/ws/src
+RUN  git clone -b humble https://github.com/ros-controls/ros2_control_demos.git
 
 RUN echo "source /opt/ros/humble/setup.bash" >> /home/${USERNAME}/.bashrc && \
     echo "source /home/${USERNAME}/ws/install/setup.bash" >> /home/${USERNAME}/.bashrc
