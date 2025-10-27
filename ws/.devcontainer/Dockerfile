@@ -6,6 +6,8 @@ ARG USER_GID=$USER_UID
 ENV SHELL /bin/bash
 
 RUN apt-get update && apt-get upgrade -y && \
+    # catkin install
+    # python3-catkin-pkg \
     apt-get install -y --no-install-recommends \
     ros-humble-ros2-control \
     ros-humble-ros2-controllers \
