@@ -9,7 +9,7 @@
 
 <!-- Wheels Dimensions -->
 <xacro:property name='wheel_link_radius' value='0.15'/>
-<xacro:property name='wheel_link_length' value='0.6'/>
+<xacro:property name='wheel_link_length' value='0.1'/>
 <xacro:property name='wheel_length_z_location' value='0.1'/>
 
 <!-- Material Density -->
@@ -40,13 +40,17 @@
     </inertial>
 </xacro:macro>
 
+<!-- File that defines extra Gazebo options and the control driver -->
+<!-- Use a relative include so it works from both source and installed share paths -->
+<xacro:include filename='robot.gazebo'/>
+
 <!-- Body Link -->
 <link name='body_link'>
     <visual>
         <geometry>
             <box size='${body_link_x_dim} ${body_link_y_dim} ${body_link_z_dim}'/>
         </geometry>
-    <origin xyz='0 0 0' rpy='0 0 0'/>
+    <origin xyz='0 0 0.15' rpy='0 0 0'/>
     </visual>
 
     <collision>
@@ -68,14 +72,21 @@
 
 <!-- End of body link -->
 
-<!-- right wheel of robot and joint -->
+<link name='dummy'>  
+</link>    
+<joint name='dummy_joint' type='fixed'>
+    <parent link='dummy'/>
+    <child link='body_link'/>
+</joint>
+
+<!-- back right wheel of robot and joint -->
 <joint name='wheel1_joint' type='continuous'>
     <parent link='body_link'/>
     <child link='wheel1_link'/>
-    <origin xyz='$(-body_link_x_dim/2*1.2*wheel_link_radius) $(-body_link_y_dim/2 * wheel_link_length/2) $(wheel_link_z_location)' rpy = '0 0 0'/>
+    <origin xyz='-0.3 -0.35 0' rpy = '0 0 0'/>
     <axis xyz='0 1 0'/>
     <limit effort='1000' velocity='1000'/>
-    <dymanics damping='1.0' friction='1.0'/>
+    <dynamics damping='1.0' friction='1.0'/>
 </joint>
 
 <link name='wheel1_link'>
@@ -103,10 +114,10 @@
 <joint name='wheel2_joint' type='continuous'>
     <parent link='body_link'/>
     <child link='wheel2_link'/>
-    <origin xyz='$(-body_link_x_dim/2*1.2*wheel_link_radius) ${(body_link_y_dim/2) * (wheel_link_length/2)} $(wheel_link_z_location)' rpy = '0 0 0'/>
+    <origin xyz='-0.3 0.35 0' rpy = '0 0 0'/>
     <axis xyz='0 1 0'/>
     <limit effort='1000' velocity='1000'/>
-    <dymanics damping='1.0' friction='1.0'/>
+    <dynamics damping='1.0' friction='1.0'/>
 </joint>
 
 <link name='wheel2_link'>
@@ -133,10 +144,10 @@
 <joint name='wheel3_joint' type='continuous'>
     <parent link='body_link'/>
     <child link='wheel3_link'/>
-    <origin xyz='${body_link_x_dim/2*1.2*wheel_link_radius} $(-body_link_y_dim/2 * wheel_link_length/2) $(wheel_link_z_location)' rpy = '0 0 0'/>
+    <origin xyz='0.3 -0.35 0' rpy = '0 0 0'/>
     <axis xyz='0 1 0'/>
     <limit effort='1000' velocity='1000'/>
-    <dymanics damping='1.0' friction='1.0'/>
+    <dynamics damping='1.0' friction='1.0'/>
 </joint>
 
 <link name='wheel3_link'>
@@ -163,10 +174,10 @@
 <joint name='wheel4_joint' type='continuous'>
     <parent link='body_link'/>
     <child link='wheel4_link'/>
-    <origin xyz='${body_link_x_dim/2*1.2*wheel_link_radius} ${(body_link_y_dim/2) * (wheel_link_length/2)} $(wheel_link_z_location)' rpy = '0 0 0'/>
+    <origin xyz='0.3 0.35 0' rpy = '0 0 0'/>
     <axis xyz='0 1 0'/>
     <limit effort='1000' velocity='1000'/>
-    <dymanics damping='1.0' friction='1.0'/>
+    <dynamics damping='1.0' friction='1.0'/>
 </joint>
 
 <link name='wheel4_link'>
@@ -183,6 +194,8 @@
             <cylinder length='${wheel_link_length}' radius='${wheel_link_radius}'/>
         </geometry>
     </collision>
-
     <xacro:inertia_wheel/>
 </link>
+
+<!-- end of front left wheel -->
+</robot>
