@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<robot name="four_wheel_rover" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:property name="wheel_radius" value="0.05"/>
+  <xacro:property name="wheel_width" value="0.02"/>
+  <xacro:property name="wheel_separation" value="0.4"/>
+  <xacro:property name="base_length" value="0.5"/>
+
+  <!-- Base link -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="${base_length} ${wheel_separation+0.1} 0.1"/>
+      </geometry>
+      <material name='gray'><color rgba="0.4 0.4 0.4 1.0"/></material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="${base_length} ${wheel_separation+0.1} 0.1"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="10"/>
+      <inertia ixx="0.1" iyy="0.1" izz="0.1" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+
+  <!-- Wheels -->
+  <xacro:macro name="wheel" params="name x y">
+  <link name="${name}">
+    <visual>
+      <geometry>
+        <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="${wheel_width}" radius="${wheel_radius}"/>
+      </geometry>
+    </collision>
+    <inertial>
+    <mass value="1.0"/>
+    <inertia ixx="0.001" iyy="0.001" izz="0.001"
+            ixy="0.0" ixz="0.0" iyz="0.0"/>
+    </inertial>
+
+  </link>
+
+  <joint name="${name}_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="${name}"/>
+    <origin xyz="${x} ${y} -${wheel_radius}" rpy="0 1.5708 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+</xacro:macro>
+
+
+  <xacro:wheel name="front_left_wheel"  x="${base_length/2}"  y="${ wheel_separation/2}"/>
+  <xacro:wheel name="front_right_wheel" x="${base_length/2}"  y="-${wheel_separation/2}"/>
+  <xacro:wheel name="rear_left_wheel"   x="-${base_length/2}" y="${ wheel_separation/2}"/>
+  <xacro:wheel name="rear_right_wheel"  x="-${base_length/2}" y="-${wheel_separation/2}"/>
+
+  <!-- Gazebo plugin -->
+  <gazebo>
+  <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
+    <ros>
+      <namespace>/</namespace>
+      <remapping>cmd_vel:=/cmd_vel</remapping>
+    </ros>
+    <update_rate>50</update_rate>
+
+    <left_joint>rear_left_wheel_joint</left_joint>
+    <right_joint>rear_right_wheel_joint</right_joint>
+
+    <wheel_separation>${wheel_separation}</wheel_separation>
+    <wheel_diameter>${wheel_radius * 2}</wheel_diameter>
+    <publish_odom>true</publish_odom>
+    <odom_frame>odom</odom_frame>
+    <robot_base_frame>base_link</robot_base_frame>
+    </plugin>
+  </gazebo>
+
+
+
+</robot>
