@@ -100,3 +100,8 @@ You are now ready to start developing!
         mv /mnt/c/Users/YourUser/Documents/YourProjectFolder ~/projects/
         ```
     4.  Navigate into the new project location inside WSL and relaunch VS Code with `code .`.
+
+### Camera issues with the Intel Realsense drivers.
+
+* **Solution:** The cameras need to have a firmware version that does not contain the new hiddraw feature as this is exclusive for full Linux runs. Starting from 5.13.50 it should be fine, but it is something to have attention of.
+
