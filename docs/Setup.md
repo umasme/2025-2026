@@ -101,7 +101,62 @@ You are now ready to start developing!
         ```
     4.  Navigate into the new project location inside WSL and relaunch VS Code with `code .`.
 
-### Camera issues with the Intel Realsense drivers.
+### Camera issues with the Intel Realsense drivers
 
 * **Solution:** The cameras need to have a firmware version that does not contain the new hiddraw feature as this is exclusive for full Linux runs. Starting from 5.13.50 it should be fine, but it is something to have attention of.
 
+## Notes
+
+### Using the Intel Realsense cameras with ROS
+
+```bash
+sudo apt update && sudo apt install curl -y
+
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+
+sudo apt update
+
+sudo apt install ros-humble-desktop
+
+source /opt/ros/humble/setup.bash
+
+echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+
+sudo apt install python3-rosdep -y
+
+sudo rosdep init
+
+rosdep update
+
+sudo apt install build-essential cmake git libssl-dev libusb-1.0-0-dev pkg-config libglfw3-dev
+
+cd ~
+
+git clone https://github.com/IntelRealSense/librealsense.git
+
+cd librealsense
+
+mkdir build && cd build
+
+cmake .. -DFORCE_RSUSB_BACKEND=true -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLES=false -DBUILD_GRAPHICAL_EXAMPLES=false
+
+make -j$(nproc)
+
+sudo make install
+
+cd ~
+
+git clone https://github.com/umasme/2025-2026.git
+
+cd ~/2025-2026/ws/src
+
+git clone https://github.com/IntelRealSense/realsense-ros.git -b ros2-master
+
+colcon build
+
+echo "source ~/2025-2026/ws/install/setup.bash" >> ~/.bashrc
+
+ros2 launch realsense2_camera rs_launch.py
+```
