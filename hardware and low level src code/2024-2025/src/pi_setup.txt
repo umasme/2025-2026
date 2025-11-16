@@ -1,0 +1,111 @@
+Using RP imager, an sd was flashed with Ubuntu 22.04 LTS 
+
+
+$sudo apt-get update && sudo apt-get upgrade
+$reboot
+$sudo apt-get dist-upgrade
+
+c
+Installation of RealSense SDK: https://dev.intelrealsense.com/docs/compiling-librealsense-for-linux-ubuntu-guide
+
+Dependencies
+$sudo apt-get install libssl-dev libusb-1.0-0-dev libudev-dev pkg-config libgtk-3-dev
+$sudo apt-get install git wget cmake build-essential
+$sudo apt-get install libglfw3-dev libgl1-mesa-dev libglu1-mesa-dev at
+
+Libsense2 Install
+$git clone https://github.com/IntelRealSense/librealsense.git
+$cd librealsense
+$./scripts/setup_udev_rules.sh
+	v4l2-ctl not found, install with: sudo apt install v4l-utils
+$sudo apt install v4l-utils
+$cd librealsense
+$./scripts/setup_udev_rules.sh
+$./scripts/patch-realsense-ubuntu-lts-hwe.sh
+
+Building SDK
+$mkdir build && cd build
+$cmake ../
+	HEAD is now at 9cca280 JSON for Modern C++ 3.11.3 (#4222)
+	-- Using the multi-header code from /home/sebastro1/Desktop/librealsense/build/third-party/json/include/
+	-- Fetching nlohmann/json - Done
+	-- Found OpenGL: /usr/lib/aarch64-linux-gnu/libOpenGL.so   
+	-- Looking for pthread.h
+	-- Looking for pthread.h - found
+	-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+	-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+	-- Found Threads: TRUE  
+	-- Check for updates capability added to realsense-viewer
+	-- Check for updates capability added to realsense-depth-quality
+	-- Fetching recommended firmwares:
+	-- disable link time optimization for fw project
+	-- ... https://librealsense.intel.com/Releases/RS4xx/FW/D4XX_FW_Image-5.16.0.1.bin
+	-- Configuring done
+	-- Generating done
+	-- Build files have been written to: /home/sebastro1/Desktop/librealsense/build
+
+
+
+
+------------------------------------------------------------------
+------------------------------------------------------------------
+Installation of VS Code:https://code.visualstudio.com/docs/?dv=linuxarm64_deb
+
+$sudo dpkg -i code_1.97.0-1738712383_arm64.deb
+$sudo apt-get install -f
+
+------------------------------------------------------------------
+------------------------------------------------------------------
+Installation of Python:
+$sudo apt-get install python3
+$sudo apt-get install python3-pip
+	installed: numpy, matplotlib, numba, opencv-python, pysabertooth, sshkeyboard, rpi.gpio
+
+
+------------------------------------------------------------------
+------------------------------------------------------------------
+Configuring Serial0:
+$sudo apt install minicom
+this was to test serial comunications
+$sudo nano /boot/firmware/config.txt
+	Added enable_uart=1
+$sudo nano /boot/firmware/cmdline.txt
+	changed console to console=serial0,9600
+$reboot
+
+to test connection, jumper tx to rx and run
+$minicom -D /dev/serial0 -b 9600
+
+If permissions are denied run
+$sudo chmod 666 /dev/serial0
+
+The following was suposed to set the permissions permently, but it doesn't work? 
+$sudo usermod -a -G dialout sebastro1
+$reboot
+
+Installation of ssh:
+$sudo apt-get install openssh-server
+
+Change udev rules for depth AI:
+echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="03e7", MODE="0666"' | sudo tee /etc/udev/rules.d/80-movidius.rules
+sudo udevadm control --reload-rules && sudo udevadm trigger
+
+------------------------------------------------------------------
+------------------------------------------------------------------
+Installation of Blinka
+sudo apt-get update
+sudo apt-get -y upgrade
+sudo apt install --upgrade python3-setuptools
+sudo apt install python3-pip
+sudo apt install python3-venv
+python3 -m venv env --system-site-packages
+
+cd ~
+pip3 install --upgrade adafruit-python-shell
+wget https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/raspi-blinka.py
+
+
+^ Useless run 
+pip3 install Adafruit-Blinka
+pip3 install adafruit-circuitpython-mcp2515
+
