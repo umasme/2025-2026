@@ -12,7 +12,7 @@ MCP_CAN CAN0(CAN_CS_PIN);
 // ================= REV CONSTANTS =================
 #define CAN_EFF 0x80000000 // just place holder for the extended frame
 
-#define HEARTBEAT_ID 0x2052C80 // heartbeat is importnat to keep the Controller responsing
+#define HEARTBEAT_ID 0x2052C80 // heartbeat is importnat to keep the Controller responding
 #define SPEED_SET_ID 0x2050480 // Set speed CAN ID
 
 const uint8_t HEARTBEAT_DATA[8] = {
