@@ -32,7 +32,34 @@ This repository documents the design, implementation, and testing of the roverâ€
   <p align="center">
   <b> Control Electrical Architecture </b>
   </p>
-  
+
+
+---
+## High-Current Power Distribution Board
+This high-current board distributes power to all outputs, including the four drivetrain motors, the excavation motor, the deposition motor, and two linear actuators.
+
+<p align="center">
+  <img src="2025-2026/PCBs_schematics/assets/pcb_PDB_board.png" alt="High-Current Power Distribution Board PCB" width="600"/>
+</p>
+<p align="center">
+  <b> High-Current Power Distribution Board PCB </b>
+</p>
+
+For more details refer to this link: [to be added]
+
+---
+## Low-Level Control Board based on Teensy 4.1
+
+<p align="center">
+  <img src="2025-2026/PCBs_schematics/assets/pcb_PDB_board.png" alt="Low-Level Control Board based on Teensy 4.1 PCB" width="600"/>
+</p>
+<p align="center">
+  <b> Low-Level Control Board based on Teensy 4.1 PCB </b>
+</p>
+
+For more details refer to this link: [To be added]
+
+
 ---
 ##  ðŸŽ¯2026 Season Plan 
 We finalized the season plan for 2026 for the electrical subsystem with detailed performance analysis for each part we used in the electrical system and proposed improvement.
