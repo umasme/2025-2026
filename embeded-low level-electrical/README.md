@@ -51,7 +51,7 @@ For more details refer to this link: [to be added]
 ## Low-Level Control Board based on Teensy 4.1
 
 <p align="center">
-  <img src="2025-2026/PCBs_schematics/assets/pcb_PDB_board.png" alt="Low-Level Control Board based on Teensy 4.1 PCB" width="600"/>
+  <img src="2025-2026/PCBs_schematics/assets/pcb_control_board.png2025-2026/PCBs_schematics/assets/pcb_PDB_board.png" alt="Low-Level Control Board based on Teensy 4.1 PCB" width="600"/>
 </p>
 <p align="center">
   <b> Low-Level Control Board based on Teensy 4.1 PCB </b>
