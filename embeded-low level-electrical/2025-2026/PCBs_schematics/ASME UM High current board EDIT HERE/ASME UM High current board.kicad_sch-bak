@@ -1,0 +1,10540 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "43b02b23-8b3d-43d3-860b-e99f82a5acc6")
+	(paper "A4")
+	(lib_symbols
+		(symbol "PCM_SL_Capacitors:1000uF_16V"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0 7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "1000uF_16V"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Capacitor_THT:CP_Radial_D10.0mm_P5.00mm"
+				(at 0.762 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0.508 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "1000uF, 16V Electrolytic Capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "Electrolytic Capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Capacitor_THT:CP_Radial_D5.0mm_* Capacitor_THT:CP_Radial_D4.0mm_* Capacitor_THT:CP_Radial_D6.3mm_* Capacitor_THT:CP_Radial_D7.5mm_* Capacitor_THT:CP_Radial_D8.0mm_* Capacitor_THT:CP_Radial_D10.0mm_* Capacitor_THT:CP_Radial_D14.0mm_* Capacitor_THT:CP_Radial_D16.0mm_* Capacitor_THT:CP_Radial_D18.0mm_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "1000uF_16V_0_0"
+				(text "+"
+					(at -2.032 1.524 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(text "-"
+					(at 2.032 1.524 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(symbol "1000uF_16V_0_1"
+				(rectangle
+					(start -1.016 -2.286)
+					(end -0.508 2.286)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 0.508 -2.286)
+					(end 1.016 2.286)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+			)
+			(symbol "1000uF_16V_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.7)
+					(name "~"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 3.81 0 180)
+					(length 2.7)
+					(name "~"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PCM_SL_Capacitors:100nF_Ceramic"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "100nF_Ceramic"
+				(at 0 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "100nF Ceramic Capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "Ceramic Capacitor 104 100nF"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "100nF_Ceramic_0_1"
+				(rectangle
+					(start -0.762 2.286)
+					(end -0.508 -2.286)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(rectangle
+					(start 0.508 2.286)
+					(end 0.762 -2.286)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+			)
+			(symbol "100nF_Ceramic_1_1"
+				(pin passive line
+					(at -2.54 0 0)
+					(length 2)
+					(name "~"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 2.54 0 180)
+					(length 2)
+					(name "~"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PCM_SL_Capacitors:10uF_16V"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0 7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "10uF_16V"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm"
+				(at 0.762 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0.508 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "10uF, 16V Electrolytic Capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "Electrolytic Capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Capacitor_THT:CP_Radial_D5.0mm_* Capacitor_THT:CP_Radial_D4.0mm_* Capacitor_THT:CP_Radial_D6.3mm_* Capacitor_THT:CP_Radial_D7.5mm_* Capacitor_THT:CP_Radial_D8.0mm_* Capacitor_THT:CP_Radial_D10.0mm_* Capacitor_THT:CP_Radial_D14.0mm_* Capacitor_THT:CP_Radial_D16.0mm_* Capacitor_THT:CP_Radial_D18.0mm_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "10uF_16V_0_0"
+				(text "+"
+					(at -2.032 1.524 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(text "-"
+					(at 2.032 1.524 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(symbol "10uF_16V_0_1"
+				(rectangle
+					(start -1.016 -2.286)
+					(end -0.508 2.286)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 0.508 -2.286)
+					(end 1.016 2.286)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+			)
+			(symbol "10uF_16V_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.7)
+					(name "~"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 3.81 0 180)
+					(length 2.7)
+					(name "~"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PCM_SL_Connectors:JST_02"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at 0 7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "JST_02"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Connector_JST:JST_EH_B2B-EH-A_1x02_P2.50mm_Vertical"
+				(at 0 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "JST Connector  2 pins"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "JST 2"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Connector_JST:JST_EH_S2B-EH_1x02_P2.50mm_Horizontal"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "JST_02_0_1"
+				(rectangle
+					(start -1.27 2.54)
+					(end 1.27 -2.54)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -1.778) (xy -1.27 -2.54) (xy 1.27 -2.54) (xy 1.27 -1.778) (xy 1.016 -1.778) (xy 1.016 -2.286)
+						(xy -1.016 -2.286) (xy -1.016 -1.778) (xy -1.27 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 0.254 1.27)
+					(radius 0.381)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 0.254 -1.27)
+					(radius 0.381)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(rectangle
+					(start 1.016 1.778)
+					(end 1.27 -1.778)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 1.778) (xy 1.27 2.54) (xy -1.27 2.54) (xy -1.27 1.778) (xy -1.016 1.778) (xy -1.016 2.286)
+						(xy 1.016 2.286) (xy 1.016 1.778) (xy 1.27 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+			)
+			(symbol "JST_02_1_1"
+				(pin passive line
+					(at -3.81 1.27 0)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -3.81 -1.27 0)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PCM_SL_Pin_Headers:PINHD_1x2_Male"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at 0 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "PINHD_1x2_Male"
+				(at 0 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
+				(at 1.27 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Pin Header male with pin space 2.54mm. Pin Count -2"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "Pin Header"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "PinHeader_1x02_P2.54mm*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "PINHD_1x2_Male_0_1"
+				(rectangle
+					(start -1.27 2.54)
+					(end 1.27 -2.54)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 1.27) (xy 0 1.27)
+					)
+					(stroke
+						(width 0.3)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 1.27) (xy 0 1.27)
+					)
+					(stroke
+						(width 0.5)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0.3)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0.5)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "PINHD_1x2_Male_1_1"
+				(pin passive line
+					(at -3.81 1.27 0)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -3.81 -1.27 0)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PCM_SL_Resistors:470ohm"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "470ohm"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+				(at 0.889 -4.318 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0.508 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "470Ω, 1/4W Resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "Resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "470ohm_0_1"
+				(rectangle
+					(start -2.286 0.889)
+					(end 2.286 -0.889)
+					(stroke
+						(width 0.24)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "470ohm_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 1.5)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 1.5)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 0 0)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PCM_SparkFun-Connector:Conn_01x04_JST_P1.25mm_Locking_Horizontal_SMD"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "JST_Locking_4"
+				(at 0 -7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "PCM_SparkFun-Connector:JST_1x04_P1.25mm_Locking_Horizontal_SMD"
+				(at 0 -10.16 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf"
+				(at 0 -17.78 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Locking 4 pin JST SMD connector"
+				(at 0 -15.24 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "PROD_ID" "CONN-15303"
+				(at 0 -12.7 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "SparkFun connector"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Connector*:*_1x??_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Conn_01x04_JST_P1.25mm_Locking_Horizontal_SMD_1_1"
+				(rectangle
+					(start -1.27 3.81)
+					(end 1.27 -6.35)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(rectangle
+					(start -1.27 2.667)
+					(end 0 2.413)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 0.127)
+					(end 0 -0.127)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -2.413)
+					(end 0 -2.667)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -4.953)
+					(end 0 -5.207)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 2.54 0)
+					(length 3.81)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 3.81)
+					(name "Pin_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -5.08 0)
+					(length 3.81)
+					(name "Pin_4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at 3.81 -6.35 90)
+					(length 5.08)
+					(hide yes)
+					(name "NC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "NC2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at 6.35 -6.35 90)
+					(length 5.08)
+					(hide yes)
+					(name "NC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "NC1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PCM_SparkFun-Fuse:Fuse_Holder-Blade"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.254)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "F"
+				(at 0 -1.524 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Blade Fuse"
+				(at 0 1.524 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "PCM_SparkFun-Fuse:Fuseholder_Automotive"
+				(at 0 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.keyelco.com/userAssets/file/M65p41.pdf"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Fuse"
+				(at 0 -8.89 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "PROD_ID" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "SparkFun Blade Fuse Automotive"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "*Fuse*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Fuse_Holder-Blade_0_1"
+				(rectangle
+					(start -1.27 0.508)
+					(end 1.27 -0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Fuse_Holder-Blade_1_1"
+				(pin passive line
+					(at -2.54 0 0)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 0 180)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PCM_SparkFun-LED:LED_Red_5mm_PTH_NoSilk"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Red"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "PCM_SparkFun-LED:LED_5mm_PTH_Red_NoSilk"
+				(at 0 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://cdn.sparkfun.com/assets/e/c/e/c/5/COM-09590-YSL-R531R3D-D2.pdf"
+				(at 0 -10.16 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Light emitting diode PTH 5mm diameter"
+				(at 0 -12.7 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "PROD_ID" "DIO-09529"
+				(at 0 -7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "SparkFun LED diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "LED* LED_SMD:* LED_THT:*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "LED_Red_5mm_PTH_NoSilk_0_1"
+				(polyline
+					(pts
+						(xy -0.762 -1.016) (xy -0.762 1.016)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0.762) (xy -0.508 1.27) (xy -0.254 1.27) (xy -0.508 1.27) (xy -0.508 1.016)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.508 1.27) (xy 0 1.778) (xy 0.254 1.778) (xy 0 1.778) (xy 0 1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -1.016) (xy -0.762 0) (xy 0.762 1.016) (xy 0.762 -1.016)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.016 0) (xy -0.762 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "LED_Red_5mm_PTH_NoSilk_1_1"
+				(pin passive line
+					(at -2.54 0 0)
+					(length 1.778)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 0 180)
+					(length 1.778)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "PCM_SparkFun-PowerSymbol:GND"
+			(power)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "GND"
+				(at 0 -3.81 0)
+				(do_not_autoplace)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+				(at 0 -8.89 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "SparkFun global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "GND_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "GND_1_1"
+				(pin power_in line
+					(at 0 0 270)
+					(length 0)
+					(hide yes)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Regulator_Switching:LM2596T-5"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at -10.16 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "LM2596T-5"
+				(at 0 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_THT:TO-220-5_P3.4x3.7mm_StaggerOdd_Lead3.8mm_Vertical"
+				(at 1.27 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "http://www.ti.com/lit/ds/symlink/lm2596.pdf"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "5V 3A 150kHz Step-Down Voltage Regulator, TO-220"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "Step-Down Voltage Regulator 5V 3A"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "TO?220*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "LM2596T-5_0_1"
+				(rectangle
+					(start -10.16 5.08)
+					(end 10.16 -5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "LM2596T-5_1_1"
+				(pin power_in line
+					(at -12.7 2.54 0)
+					(length 2.54)
+					(name "VIN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -12.7 -2.54 0)
+					(length 2.54)
+					(name "~{ON}/OFF"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -7.62 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 12.7 2.54 180)
+					(length 2.54)
+					(name "FB"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 12.7 -2.54 180)
+					(length 2.54)
+					(name "OUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Sensor_Current:ACS758xCB-050B-PFF"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at -7.62 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "ACS758xCB-050B-PFF"
+				(at 2.54 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Sensor_Current:Allegro_CB_PFF"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "http://www.allegromicro.com/~/media/Files/Datasheets/ACS758-Datasheet.ashx?la=en"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "±50A Bidirectional Hall-Effect Current Sensor, +5.0V supply, 40mV/A, CB-5 PFF"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "hall effect current monitor sensor isolated"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Allegro*CB*PFF*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "ACS758xCB-050B-PFF_0_1"
+				(rectangle
+					(start -7.62 5.08)
+					(end 7.62 -5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 3.175) (xy -2.54 4.445)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 1.27) (xy -2.54 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 0.635) (xy -2.54 -0.635)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 -1.27) (xy -2.54 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 -3.175) (xy -2.54 -4.445)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "ACS758xCB-050B-PFF_1_1"
+				(pin passive line
+					(at -10.16 2.54 0)
+					(length 2.54)
+					(name "IP+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -10.16 -2.54 0)
+					(length 2.54)
+					(name "IP-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 7.62 270)
+					(length 2.54)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -7.62 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 10.16 0 180)
+					(length 2.54)
+					(name "VIOUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(rectangle
+		(start 24.13 24.13)
+		(end 175.26 97.79)
+		(stroke
+			(width 0.381)
+			(type dash)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 15807766-ffcb-45d3-ab64-24773cefd4b2)
+	)
+	(rectangle
+		(start 190.5 73.66)
+		(end 222.25 95.25)
+		(stroke
+			(width 0.381)
+			(type dash)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 30fcdba1-8dee-4cb2-bee3-51654e07ab07)
+	)
+	(rectangle
+		(start 191.77 27.94)
+		(end 226.06 62.23)
+		(stroke
+			(width 0.381)
+			(type dash)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 760615f6-50eb-426f-8be0-af68a265a539)
+	)
+	(rectangle
+		(start 182.88 121.92)
+		(end 226.06 156.21)
+		(stroke
+			(width 0.381)
+			(type dash)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 763c376a-98a8-4893-aff1-0d72f07dfa08)
+	)
+	(rectangle
+		(start 24.13 109.22)
+		(end 154.94 170.18)
+		(stroke
+			(width 0.381)
+			(type dash)
+		)
+		(fill
+			(type none)
+		)
+		(uuid aabb2bc4-5b60-4482-a9c7-ac357d316aee)
+	)
+	(text "Low Voltage Control "
+		(exclude_from_sim no)
+		(at 208.788 25.4 0)
+		(effects
+			(font
+				(size 1.905 1.905)
+				(thickness 0.381)
+				(bold yes)
+			)
+		)
+		(uuid "4e0e8472-da13-4ed0-bca9-1235442c4b2c")
+	)
+	(text "DC-DC Bulk converter 5v"
+		(exclude_from_sim no)
+		(at 203.708 119.634 0)
+		(effects
+			(font
+				(size 1.905 1.905)
+				(thickness 0.381)
+				(bold yes)
+			)
+		)
+		(uuid "906c6f82-1a51-47bb-98df-49547df22a1e")
+	)
+	(text "Current Sensors"
+		(exclude_from_sim no)
+		(at 85.09 106.68 0)
+		(effects
+			(font
+				(size 2.032 2.032)
+				(thickness 0.381)
+				(bold yes)
+			)
+		)
+		(uuid "ad58caf2-5855-4e28-bba0-1046fb278f98")
+	)
+	(text "Main PDB\n"
+		(exclude_from_sim no)
+		(at 97.028 21.59 0)
+		(effects
+			(font
+				(size 1.905 1.905)
+				(thickness 0.381)
+				(bold yes)
+			)
+		)
+		(uuid "ad83ce0a-36c8-4f65-923f-55ea42c1db7e")
+	)
+	(text "Voltage Measurement"
+		(exclude_from_sim no)
+		(at 205.994 70.612 0)
+		(effects
+			(font
+				(size 1.905 1.905)
+				(thickness 0.381)
+				(bold yes)
+			)
+		)
+		(uuid "f7cdf6b6-815c-4228-b5f4-9189d4eb56d8")
+	)
+	(text_box "Voltage Monitor using Voltage Division.\nMax voltage: 18V.\nR1=200K ohm\nR2=1M ohm\nPower: 0.2 mW\nVoltage at the divider: 3V max at 18V (Safe for ADC)"
+		(exclude_from_sim no)
+		(at 196.85 96.52 0)
+		(size 17.78 7.62)
+		(margins 0.9525 0.9525 0.9525 0.9525)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 0.508 0.508)
+				(color 0 0 0 1)
+			)
+			(justify left top)
+		)
+		(uuid "1987bb34-54a3-421d-99c1-2995dc97fa21")
+	)
+	(text_box "There are alot of ways to implement that, including usage of mosfet and diodes.\nWe decided to use the crowbar method, which will not consume any energy in the normal operation but in the reverse it will blow up small fuse."
+		(exclude_from_sim no)
+		(at 181.61 157.48 0)
+		(size 17.78 7.62)
+		(margins 0.9525 0.9525 0.9525 0.9525)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 0.508 0.508)
+				(color 0 0 0 1)
+			)
+			(justify left top)
+		)
+		(uuid "6460917d-b2c6-4861-a74c-12cf69a7620e")
+	)
+	(text_box "This is RC low pass filter with F_cut= 340 HZ\nR = 4.7 Kohm\nC = 100 nF.\nThe output Impedance is less than 1 ohm so you have to add resistor to drive the Cap and complete the RC filter.\nCurrent: 13mA"
+		(exclude_from_sim no)
+		(at 29.21 144.78 0)
+		(size 8.89 12.7)
+		(margins 0.9525 0.9525 0.9525 0.9525)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 0.508 0.508)
+			)
+			(justify left top)
+		)
+		(uuid "d02d2ccd-5285-4c8a-91cf-eb763cfe80d0")
+	)
+	(junction
+		(at 91.44 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "05d7cd8c-9d44-4bab-a57c-56c397501c9a")
+	)
+	(junction
+		(at 156.21 52.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0e9f5d86-2f5c-437d-98b0-54bdf69f06cc")
+	)
+	(junction
+		(at 76.2 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "10db8972-fbdf-4790-a7ab-37c3e771200d")
+	)
+	(junction
+		(at 142.24 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "14254a5b-d80e-43a2-bfdf-a76bfdb7bac2")
+	)
+	(junction
+		(at 161.29 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1b8d1961-b828-4878-9fb2-9cf1fdbc238b")
+	)
+	(junction
+		(at 102.87 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "20714bf8-4f5e-4b86-90ff-8d89362607e2")
+	)
+	(junction
+		(at 102.87 66.04)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2423abd0-1c96-4670-843d-2758f597478b")
+	)
+	(junction
+		(at 80.01 44.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "25f34536-968e-4a09-97a0-a25e74a1621b")
+	)
+	(junction
+		(at 133.35 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2ebd04ce-55ba-42e7-b994-96def1fae1f5")
+	)
+	(junction
+		(at 41.91 142.24)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2f0a5d63-3b1e-4507-8efd-674a5df3dd83")
+	)
+	(junction
+		(at 130.81 52.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3a32d4f9-f296-4771-b26d-82675f3bdc01")
+	)
+	(junction
+		(at 52.07 44.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3adf7da5-14d3-4c53-aa4a-90d53e83f843")
+	)
+	(junction
+		(at 148.59 66.04)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3afc7c31-290a-45c5-be7d-e52d95e7abdd")
+	)
+	(junction
+		(at 142.24 52.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3ceafa62-0b6f-4d1e-ada8-fb6c650eb8fb")
+	)
+	(junction
+		(at 91.44 44.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "456d8384-0cb9-41c9-b052-030b878954bc")
+	)
+	(junction
+		(at 66.04 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4c845712-a7ee-4ce0-a0df-a3e01d029b18")
+	)
+	(junction
+		(at 110.49 52.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4e23215f-fadf-4827-81cf-dc600790b3c0")
+	)
+	(junction
+		(at 46.99 44.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "50b2c8bd-1274-42cc-ad35-9096bc03ffc8")
+	)
+	(junction
+		(at 63.5 132.08)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "53a267b7-0045-45a6-98c6-c80bcc2e2e13")
+	)
+	(junction
+		(at 102.87 132.08)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "56e26071-1048-4544-b49a-f2df823cf84b")
+	)
+	(junction
+		(at 87.63 52.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "583e7c16-3177-450c-b75a-7341955e31b2")
+	)
+	(junction
+		(at 66.04 66.04)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5a58463b-18b9-4ca4-b122-ab52ee8a5f84")
+	)
+	(junction
+		(at 123.19 76.2)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "62bbee74-03ab-46f8-9847-d0135cf1e69c")
+	)
+	(junction
+		(at 69.85 128.27)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "63a59642-188b-4f6d-90fa-405586f2f854")
+	)
+	(junction
+		(at 110.49 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "64c8d44c-18f6-4f1e-8b1a-919648da551a")
+	)
+	(junction
+		(at 156.21 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6a671918-5256-4207-bff2-241dcf34e886")
+	)
+	(junction
+		(at 81.28 142.24)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6c449e1b-4110-4d8d-ab52-6a83a791bebc")
+	)
+	(junction
+		(at 99.06 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "71512ea4-15a5-420c-a276-19e482396418")
+	)
+	(junction
+		(at 161.29 66.04)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "75b3d040-2bdb-4924-a803-4edfa6bbb6d8")
+	)
+	(junction
+		(at 142.24 132.08)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "79a78997-9820-4dfa-bee8-e48dfdd2e343")
+	)
+	(junction
+		(at 102.87 44.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7cf4f9b5-fb9c-44cd-a7b2-9298eff9a80f")
+	)
+	(junction
+		(at 120.65 142.24)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "82cbad6b-a5bb-4a98-9a23-40b97af34182")
+	)
+	(junction
+		(at 45.72 52.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "83df0eff-c92b-4c69-8050-534121fb6392")
+	)
+	(junction
+		(at 148.59 128.27)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "862b5895-3247-4431-9af5-65182b5d78f6")
+	)
+	(junction
+		(at 120.65 52.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "866c2bff-5d75-47a2-8b5e-d40f029f090b")
+	)
+	(junction
+		(at 113.03 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "88ff69eb-b608-4275-be95-ad6bde2593cc")
+	)
+	(junction
+		(at 76.2 52.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8a2bcd14-2876-4b74-866d-baa932698764")
+	)
+	(junction
+		(at 148.59 44.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8c6a4f94-39bc-4700-a705-5dbaf438b767")
+	)
+	(junction
+		(at 99.06 52.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8efccee7-6a62-4183-949c-ae5628f3d261")
+	)
+	(junction
+		(at 87.63 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "908e0fff-c1ef-4fe9-a1ab-aef5b2775479")
+	)
+	(junction
+		(at 133.35 44.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "90abd088-0be2-4c00-9246-d106c1d4b557")
+	)
+	(junction
+		(at 81.28 152.4)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9ab8dc11-e4d5-4af8-8821-983f51174852")
+	)
+	(junction
+		(at 204.47 78.74)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9ef5d0f3-3c8e-406e-bc06-189526daf59a")
+	)
+	(junction
+		(at 120.65 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a0fbe8eb-d46f-4a1c-9d85-985434b2f431")
+	)
+	(junction
+		(at 170.18 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a3f439b9-21c8-4fec-93db-399245ba646e")
+	)
+	(junction
+		(at 120.65 152.4)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a5c78dee-b8ad-4f7c-a4fe-e36c926eaea3")
+	)
+	(junction
+		(at 123.19 44.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a9d8d7eb-5c2d-4e24-b0ab-27240ddc5d4f")
+	)
+	(junction
+		(at 80.01 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "aade1d87-2d6d-4f3e-b060-24d02dbe06b2")
+	)
+	(junction
+		(at 113.03 44.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ac4a5ab0-e78e-4bfc-9671-75de39d11cf7")
+	)
+	(junction
+		(at 123.19 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b688b1c2-0b17-429d-a511-f71c197905f8")
+	)
+	(junction
+		(at 130.81 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c0a5cff6-d1c6-4cbc-96d8-a410838fa84e")
+	)
+	(junction
+		(at 66.04 44.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c3325682-3888-4ecb-8261-45050990d73d")
+	)
+	(junction
+		(at 91.44 66.04)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c3e98579-4c6a-4db9-bad9-6f2e11863a26")
+	)
+	(junction
+		(at 52.07 52.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c405ed08-c51f-4552-9dbe-551a459cf6d0")
+	)
+	(junction
+		(at 80.01 66.04)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c89679ad-4840-497e-9b16-da67dda0e5cb")
+	)
+	(junction
+		(at 45.72 44.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e278400f-5f53-4f7f-9d58-9b0fc4bc4d3b")
+	)
+	(junction
+		(at 148.59 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e7b1afd3-8ef0-4162-8054-967618b2c4ed")
+	)
+	(junction
+		(at 120.65 128.27)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f26acedc-3d90-45db-9333-41e8c37daa79")
+	)
+	(junction
+		(at 81.28 128.27)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f3640a64-f49d-4f51-a264-6182bdc210ae")
+	)
+	(junction
+		(at 41.91 152.4)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f4307ccc-39ae-4964-8128-568095bcab16")
+	)
+	(junction
+		(at 109.22 128.27)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f6029798-2d15-45d5-8fd9-2502fcc518d7")
+	)
+	(junction
+		(at 41.91 128.27)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f6a92a30-6b03-4d47-a711-850552fdb1c7")
+	)
+	(junction
+		(at 133.35 76.2)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f73e5aec-2b35-4f48-a526-84b3d0771143")
+	)
+	(junction
+		(at 113.03 66.04)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fb37a2a9-4e68-40b0-b22c-de8706d548cb")
+	)
+	(wire
+		(pts
+			(xy 113.03 66.04) (xy 115.57 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "00495185-0806-4d84-a794-41fc46b9eabf")
+	)
+	(wire
+		(pts
+			(xy 78.74 66.04) (xy 80.01 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "022a9516-7718-46f2-bdd5-0571f8832f2d")
+	)
+	(wire
+		(pts
+			(xy 109.22 121.92) (xy 109.22 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "037bdb67-af86-4e18-9bf7-6dd6fd0b68f5")
+	)
+	(wire
+		(pts
+			(xy 60.96 44.45) (xy 66.04 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "04231666-9a62-4577-812b-a15a67ab5019")
+	)
+	(wire
+		(pts
+			(xy 92.71 142.24) (xy 81.28 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "06174a23-ce9b-435b-860c-3574e239e320")
+	)
+	(wire
+		(pts
+			(xy 76.2 60.96) (xy 74.93 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0646b436-a721-45a7-8caa-53d4f9b2038b")
+	)
+	(wire
+		(pts
+			(xy 87.63 66.04) (xy 85.09 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "09ac4407-fd01-44b2-a9a1-d90a1cdf7893")
+	)
+	(wire
+		(pts
+			(xy 125.73 66.04) (xy 125.73 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "10f511b8-e87e-4a47-9379-ffbc5312999a")
+	)
+	(wire
+		(pts
+			(xy 34.29 52.07) (xy 45.72 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "11c4457f-9fe5-4c7d-abe1-c0e10ba85369")
+	)
+	(wire
+		(pts
+			(xy 204.47 78.74) (xy 205.74 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "11d616cb-c122-4c67-9b6b-3f54ab87a26d")
+	)
+	(wire
+		(pts
+			(xy 82.55 152.4) (xy 81.28 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "12bb5a34-72d0-491f-84b9-ae0615e8afef")
+	)
+	(wire
+		(pts
+			(xy 123.19 44.45) (xy 123.19 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1315af5e-cef6-4b4a-b996-13dbfacdbbfa")
+	)
+	(wire
+		(pts
+			(xy 142.24 66.04) (xy 140.97 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "133e62b2-882b-4f9d-b4de-ed71a4349191")
+	)
+	(wire
+		(pts
+			(xy 130.81 52.07) (xy 142.24 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "13737c4c-2035-4b75-a259-ce93f6ec23d1")
+	)
+	(wire
+		(pts
+			(xy 137.16 124.46) (xy 137.16 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "13b174f5-20c4-452b-93fa-5e97a4bfa99f")
+	)
+	(wire
+		(pts
+			(xy 58.42 124.46) (xy 58.42 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "14f6fee6-2852-4c70-9cd8-a95d0b59e775")
+	)
+	(wire
+		(pts
+			(xy 123.19 66.04) (xy 123.19 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "176928b9-e617-4764-8269-74419f37daa7")
+	)
+	(wire
+		(pts
+			(xy 120.65 60.96) (xy 120.65 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "18d3ff66-d289-40ca-95dc-3990993c20c6")
+	)
+	(wire
+		(pts
+			(xy 203.2 34.29) (xy 203.2 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1a98538d-37d8-4917-b70a-190079da3571")
+	)
+	(wire
+		(pts
+			(xy 207.01 53.34) (xy 210.82 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1a9d8040-8b66-4e71-9776-90c89a213e4d")
+	)
+	(wire
+		(pts
+			(xy 142.24 52.07) (xy 142.24 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1c8d3579-f626-4d28-bbe0-b22b43f0c7af")
+	)
+	(wire
+		(pts
+			(xy 46.99 44.45) (xy 52.07 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1d3528c8-f4c9-4ae0-ba59-a738eaee884f")
+	)
+	(wire
+		(pts
+			(xy 91.44 74.93) (xy 91.44 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1fdc4818-4c08-4722-b69d-fe8974429291")
+	)
+	(wire
+		(pts
+			(xy 81.28 152.4) (xy 81.28 148.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "20bbb8c3-3212-4f26-9bae-644f7043ab8d")
+	)
+	(wire
+		(pts
+			(xy 142.24 60.96) (xy 142.24 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2217a694-e206-4ea8-93cf-93bbfc5c4346")
+	)
+	(wire
+		(pts
+			(xy 81.28 152.4) (xy 81.28 156.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "23513bce-d113-4b6c-96cf-d572290a6812")
+	)
+	(wire
+		(pts
+			(xy 52.07 128.27) (xy 69.85 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "240c9fce-14a0-457f-8861-8e59961ad61c")
+	)
+	(wire
+		(pts
+			(xy 80.01 66.04) (xy 82.55 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2410b69e-db41-493e-bd29-3417de0f6441")
+	)
+	(wire
+		(pts
+			(xy 99.06 52.07) (xy 110.49 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "25271fcb-3cd4-4c70-b42a-8890ce7ad6f6")
+	)
+	(wire
+		(pts
+			(xy 63.5 123.19) (xy 63.5 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "270d703a-7fdc-4b12-bdb9-85242ed1248a")
+	)
+	(wire
+		(pts
+			(xy 66.04 80.01) (xy 66.04 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "28673586-a332-4f17-9323-7c97fc624e23")
+	)
+	(wire
+		(pts
+			(xy 161.29 74.93) (xy 161.29 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "29be51d2-beff-4304-b2c9-052c624e4aad")
+	)
+	(wire
+		(pts
+			(xy 146.05 78.74) (xy 146.05 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2ea01d0f-9bcb-4766-bd9c-1d9eb3e92343")
+	)
+	(wire
+		(pts
+			(xy 80.01 44.45) (xy 91.44 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "32090165-53be-4591-9ece-16016280be47")
+	)
+	(wire
+		(pts
+			(xy 81.28 142.24) (xy 81.28 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "33034fe6-bf56-4681-b367-b9e5d46aab31")
+	)
+	(wire
+		(pts
+			(xy 91.44 66.04) (xy 93.98 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "33816eff-f4f2-42a6-a480-2f18d9ada6a9")
+	)
+	(wire
+		(pts
+			(xy 35.56 44.45) (xy 45.72 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "33ca053a-eb22-49f8-be91-1c863e20329c")
+	)
+	(wire
+		(pts
+			(xy 130.81 60.96) (xy 130.81 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "343f0e48-119c-4324-b283-98d72064291c")
+	)
+	(wire
+		(pts
+			(xy 110.49 52.07) (xy 120.65 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3628bcb1-025a-4e50-9c8d-2ecb9164b1d0")
+	)
+	(wire
+		(pts
+			(xy 66.04 60.96) (xy 67.31 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "36f7e053-4ead-46d3-a6ed-23fdaac14253")
+	)
+	(wire
+		(pts
+			(xy 207.01 39.37) (xy 212.09 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3a984b8b-8ca7-4d9b-8705-ea92178e644e")
+	)
+	(wire
+		(pts
+			(xy 80.01 44.45) (xy 80.01 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "43eb77e8-9d8f-4377-a5e1-cb55219c87e5")
+	)
+	(wire
+		(pts
+			(xy 109.22 142.24) (xy 107.95 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "443db996-c2bc-4e7a-a2c5-ecbdc2fb0ad3")
+	)
+	(wire
+		(pts
+			(xy 142.24 52.07) (xy 156.21 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "444dfd96-f0bf-40c3-a7e8-60d5fc0401e5")
+	)
+	(wire
+		(pts
+			(xy 50.8 152.4) (xy 60.96 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "44d42426-7b7b-4b07-a0b8-4902e0d5ae7a")
+	)
+	(wire
+		(pts
+			(xy 161.29 67.31) (xy 161.29 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "47c4a8ad-1a94-4627-bed9-efa58874bb0a")
+	)
+	(wire
+		(pts
+			(xy 130.81 128.27) (xy 148.59 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "487965df-d130-4a68-9db7-df3f08c72e67")
+	)
+	(wire
+		(pts
+			(xy 69.85 142.24) (xy 68.58 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "491d4211-fead-47fe-bcf3-1c4a78a22aaf")
+	)
+	(wire
+		(pts
+			(xy 217.17 81.28) (xy 217.17 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "49384d42-946b-4091-b9eb-4e8b68873d73")
+	)
+	(wire
+		(pts
+			(xy 91.44 128.27) (xy 109.22 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "49cb4b84-316b-4caa-adaa-8f3ced79d277")
+	)
+	(wire
+		(pts
+			(xy 120.65 52.07) (xy 130.81 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4a30408e-e559-4846-9aa8-bb8ce7826d56")
+	)
+	(wire
+		(pts
+			(xy 76.2 66.04) (xy 72.39 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4ae125e5-12ee-4c4c-9644-62b3e26a742a")
+	)
+	(wire
+		(pts
+			(xy 69.85 121.92) (xy 69.85 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4be49d10-2165-4a6b-88cb-8d926d6547c5")
+	)
+	(wire
+		(pts
+			(xy 156.21 66.04) (xy 156.21 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4f05d25b-00fc-4e62-a799-366ca6232645")
+	)
+	(wire
+		(pts
+			(xy 66.04 44.45) (xy 66.04 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "514a940f-5761-4bfe-8842-a0918c93f2e4")
+	)
+	(wire
+		(pts
+			(xy 41.91 128.27) (xy 46.99 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5167e3c7-ed22-447c-8c2b-eb72ab87dd63")
+	)
+	(wire
+		(pts
+			(xy 80.01 128.27) (xy 81.28 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "597b06b2-63d4-497e-8092-82bf0057afcb")
+	)
+	(wire
+		(pts
+			(xy 142.24 133.35) (xy 142.24 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "59ae178a-5ae0-4557-98f3-a02be4a87def")
+	)
+	(wire
+		(pts
+			(xy 105.41 66.04) (xy 102.87 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5bdb1d28-9d34-499d-9eb5-2a50c50dd705")
+	)
+	(wire
+		(pts
+			(xy 102.87 44.45) (xy 102.87 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5e768fac-a89b-4dbb-88ad-102d985beb47")
+	)
+	(wire
+		(pts
+			(xy 76.2 52.07) (xy 76.2 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "600511c9-2cff-4158-8cc4-b53e77eaa4d2")
+	)
+	(wire
+		(pts
+			(xy 194.31 78.74) (xy 196.85 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "61277602-d578-4d47-886e-315d02e2391a")
+	)
+	(wire
+		(pts
+			(xy 109.22 128.27) (xy 109.22 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "66bd34a6-1d85-4a25-99e3-c05eaf55c083")
+	)
+	(wire
+		(pts
+			(xy 102.87 74.93) (xy 102.87 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "67612139-bfac-431f-a3aa-a442d7afcd72")
+	)
+	(wire
+		(pts
+			(xy 60.96 40.64) (xy 60.96 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "68226213-d7d3-449f-a43f-1d15d1c0e15e")
+	)
+	(wire
+		(pts
+			(xy 41.91 152.4) (xy 41.91 156.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6874b17f-f6c3-458c-b13d-9b3ccd8da9b1")
+	)
+	(wire
+		(pts
+			(xy 63.5 133.35) (xy 63.5 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "69401bcd-b07f-4bea-b88a-f841bec5c9eb")
+	)
+	(wire
+		(pts
+			(xy 120.65 128.27) (xy 120.65 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "69a072aa-9983-4259-ba31-3b744ed5ddfa")
+	)
+	(wire
+		(pts
+			(xy 91.44 44.45) (xy 102.87 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6ad2d770-4ebb-475e-b1b5-381ba6992c9d")
+	)
+	(wire
+		(pts
+			(xy 45.72 52.07) (xy 45.72 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6c34bad9-3c47-493b-a4e8-39c8de2cb913")
+	)
+	(wire
+		(pts
+			(xy 119.38 128.27) (xy 120.65 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6c982271-4c58-4fc0-9aa2-3c0f7a2374e8")
+	)
+	(wire
+		(pts
+			(xy 142.24 123.19) (xy 142.24 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6dfc6321-11f6-44a6-bd00-92f356aba57a")
+	)
+	(wire
+		(pts
+			(xy 129.54 76.2) (xy 133.35 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6e0864ff-108e-460f-bedd-a952006c9c42")
+	)
+	(wire
+		(pts
+			(xy 76.2 52.07) (xy 87.63 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6fe3f569-fc5e-4774-bdc1-1987f05b113d")
+	)
+	(wire
+		(pts
+			(xy 170.18 44.45) (xy 170.18 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "70ff3a0e-b299-4ee2-a39e-20a04c2e1efd")
+	)
+	(wire
+		(pts
+			(xy 81.28 128.27) (xy 86.36 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "770c24c9-4f69-48fb-83dd-bf50e0a5f2f7")
+	)
+	(wire
+		(pts
+			(xy 148.59 121.92) (xy 148.59 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7a941934-dd9c-4845-818a-79a54f47f075")
+	)
+	(wire
+		(pts
+			(xy 66.04 44.45) (xy 80.01 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7dae5093-d0c8-46d8-bed3-2a1732129298")
+	)
+	(wire
+		(pts
+			(xy 207.01 55.88) (xy 210.82 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7e037f70-72db-4e85-a180-031809790c63")
+	)
+	(wire
+		(pts
+			(xy 87.63 52.07) (xy 99.06 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "81a61823-c5d6-4181-b726-0d90a8b8d08f")
+	)
+	(wire
+		(pts
+			(xy 170.18 66.04) (xy 167.64 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "81b3c565-ef9d-4a11-b65a-4978f2bd1d9e")
+	)
+	(wire
+		(pts
+			(xy 119.38 76.2) (xy 123.19 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "892a2121-6372-48e8-8215-ecee193f17f6")
+	)
+	(wire
+		(pts
+			(xy 129.54 152.4) (xy 139.7 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8c8dc92b-6347-4309-aef3-0c6a8c215a03")
+	)
+	(wire
+		(pts
+			(xy 133.35 76.2) (xy 133.35 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8d5cc26d-60d7-45c2-86f0-68f15ac6f5a1")
+	)
+	(wire
+		(pts
+			(xy 110.49 60.96) (xy 110.49 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9112faf7-3c7a-40ab-9706-2ab124859f75")
+	)
+	(wire
+		(pts
+			(xy 170.18 66.04) (xy 170.18 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9118fb15-17c4-4675-aa44-b7afd59c9832")
+	)
+	(wire
+		(pts
+			(xy 113.03 44.45) (xy 123.19 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "91de4a4d-c8f0-4218-b34b-4d3296d35eaf")
+	)
+	(wire
+		(pts
+			(xy 120.65 152.4) (xy 120.65 156.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "92d118ff-1a38-4889-8d28-f73a9149cd25")
+	)
+	(wire
+		(pts
+			(xy 78.74 80.01) (xy 78.74 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "93f54b99-3f12-49df-bf74-b0fe2b36f6db")
+	)
+	(wire
+		(pts
+			(xy 41.91 152.4) (xy 41.91 148.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "95e10bdf-ec44-417d-9e73-29eb4ac98433")
+	)
+	(wire
+		(pts
+			(xy 130.81 52.07) (xy 130.81 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "974c5d91-69d1-44c7-80a0-e8c7b2d4586c")
+	)
+	(wire
+		(pts
+			(xy 76.2 60.96) (xy 76.2 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "97bf5792-92b7-48ea-bf8c-aee0f0676b67")
+	)
+	(wire
+		(pts
+			(xy 204.47 78.74) (xy 204.47 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "97fa5b60-d26b-4af2-a9db-df32a993b6a5")
+	)
+	(wire
+		(pts
+			(xy 45.72 52.07) (xy 52.07 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9bc6dbdf-04cf-44d4-9138-2912cdaf5093")
+	)
+	(wire
+		(pts
+			(xy 102.87 123.19) (xy 102.87 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9d650912-cbf3-4b2f-a02c-45e716489ecc")
+	)
+	(wire
+		(pts
+			(xy 99.06 66.04) (xy 96.52 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9ddbd90e-8d12-4e39-8435-1e00995b8cc3")
+	)
+	(wire
+		(pts
+			(xy 203.2 36.83) (xy 212.09 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9fd203d3-b13c-4634-a51d-333c4ae64bfe")
+	)
+	(wire
+		(pts
+			(xy 133.35 66.04) (xy 133.35 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a052fe3b-8d71-41ea-b523-cfa1ebd77823")
+	)
+	(wire
+		(pts
+			(xy 41.91 142.24) (xy 41.91 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a1c4303d-52d3-4eb6-b1fd-ed3edd392700")
+	)
+	(wire
+		(pts
+			(xy 161.29 66.04) (xy 165.1 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a41004ee-ef25-4a92-8b01-72bd517bad7f")
+	)
+	(wire
+		(pts
+			(xy 133.35 44.45) (xy 148.59 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a6221b6a-9627-4ba0-8d2d-3d8cd3583373")
+	)
+	(wire
+		(pts
+			(xy 69.85 128.27) (xy 69.85 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a6751557-3136-4679-8f47-e6fbe28cb749")
+	)
+	(wire
+		(pts
+			(xy 121.92 152.4) (xy 120.65 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a6b7f902-52df-478f-87f5-ad0ca4eb4550")
+	)
+	(wire
+		(pts
+			(xy 161.29 60.96) (xy 162.56 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a7e82178-c2d3-4d9a-a8aa-eff26ee1455b")
+	)
+	(wire
+		(pts
+			(xy 133.35 60.96) (xy 134.62 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aac4e5cc-d81b-42e9-b94a-ecee5cade2eb")
+	)
+	(wire
+		(pts
+			(xy 120.65 52.07) (xy 120.65 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "acd8d631-fb2f-4ab8-a024-42a7c78c1ddd")
+	)
+	(wire
+		(pts
+			(xy 207.01 48.26) (xy 210.82 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ae720982-e10c-403d-94b7-43fd8f97178a")
+	)
+	(wire
+		(pts
+			(xy 52.07 52.07) (xy 76.2 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b04f14d9-d49b-435f-880d-050e54937869")
+	)
+	(wire
+		(pts
+			(xy 161.29 82.55) (xy 161.29 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b1752902-8b3c-447e-8047-4399e30cf7ac")
+	)
+	(wire
+		(pts
+			(xy 133.35 60.96) (xy 133.35 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b363d797-3886-41d1-a0b3-508ad8dce1bd")
+	)
+	(wire
+		(pts
+			(xy 148.59 142.24) (xy 147.32 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b6e80007-372d-4394-8bd7-6fff7107dba9")
+	)
+	(wire
+		(pts
+			(xy 99.06 52.07) (xy 99.06 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b86e33c7-2b95-4f95-ac55-798990195b4b")
+	)
+	(wire
+		(pts
+			(xy 99.06 60.96) (xy 99.06 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b8de1b78-e62b-47e9-ad97-25f3c86ccbcd")
+	)
+	(wire
+		(pts
+			(xy 97.79 124.46) (xy 97.79 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b9c51993-764a-4067-bda6-21d426120ddb")
+	)
+	(wire
+		(pts
+			(xy 194.31 82.55) (xy 194.31 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bea31171-d26c-4519-ad5d-40961555e9d4")
+	)
+	(wire
+		(pts
+			(xy 120.65 142.24) (xy 120.65 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bf261194-b8d5-4038-b601-74f0665d324a")
+	)
+	(wire
+		(pts
+			(xy 156.21 52.07) (xy 161.29 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bf28256e-f1f0-4918-992a-f33020165e77")
+	)
+	(wire
+		(pts
+			(xy 87.63 60.96) (xy 87.63 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bfe7e88b-9683-4bd2-b127-caa3df933f12")
+	)
+	(wire
+		(pts
+			(xy 81.28 128.27) (xy 81.28 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c8ac2551-23fc-4fbd-b9e7-546ca82675d9")
+	)
+	(wire
+		(pts
+			(xy 55.88 40.64) (xy 55.88 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c8c29efa-5182-4260-a3af-16dc60df8a1f")
+	)
+	(wire
+		(pts
+			(xy 110.49 52.07) (xy 110.49 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ccd9bbe1-bbb2-4ef4-9d5e-95941252ec5b")
+	)
+	(wire
+		(pts
+			(xy 128.27 66.04) (xy 125.73 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d2978441-3a23-4272-b373-cd0282aaff0e")
+	)
+	(wire
+		(pts
+			(xy 120.65 66.04) (xy 118.11 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d510385f-7ac7-4062-8dbd-8c03fc0f4a27")
+	)
+	(wire
+		(pts
+			(xy 43.18 152.4) (xy 41.91 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d6f08105-5600-4c67-aa55-a6478f681390")
+	)
+	(wire
+		(pts
+			(xy 91.44 44.45) (xy 91.44 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d6f42974-611d-4af5-82ce-0bc43c907640")
+	)
+	(wire
+		(pts
+			(xy 113.03 74.93) (xy 113.03 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d789a38a-3790-413e-aabe-38651c6c5d50")
+	)
+	(wire
+		(pts
+			(xy 40.64 128.27) (xy 41.91 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d79916f7-4d98-45b4-bed3-894d620ffb6d")
+	)
+	(wire
+		(pts
+			(xy 41.91 128.27) (xy 41.91 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d86880b3-e6f9-48a3-871f-0a3ad58abee0")
+	)
+	(wire
+		(pts
+			(xy 40.64 31.75) (xy 46.99 31.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dd9bf0e2-86a3-439f-8c0c-0aeeea4f8e33")
+	)
+	(wire
+		(pts
+			(xy 123.19 76.2) (xy 123.19 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e0920255-4870-4a99-9591-eb1981f9f68f")
+	)
+	(wire
+		(pts
+			(xy 55.88 44.45) (xy 52.07 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e0f01829-16d5-49bd-965a-aea8762aece5")
+	)
+	(wire
+		(pts
+			(xy 207.01 50.8) (xy 210.82 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e12d2083-a0a7-47b5-b25a-59636b4150d3")
+	)
+	(wire
+		(pts
+			(xy 156.21 66.04) (xy 153.67 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e1a67466-b592-4594-91da-deb86bf17a39")
+	)
+	(wire
+		(pts
+			(xy 102.87 133.35) (xy 102.87 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e270272b-e2b9-459d-b0df-58d43b791df1")
+	)
+	(wire
+		(pts
+			(xy 110.49 66.04) (xy 107.95 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e3c27534-2b2a-4512-9c79-97d138bba0c7")
+	)
+	(wire
+		(pts
+			(xy 148.59 66.04) (xy 151.13 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e3ff19f1-88a2-457e-8a4a-a723d9819dd5")
+	)
+	(wire
+		(pts
+			(xy 90.17 152.4) (xy 100.33 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e45cdb92-61d2-485c-8bda-4b6c51003942")
+	)
+	(wire
+		(pts
+			(xy 148.59 128.27) (xy 148.59 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e568b40e-c6d0-4708-ae87-3219ef20859b")
+	)
+	(wire
+		(pts
+			(xy 66.04 66.04) (xy 69.85 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e5d4b1a9-266c-4e58-8b85-151d1650c567")
+	)
+	(wire
+		(pts
+			(xy 123.19 44.45) (xy 133.35 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e880b3b9-cc6e-4efd-894f-8063f7d0539b")
+	)
+	(wire
+		(pts
+			(xy 102.87 44.45) (xy 113.03 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e9b041db-baef-4806-a6bf-dc15a186639f")
+	)
+	(wire
+		(pts
+			(xy 113.03 44.45) (xy 113.03 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ebbd9f97-840a-40a2-a945-c310a00e7b90")
+	)
+	(wire
+		(pts
+			(xy 217.17 78.74) (xy 213.36 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ec64c886-67bb-4087-980e-6f8d75321ebf")
+	)
+	(wire
+		(pts
+			(xy 53.34 142.24) (xy 41.91 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ed932e41-daad-41aa-9022-84f76b4b501b")
+	)
+	(wire
+		(pts
+			(xy 156.21 60.96) (xy 156.21 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f1895a43-065c-4e6e-b202-e2b2ecab04fd")
+	)
+	(wire
+		(pts
+			(xy 148.59 44.45) (xy 170.18 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f1aa426e-ebe2-4aeb-8eb3-cbca4f5850cc")
+	)
+	(wire
+		(pts
+			(xy 120.65 128.27) (xy 125.73 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f1bc41cd-f77c-4e2c-9092-2974ef643c35")
+	)
+	(wire
+		(pts
+			(xy 146.05 66.04) (xy 148.59 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f3949993-15ed-4db7-bdc6-1bfd65643ef3")
+	)
+	(wire
+		(pts
+			(xy 146.05 88.9) (xy 146.05 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f3c6913b-7ca0-4e27-8295-07a84ba72945")
+	)
+	(wire
+		(pts
+			(xy 45.72 44.45) (xy 46.99 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f4e36a75-f5b6-454f-b960-b1c356adb933")
+	)
+	(wire
+		(pts
+			(xy 132.08 142.24) (xy 120.65 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f52b269c-1fcf-4601-88f2-c4843c9ab4d2")
+	)
+	(wire
+		(pts
+			(xy 135.89 66.04) (xy 138.43 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f7513bae-b7fc-404e-98ed-48f1f830c957")
+	)
+	(wire
+		(pts
+			(xy 148.59 44.45) (xy 148.59 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f7683c9b-9f04-4278-ad25-cc913c192756")
+	)
+	(wire
+		(pts
+			(xy 87.63 52.07) (xy 87.63 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f7b3fa22-6173-41df-8a2c-e1a8ac2cbee9")
+	)
+	(wire
+		(pts
+			(xy 161.29 52.07) (xy 161.29 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fb90e065-bc8d-42fa-9d3a-b59c9e0e1591")
+	)
+	(wire
+		(pts
+			(xy 120.65 152.4) (xy 120.65 148.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "feb585b9-8083-4982-8caf-a0f04ac7c3ec")
+	)
+	(wire
+		(pts
+			(xy 135.89 66.04) (xy 135.89 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ff061692-86af-45fc-919a-290879e1ad7b")
+	)
+	(global_label "I_In_3"
+		(shape input)
+		(at 142.24 123.19 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "0d2f8e77-2a39-4dc8-b024-862e8348eff8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 142.24 114.7015 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "V_ref_0"
+		(shape input)
+		(at 207.01 48.26 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "24a89e5f-a58a-4481-8667-ebb96182807b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 197.191 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "I_Out_3"
+		(shape input)
+		(at 60.96 40.64 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "35fe6a96-b296-49ec-8c45-b8ee9195e140")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 60.96 30.7001 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "14V"
+		(shape input)
+		(at 217.17 81.28 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "3778e39d-5b7b-49b9-8d50-bed4749cc7bc")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 217.17 87.7728 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "V_ref_1"
+		(shape input)
+		(at 207.01 50.8 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "4246f6b1-0d52-44c5-9e08-0eb1afd67569")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 197.191 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "I_In_2"
+		(shape input)
+		(at 102.87 123.19 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "491ef555-007f-4cbe-bd8d-7bfe977b9b8e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 102.87 114.7015 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "I_Out_2"
+		(shape input)
+		(at 135.89 78.74 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "51b1ecc9-e184-4bf1-8812-eeff14821e27")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 135.89 88.6799 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "I_In_1"
+		(shape input)
+		(at 123.19 78.74 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "53ab2057-424b-4248-9d06-0e1316b0f10c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 123.19 87.2285 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "I_Out_2"
+		(shape input)
+		(at 97.79 124.46 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "61b68f74-cdcc-42a5-a6cb-a0cbf51983a7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 97.79 114.5201 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "14V"
+		(shape input)
+		(at 35.56 44.45 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "64629cbb-0f98-4295-8105-908e83dec48a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 29.0672 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "V_ref_3"
+		(shape input)
+		(at 207.01 55.88 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "736f80cf-8325-4248-91a1-2bb8d74a64fd")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 197.191 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "V_ref_2"
+		(shape input)
+		(at 207.01 53.34 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "741ec57f-7ef0-4003-a353-ea00952e3f1d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 197.191 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "I_In_1"
+		(shape input)
+		(at 63.5 123.19 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "86ef2358-f568-4c95-b7b6-cea398c9cbfe")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 63.5 114.7015 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "I_Out_3"
+		(shape input)
+		(at 137.16 124.46 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "8863cec5-ba45-499b-9599-d5052b10a68d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 137.16 114.5201 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "V_ref_1"
+		(shape input)
+		(at 41.91 156.21 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "8ba6a0f1-f185-412b-a3c5-db70e50528fb")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 41.91 166.029 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "I_Out_1"
+		(shape input)
+		(at 58.42 124.46 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "993b503c-5602-490e-9380-0d3f8eeca864")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 58.42 114.5201 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "3.3V"
+		(shape input)
+		(at 69.85 121.92 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "9fbc6ec3-d8ec-4848-a9f9-1eb056d81a07")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 69.85 114.8224 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "I_In_2"
+		(shape input)
+		(at 133.35 78.74 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a717097b-14e3-48cd-90a1-c0fe6afcf99b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 133.35 87.2285 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "3.3V"
+		(shape input)
+		(at 207.01 39.37 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "abc955b8-3b5d-449e-851e-59d85954a40c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 199.9124 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "3.3V"
+		(shape input)
+		(at 109.22 121.92 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "add9bb05-3c18-4d9f-a301-42158d051e69")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 109.22 114.8224 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "V_ref_0"
+		(shape input)
+		(at 204.47 82.55 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "c98829d9-9b1e-4aa7-ab04-d84f5aaafb83")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 204.47 92.369 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "I_Out_1"
+		(shape input)
+		(at 125.73 78.74 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "cc1173db-0d28-4d0a-abb9-b57eb71b32e1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 125.73 88.6799 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "I_In_3"
+		(shape input)
+		(at 55.88 40.64 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "d2dd76de-4d3b-4da5-ac28-ba2c4b8e65df")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 55.88 32.1515 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "V_ref_3"
+		(shape input)
+		(at 120.65 156.21 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "ef594aa2-38d5-4606-9f23-c876a5ad43c2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 120.65 166.029 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "V_ref_2"
+		(shape input)
+		(at 81.28 156.21 270)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "f563e2fc-9839-4197-8fda-ebe9caef87f1")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 81.28 166.029 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "3.3V"
+		(shape input)
+		(at 148.59 121.92 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f6cfaa53-c016-44c7-95c8-7be17e510e0d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 148.59 114.8224 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Pin_Headers:PINHD_1x2_Male")
+		(at 129.54 69.85 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00e8ca7e-5e73-441d-8f97-af18e4e671cf")
+		(property "Reference" "J6"
+			(at 128.524 72.39 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Actuators"
+			(at 125.73 73.914 90)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_AMASS:AMASS_XT60-M_1x02_P7.20mm_Vertical"
+			(at 125.73 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 137.16 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Pin Header male with pin space 2.54mm. Pin Count -2"
+			(at 129.54 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "04de0987-9c44-4f67-9f7e-3636cb4096ee")
+		)
+		(pin "1"
+			(uuid "789c473f-737b-4f5a-91ae-dbf180e21521")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "J6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Capacitors:10uF_16V")
+		(at 71.12 60.96 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "06832b96-45cf-43a4-8190-f9e836a5cf76")
+		(property "Reference" "C3"
+			(at 70.612 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10uF_16V"
+			(at 70.612 56.896 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm"
+			(at 71.882 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 71.628 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "10uF, 16V Electrolytic Capacitor"
+			(at 71.12 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0d451646-2925-4a62-a218-343fdfa54ac4")
+		)
+		(pin "2"
+			(uuid "71da3a3a-b607-4711-b9af-17770e72fa91")
+		)
+		(instances
+			(project ""
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "C3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Resistors:470ohm")
+		(at 46.99 40.64 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "06d14344-1648-44f6-8b22-2b1860237a00")
+		(property "Reference" "R1"
+			(at 49.53 39.3699 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "470ohm"
+			(at 48.006 41.91 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+			(at 42.672 41.529 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 46.99 41.148 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "470Ω, 1/4W Resistor"
+			(at 46.99 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "cd1320d0-9813-4b76-be96-a582821b5103")
+		)
+		(pin "2"
+			(uuid "93bce582-c128-4944-8844-b256a94d7f84")
+		)
+		(instances
+			(project ""
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "R1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-PowerSymbol:GND")
+		(at 161.29 88.9 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "06f7ae2a-7795-47fd-ad62-d92ad05310d4")
+		(property "Reference" "#PWR011"
+			(at 161.29 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 161.29 92.71 0)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 161.29 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 161.29 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 161.29 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d71d3f1c-6497-42e9-a8f8-9068bb523e27")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "#PWR011")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-PowerSymbol:GND")
+		(at 78.74 80.01 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "071933d5-8d93-4bf9-8557-fea991e87e57")
+		(property "Reference" "#PWR04"
+			(at 78.74 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 78.74 83.82 0)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 78.74 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 78.74 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 78.74 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3dcca6e0-7677-49dd-8b4a-60bad2cc6701")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "#PWR04")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-PowerSymbol:GND")
+		(at 113.03 80.01 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "086c0982-9a3b-49b5-b0f3-2da367ceb4e5")
+		(property "Reference" "#PWR07"
+			(at 113.03 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 113.03 83.82 0)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 113.03 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 113.03 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 113.03 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "275f2fb7-584b-4655-8f94-74f1f3e57205")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "#PWR07")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Resistors:470ohm")
+		(at 91.44 69.85 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0b454802-e96f-4b91-9c31-f6f9c498a386")
+		(property "Reference" "R4"
+			(at 88.9 71.1201 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "470ohm"
+			(at 90.424 66.802 90)
+			(effects
+				(font
+					(size 0.508 0.508)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+			(at 95.758 68.961 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 91.44 69.342 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "470Ω, 1/4W Resistor"
+			(at 91.44 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d1a98413-76d4-4b83-a173-f307d42f3e5d")
+		)
+		(pin "2"
+			(uuid "fa2cec0d-126a-4079-bba3-9b1c6e251264")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "R4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Pin_Headers:PINHD_1x2_Male")
+		(at 106.68 69.85 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0cf5d14f-6b83-478a-b9aa-f0101a75d0bd")
+		(property "Reference" "J5"
+			(at 105.918 72.39 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "BLDC-4"
+			(at 106.934 74.168 90)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+			)
+		)
+		(property "Footprint" "Connector_AMASS:AMASS_XT60-M_1x02_P7.20mm_Vertical"
+			(at 102.87 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 114.3 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Pin Header male with pin space 2.54mm. Pin Count -2"
+			(at 106.68 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "cab764d0-5ca4-488a-9412-34558a4680d5")
+		)
+		(pin "1"
+			(uuid "f6b4328e-5217-4c7b-927d-65fa605cc34c")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "J5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-Fuse:Fuse_Holder-Blade")
+		(at 102.87 63.5 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0d74de48-299e-4d80-8b1c-f0f618322ef3")
+		(property "Reference" "F4"
+			(at 88.392 63.5 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Value" "Blade Fuse"
+			(at 90.678 64.516 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "PCM_SparkFun-Fuse:Fuseholder_Automotive"
+			(at 109.22 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.keyelco.com/userAssets/file/M65p41.pdf"
+			(at 106.68 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 111.76 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PROD_ID" ""
+			(at 102.87 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "a4e3728a-7512-4435-a1d8-43da8a4afd71")
+		)
+		(pin "1"
+			(uuid "0ac55abd-a5d9-4643-8104-dc603096e8e9")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "F4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Resistors:470ohm")
+		(at 78.74 69.85 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0f538353-71e2-4043-b714-cba2b7fdb022")
+		(property "Reference" "R3"
+			(at 76.2 71.1201 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "470ohm"
+			(at 77.724 66.802 90)
+			(effects
+				(font
+					(size 0.508 0.508)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+			(at 83.058 68.961 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 78.74 69.342 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "470Ω, 1/4W Resistor"
+			(at 78.74 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c2e796e0-8b91-4733-af0e-ef4acb626113")
+		)
+		(pin "2"
+			(uuid "91cd480e-6543-46e8-a2a8-1e1bf3202534")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "R3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Capacitors:100nF_Ceramic")
+		(at 128.27 128.27 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1064a3c7-14fb-4a55-9fe8-7e61b9efdf6e")
+		(property "Reference" "C16"
+			(at 128.27 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100nF_Ceramic"
+			(at 128.27 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm"
+			(at 128.27 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 128.27 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "100nF Ceramic Capacitor"
+			(at 128.27 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1e10706b-688c-42eb-9d30-5972dc30845c")
+		)
+		(pin "2"
+			(uuid "a9ebad73-487b-448a-b36a-09d4deb68d0e")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "C16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Pin_Headers:PINHD_1x2_Male")
+		(at 152.4 69.85 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "13cdcddf-78a0-49af-b528-112f3c6f04ad")
+		(property "Reference" "J8"
+			(at 151.384 72.39 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "5V DC-DC"
+			(at 148.336 74.168 90)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_AMASS:AMASS_XT60-M_1x02_P7.20mm_Vertical"
+			(at 148.59 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 160.02 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Pin Header male with pin space 2.54mm. Pin Count -2"
+			(at 152.4 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "12172e5b-959b-46e3-99fd-709b20c537d0")
+		)
+		(pin "1"
+			(uuid "9a728220-b357-4f2b-829f-76ba829eb28f")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "J8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Capacitors:10uF_16V")
+		(at 138.43 60.96 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "15c425ef-a57c-46a2-a786-57579c67ae85")
+		(property "Reference" "C5"
+			(at 137.922 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10uF_16V"
+			(at 137.922 56.896 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm"
+			(at 139.192 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 138.938 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "10uF, 16V Electrolytic Capacitor"
+			(at 138.43 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1e7fee2e-cd08-4c38-99bb-dfb44c432e15")
+		)
+		(pin "2"
+			(uuid "70dddb06-1b12-414d-8a3d-a704d1c35c52")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "C5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Capacitors:10uF_16V")
+		(at 95.25 60.96 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1a88955a-6458-4233-8e06-de7f4e4c9641")
+		(property "Reference" "C8"
+			(at 94.742 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10uF_16V"
+			(at 94.742 56.896 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm"
+			(at 96.012 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 95.758 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "10uF, 16V Electrolytic Capacitor"
+			(at 95.25 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f8b860f0-22db-478c-8527-ef9d7b4a2a2d")
+		)
+		(pin "2"
+			(uuid "408cf4ce-a199-40f3-a546-8fff5ff7499b")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "C8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Resistors:470ohm")
+		(at 209.55 78.74 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1fa2062b-16a7-42d0-96b2-5d1ea9099a26")
+		(property "Reference" "R15"
+			(at 208.2799 76.2 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "1M"
+			(at 208.026 76.454 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+			(at 210.439 83.058 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 210.058 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "470Ω, 1/4W Resistor"
+			(at 209.55 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e24bbce2-3acd-4314-b392-9de5e4df07a5")
+		)
+		(pin "2"
+			(uuid "e44a9c63-261b-4210-b440-f5b31b414713")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "R15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-PowerSymbol:GND")
+		(at 119.38 128.27 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "21151ed8-884d-40d2-894c-f80f0241a69a")
+		(property "Reference" "#PWR014"
+			(at 113.03 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 115.57 128.27 0)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 119.38 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 119.38 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 110.49 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c12f4187-d300-4c90-8be3-345c34e347f4")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "#PWR014")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-LED:LED_Red_5mm_PTH_NoSilk")
+		(at 91.44 77.47 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "23cf23dd-14b8-43dc-bccf-76795b522fda")
+		(property "Reference" "D4"
+			(at 88.9 78.6766 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "Red"
+			(at 88.9 76.1366 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "PCM_SparkFun-LED:LED_5mm_PTH_Red_NoSilk"
+			(at 96.52 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://cdn.sparkfun.com/assets/e/c/e/c/5/COM-09590-YSL-R531R3D-D2.pdf"
+			(at 101.6 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode PTH 5mm diameter"
+			(at 104.14 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PROD_ID" "DIO-09529"
+			(at 99.06 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "972956f3-1ec4-48d1-b8a2-fc42841b76ea")
+		)
+		(pin "2"
+			(uuid "64582fb4-1ff3-4f76-9ff1-0f6152855bc6")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "D4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Pin_Headers:PINHD_1x2_Male")
+		(at 41.91 45.72 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "247adbaf-4357-40a1-8f8c-58ad02b1945e")
+		(property "Reference" "J1"
+			(at 42.035 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "From main battery"
+			(at 40.132 59.182 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Connector_AMASS:AMASS_XT60-M_1x02_P7.20mm_Vertical"
+			(at 40.64 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 41.91 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Pin Header male with pin space 2.54mm. Pin Count -2"
+			(at 41.91 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "c33bad08-ab0f-407f-9af1-0252c7e8e9af")
+		)
+		(pin "1"
+			(uuid "a6acce5d-af56-445e-b44a-bee1d637ba0f")
+		)
+		(instances
+			(project ""
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "J1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Resistors:470ohm")
+		(at 46.99 152.4 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "26d8f4c0-3c31-4388-8f1c-d8c79f3178be")
+		(property "Reference" "R11"
+			(at 48.2601 154.94 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "4.7k"
+			(at 49.53 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+			(at 46.101 148.082 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 46.482 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "470Ω, 1/4W Resistor"
+			(at 46.99 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d61eb5fe-b0ad-494f-b047-6c59b7601043")
+		)
+		(pin "2"
+			(uuid "ea638e04-d966-4cf5-b635-a49e75422a15")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "R11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-Fuse:Fuse_Holder-Blade")
+		(at 91.44 63.5 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2958b8d9-e9d1-49af-9a97-63cecc56609a")
+		(property "Reference" "F3"
+			(at 76.708 63.754 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Value" "Blade Fuse"
+			(at 79.248 64.516 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "PCM_SparkFun-Fuse:Fuseholder_Automotive"
+			(at 97.79 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.keyelco.com/userAssets/file/M65p41.pdf"
+			(at 95.25 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 100.33 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PROD_ID" ""
+			(at 91.44 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "35a99bdd-58e0-45c9-9e8e-7f2218506451")
+		)
+		(pin "1"
+			(uuid "66c8bcb6-e28c-446d-9d79-6b9d15a722d5")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "F3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Sensor_Current:ACS758xCB-050B-PFF")
+		(at 139.7 142.24 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "33dd335f-a5c2-4fd1-93ad-1bfc6f03f31e")
+		(property "Reference" "U2"
+			(at 139.954 154.686 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "ACS758xCB-050B-PFF"
+			(at 141.478 158.496 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Sensor_Current:Allegro_CB_PFF"
+			(at 139.7 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.allegromicro.com/~/media/Files/Datasheets/ACS758-Datasheet.ashx?la=en"
+			(at 139.7 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "±50A Bidirectional Hall-Effect Current Sensor, +5.0V supply, 40mV/A, CB-5 PFF"
+			(at 139.7 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "5"
+			(uuid "6b522f99-4c76-4ce6-8b4f-d19f5148b47f")
+		)
+		(pin "2"
+			(uuid "5ece0638-ab65-447c-ad0c-8462c410a570")
+		)
+		(pin "3"
+			(uuid "2522ac40-4018-4ed5-bc98-4e3b3096c95d")
+		)
+		(pin "1"
+			(uuid "c2d5fa27-2d5c-401f-bad5-4c8e44e5baae")
+		)
+		(pin "4"
+			(uuid "d770b975-7d63-4199-a7e0-561150184e7b")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "U2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Capacitors:10uF_16V")
+		(at 166.37 60.96 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3af6b587-7790-4b5e-92bf-b852b60498f8")
+		(property "Reference" "C2"
+			(at 165.862 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10uF_16V"
+			(at 165.862 56.896 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm"
+			(at 167.132 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 166.878 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "10uF, 16V Electrolytic Capacitor"
+			(at 166.37 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d066afb1-3fe9-44fa-9051-e444d2c82763")
+		)
+		(pin "2"
+			(uuid "af2d5a25-2f92-4f94-8c8a-eefc472e19b5")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "C2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-Fuse:Fuse_Holder-Blade")
+		(at 123.19 63.5 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3ba2ef59-c28e-484c-8cf3-91a2cc4620e9")
+		(property "Reference" "F6"
+			(at 110.49 64.77 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Value" "Blade Fuse"
+			(at 110.998 64.516 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "PCM_SparkFun-Fuse:Fuseholder_Automotive"
+			(at 129.54 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.keyelco.com/userAssets/file/M65p41.pdf"
+			(at 127 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 132.08 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PROD_ID" ""
+			(at 123.19 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "a489040f-1cb3-4af4-bc69-c6805c5f38c9")
+		)
+		(pin "1"
+			(uuid "69f19e93-924f-4b71-bd97-3e5b9f2399ca")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "F6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Resistors:470ohm")
+		(at 113.03 69.85 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3ecea260-fcdc-4c88-bec4-e2b281506748")
+		(property "Reference" "R6"
+			(at 110.49 71.1201 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "470ohm"
+			(at 112.522 66.802 90)
+			(effects
+				(font
+					(size 0.508 0.508)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+			(at 117.348 68.961 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 113.03 69.342 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "470Ω, 1/4W Resistor"
+			(at 113.03 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "67924728-e62c-43a1-afb1-80db7d758398")
+		)
+		(pin "2"
+			(uuid "af7202bd-e2a5-4739-a06e-64ee40dbde86")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "R6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-PowerSymbol:GND")
+		(at 129.54 88.9 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4312f710-bacb-4dd0-bbc3-aaead5fe1fa2")
+		(property "Reference" "#PWR09"
+			(at 129.54 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 129.54 92.71 0)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 129.54 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 129.54 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 129.54 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "10c198bf-4172-4172-9bf1-a2c619b6d8fc")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "#PWR09")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-LED:LED_Red_5mm_PTH_NoSilk")
+		(at 146.05 81.28 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4349e125-27eb-47ab-a5c3-a64cdc1e8687")
+		(property "Reference" "D9"
+			(at 143.51 82.4866 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "Red"
+			(at 143.51 79.9466 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "PCM_SparkFun-LED:LED_5mm_PTH_Red_NoSilk"
+			(at 151.13 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://cdn.sparkfun.com/assets/e/c/e/c/5/COM-09590-YSL-R531R3D-D2.pdf"
+			(at 156.21 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode PTH 5mm diameter"
+			(at 158.75 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PROD_ID" "DIO-09529"
+			(at 153.67 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7c11a9d2-cb73-4264-82e8-c553c6c778af")
+		)
+		(pin "2"
+			(uuid "59c3d0e5-1b76-468f-9b22-29742c891c99")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "D9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-PowerSymbol:GND")
+		(at 146.05 88.9 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "440c6646-2199-4b30-89fc-9eb91cdd9752")
+		(property "Reference" "#PWR010"
+			(at 146.05 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 146.05 92.71 0)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 146.05 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 146.05 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 146.05 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a4ab1cf5-a5d7-48ab-bd11-e4d2ccb8b016")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "#PWR010")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-PowerSymbol:GND")
+		(at 66.04 80.01 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "46bd65fc-92a3-4730-8dc4-f16c75c31920")
+		(property "Reference" "#PWR03"
+			(at 66.04 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 66.04 83.82 0)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 66.04 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 66.04 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 66.04 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "74c61561-0821-4b62-b853-cc9bcb7a1937")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "#PWR03")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-Fuse:Fuse_Holder-Blade")
+		(at 148.59 63.5 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "46dbdc79-a071-4120-9287-02767196e5c6")
+		(property "Reference" "F8"
+			(at 135.89 64.77 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Value" "Blade Fuse"
+			(at 136.398 64.516 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "PCM_SparkFun-Fuse:Fuseholder_Automotive"
+			(at 154.94 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.keyelco.com/userAssets/file/M65p41.pdf"
+			(at 152.4 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 157.48 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PROD_ID" ""
+			(at 148.59 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "a2c73756-ff70-4e95-aa06-894b901ff2f9")
+		)
+		(pin "1"
+			(uuid "242e6830-ecd8-47d7-831b-a0650976d3eb")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "F8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-LED:LED_Red_5mm_PTH_NoSilk")
+		(at 129.54 86.36 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4b81c6cf-4e0f-4d51-a44d-b348e710cf9a")
+		(property "Reference" "D8"
+			(at 127 87.5666 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "Red"
+			(at 127 85.0266 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "PCM_SparkFun-LED:LED_5mm_PTH_Red_NoSilk"
+			(at 134.62 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://cdn.sparkfun.com/assets/e/c/e/c/5/COM-09590-YSL-R531R3D-D2.pdf"
+			(at 139.7 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode PTH 5mm diameter"
+			(at 142.24 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PROD_ID" "DIO-09529"
+			(at 137.16 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "dec935f6-7206-42d0-bf52-a48aae7a5fcd")
+		)
+		(pin "2"
+			(uuid "ab73f065-fdc1-4849-8995-885139536cb2")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "D8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-PowerSymbol:GND")
+		(at 40.64 128.27 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "50d5ed76-c118-486b-9727-25f5c36dfe91")
+		(property "Reference" "#PWR012"
+			(at 34.29 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 36.83 128.27 0)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 40.64 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 40.64 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 31.75 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "efac3f5f-0225-44c1-aae9-a02da88b39b8")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "#PWR012")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Sensor_Current:ACS758xCB-050B-PFF")
+		(at 100.33 142.24 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "54beecfb-e0d4-48c8-a005-62691df0bea0")
+		(property "Reference" "U1"
+			(at 100.584 154.686 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "ACS758xCB-050B-PFF"
+			(at 102.108 158.496 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Sensor_Current:Allegro_CB_PFF"
+			(at 100.33 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.allegromicro.com/~/media/Files/Datasheets/ACS758-Datasheet.ashx?la=en"
+			(at 100.33 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "±50A Bidirectional Hall-Effect Current Sensor, +5.0V supply, 40mV/A, CB-5 PFF"
+			(at 100.33 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "5"
+			(uuid "c960b4a6-25a0-4b50-8670-d6b708b81c71")
+		)
+		(pin "2"
+			(uuid "f8763326-f1d6-4498-8ea3-8614c18ba767")
+		)
+		(pin "3"
+			(uuid "04a4083a-e4cc-4e6e-911e-771403e4c8e0")
+		)
+		(pin "1"
+			(uuid "91ebb189-d99d-471b-87c8-3d1aaacd6926")
+		)
+		(pin "4"
+			(uuid "6cc67d9e-a4df-4de2-af65-7f94cb16ab83")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "U1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-PowerSymbol:GND")
+		(at 34.29 52.07 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "563b494e-b029-4e50-a41f-00728157febe")
+		(property "Reference" "#PWR01"
+			(at 27.94 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 30.48 52.07 0)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 34.29 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 34.29 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 25.4 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "10bb6418-3284-47f0-9836-8098dcbbb3f8")
+		)
+		(instances
+			(project ""
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "#PWR01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Pin_Headers:PINHD_1x2_Male")
+		(at 166.37 69.85 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5784ade0-b24d-4e83-81a5-c68225c0f429")
+		(property "Reference" "J9"
+			(at 165.354 72.39 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Extra"
+			(at 164.338 74.422 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_AMASS:AMASS_XT60-M_1x02_P7.20mm_Vertical"
+			(at 162.56 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 173.99 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Pin Header male with pin space 2.54mm. Pin Count -2"
+			(at 166.37 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "94b9cfe9-be3d-4437-8699-eeea530fd798")
+		)
+		(pin "1"
+			(uuid "96e521d3-49e4-4bc3-8c67-de2499857574")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "J9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-LED:LED_Red_5mm_PTH_NoSilk")
+		(at 161.29 80.01 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "58f578cf-b3de-4425-b9fc-d2393254148f")
+		(property "Reference" "D10"
+			(at 158.75 81.2166 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "Red"
+			(at 158.75 78.6766 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "PCM_SparkFun-LED:LED_5mm_PTH_Red_NoSilk"
+			(at 166.37 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://cdn.sparkfun.com/assets/e/c/e/c/5/COM-09590-YSL-R531R3D-D2.pdf"
+			(at 171.45 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode PTH 5mm diameter"
+			(at 173.99 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PROD_ID" "DIO-09529"
+			(at 168.91 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ea818268-1dc0-4aae-989d-765a0f0cd43a")
+		)
+		(pin "2"
+			(uuid "44d7ddb1-ad97-4619-ba49-aa9bb0d69786")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "D10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Regulator_Switching:LM2596T-5")
+		(at 205.74 140.97 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5bbfc95f-ab9f-497d-b490-71e05ee7dc9a")
+		(property "Reference" "U3"
+			(at 205.74 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LM2596T-5"
+			(at 205.74 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_THT:TO-220-5_P3.4x3.7mm_StaggerOdd_Lead3.8mm_Vertical"
+			(at 207.01 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+					(italic yes)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.ti.com/lit/ds/symlink/lm2596.pdf"
+			(at 205.74 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "5V 3A 150kHz Step-Down Voltage Regulator, TO-220"
+			(at 205.74 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8ba63680-9452-4b57-a4fd-d7a2649e3dbb")
+		)
+		(pin "5"
+			(uuid "7461c46e-598a-4da0-a6c1-121a949ad151")
+		)
+		(pin "3"
+			(uuid "797f2361-18bd-437c-9a2d-03bc18862b25")
+		)
+		(pin "2"
+			(uuid "0ce0bddc-c6e7-404b-95f1-5e9dfa4515dd")
+		)
+		(pin "4"
+			(uuid "6a94f4a5-1c19-4f62-a1de-6a2eaaba95ec")
+		)
+		(instances
+			(project ""
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "U3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-PowerSymbol:GND")
+		(at 80.01 128.27 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "61879c06-46ba-4da4-a9d2-119d5d787828")
+		(property "Reference" "#PWR013"
+			(at 73.66 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 76.2 128.27 0)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 80.01 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 80.01 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 71.12 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "00a1e922-a830-4c0f-a2da-fb8314273fa8")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "#PWR013")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Capacitors:10uF_16V")
+		(at 116.84 60.96 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "64e5216f-e20e-4e5f-b7bc-209c9659e323")
+		(property "Reference" "C10"
+			(at 116.332 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10uF_16V"
+			(at 116.332 56.896 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm"
+			(at 117.602 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 117.348 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "10uF, 16V Electrolytic Capacitor"
+			(at 116.84 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e63a7a83-606b-4033-ba52-b1c1e213f4ed")
+		)
+		(pin "2"
+			(uuid "a7aee244-688b-4800-ae55-8df642b5449e")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "C10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-Connector:Conn_01x04_JST_P1.25mm_Locking_Horizontal_SMD")
+		(at 215.9 50.8 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "665cb4b7-7704-48e2-aae2-07e3e74c49dd")
+		(property "Reference" "J12"
+			(at 218.44 50.7999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Analog output"
+			(at 209.296 44.958 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_EH_B2B-EH-A_1x02_P2.50mm_Vertical"
+			(at 215.9 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.jst-mfg.com/product/pdf/eng/eGH.pdf"
+			(at 215.9 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Locking 4 pin JST SMD connector"
+			(at 215.9 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PROD_ID" "CONN-15303"
+			(at 215.9 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "NC1"
+			(uuid "75686da2-3f98-432c-beb0-1ae95186cd03")
+		)
+		(pin "1"
+			(uuid "1aaac4db-3eb3-48ef-9ecc-3cd9bd6b0a58")
+		)
+		(pin "4"
+			(uuid "c27d36c3-1d7d-4082-84a3-b842617e3e45")
+		)
+		(pin "3"
+			(uuid "a1579e7d-6d1e-49ea-9294-a8b57abaecdb")
+		)
+		(pin "NC2"
+			(uuid "507cbc6d-3c64-42b2-963b-8c62cb5c3851")
+		)
+		(pin "2"
+			(uuid "2d6386d3-384b-413e-851c-00d08d201f49")
+		)
+		(instances
+			(project ""
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "J12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Resistors:470ohm")
+		(at 161.29 71.12 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "719abb76-f720-4271-9598-86a8d3369411")
+		(property "Reference" "R16"
+			(at 158.75 72.3901 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "470ohm"
+			(at 160.528 67.818 90)
+			(effects
+				(font
+					(size 0.508 0.508)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+			(at 165.608 70.231 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 161.29 70.612 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "470Ω, 1/4W Resistor"
+			(at 161.29 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "459caa90-1336-465f-8215-57d470423be1")
+		)
+		(pin "2"
+			(uuid "4c4facc3-7eed-402e-806b-0b10e78dd997")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "R16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Capacitors:10uF_16V")
+		(at 152.4 60.96 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "743249c4-0e01-4623-a0f1-7ed6071655f0")
+		(property "Reference" "C4"
+			(at 151.892 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10uF_16V"
+			(at 151.892 56.896 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm"
+			(at 153.162 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 152.908 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "10uF, 16V Electrolytic Capacitor"
+			(at 152.4 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6e29c4b2-e48d-48d6-96c6-0cfdfe4f7c3b")
+		)
+		(pin "2"
+			(uuid "d76ee450-4fbe-44e0-aceb-78cbc6fc314c")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "C4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Resistors:470ohm")
+		(at 200.66 78.74 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7685feb4-2ee3-4a9f-8c52-a7d2e6536d3a")
+		(property "Reference" "R14"
+			(at 199.3899 76.2 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "200k"
+			(at 198.374 76.454 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+			(at 201.549 83.058 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 201.168 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "470Ω, 1/4W Resistor"
+			(at 200.66 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "61581f0b-d592-48a4-8bf7-a021d3dc587e")
+		)
+		(pin "2"
+			(uuid "52a30458-0c9b-419b-9587-2955417528ec")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "R14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Capacitors:10uF_16V")
+		(at 106.68 60.96 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "79f801ad-8351-4e31-b0ba-acf738b890a3")
+		(property "Reference" "C7"
+			(at 106.172 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10uF_16V"
+			(at 106.172 56.896 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm"
+			(at 107.442 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 107.188 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "10uF, 16V Electrolytic Capacitor"
+			(at 106.68 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "808b85f8-4e59-439e-bcad-c2d80e23b3f2")
+		)
+		(pin "2"
+			(uuid "1a571709-7b9b-4b9d-97d7-eceb632ad131")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "C7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-PowerSymbol:GND")
+		(at 119.38 88.9 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7a163a71-bade-48b3-a8bb-d7bdef662010")
+		(property "Reference" "#PWR08"
+			(at 119.38 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 119.38 92.71 0)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 119.38 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 119.38 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 119.38 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "bdac5b9f-832b-4187-a4fe-8a2c3c36771d")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "#PWR08")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-LED:LED_Red_5mm_PTH_NoSilk")
+		(at 119.38 86.36 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7b833321-02e7-457b-888e-817fe48f3501")
+		(property "Reference" "D7"
+			(at 116.84 87.5666 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "Red"
+			(at 116.84 85.0266 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "PCM_SparkFun-LED:LED_5mm_PTH_Red_NoSilk"
+			(at 124.46 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://cdn.sparkfun.com/assets/e/c/e/c/5/COM-09590-YSL-R531R3D-D2.pdf"
+			(at 129.54 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode PTH 5mm diameter"
+			(at 132.08 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PROD_ID" "DIO-09529"
+			(at 127 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "361579bd-9665-40fc-917f-7c4b83731be8")
+		)
+		(pin "2"
+			(uuid "f78a1512-883a-4560-b3b8-6ae00088e4c6")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "D7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-LED:LED_Red_5mm_PTH_NoSilk")
+		(at 102.87 77.47 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7dcab7d8-8f32-4efc-8055-0eaba8285727")
+		(property "Reference" "D5"
+			(at 100.33 78.6766 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "Red"
+			(at 100.33 76.1366 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "PCM_SparkFun-LED:LED_5mm_PTH_Red_NoSilk"
+			(at 107.95 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://cdn.sparkfun.com/assets/e/c/e/c/5/COM-09590-YSL-R531R3D-D2.pdf"
+			(at 113.03 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode PTH 5mm diameter"
+			(at 115.57 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PROD_ID" "DIO-09529"
+			(at 110.49 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2378b2db-3df6-41a0-8901-37a51c85834a")
+		)
+		(pin "2"
+			(uuid "0ae9b0fe-0a32-4fab-9367-fc89cbdb8427")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "D5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Capacitors:10uF_16V")
+		(at 127 60.96 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "803a25eb-ae62-4bdb-9432-4cac253d8d02")
+		(property "Reference" "C6"
+			(at 126.492 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10uF_16V"
+			(at 126.492 56.896 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm"
+			(at 127.762 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 127.508 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "10uF, 16V Electrolytic Capacitor"
+			(at 127 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "06adc537-a8ce-4695-bcf5-f27ea4fe5418")
+		)
+		(pin "2"
+			(uuid "024e4887-e084-4ca3-b8ae-7a74c6124438")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "C6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Resistors:470ohm")
+		(at 102.87 69.85 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "80afba56-a849-461e-89dd-8375897167cb")
+		(property "Reference" "R5"
+			(at 100.33 71.1201 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "470ohm"
+			(at 101.854 66.802 90)
+			(effects
+				(font
+					(size 0.508 0.508)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+			(at 107.188 68.961 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 102.87 69.342 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "470Ω, 1/4W Resistor"
+			(at 102.87 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0700a7b8-0b9a-431f-ad03-2e8ef3b40f99")
+		)
+		(pin "2"
+			(uuid "bc18d9e8-8582-411e-89f0-1c194e61560d")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "R5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Pin_Headers:PINHD_1x2_Male")
+		(at 71.12 69.85 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "82f75a56-2f62-442d-b528-3f0fd295978c")
+		(property "Reference" "J2"
+			(at 69.85 72.39 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "BLDC 1"
+			(at 67.818 74.422 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_AMASS:AMASS_XT60-M_1x02_P7.20mm_Vertical"
+			(at 67.31 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 78.74 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Pin Header male with pin space 2.54mm. Pin Count -2"
+			(at 71.12 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "31622480-3469-48fb-87cb-27e3af3af4fa")
+		)
+		(pin "1"
+			(uuid "8f66f147-c3d4-4ccf-8a76-1ec71b02b59f")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "J2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Pin_Headers:PINHD_1x2_Male")
+		(at 83.82 69.85 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8577babb-7d42-4943-8ffa-1c209524335a")
+		(property "Reference" "J3"
+			(at 82.804 72.644 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "BLDC-2"
+			(at 81.026 74.422 90)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_AMASS:AMASS_XT60-M_1x02_P7.20mm_Vertical"
+			(at 80.01 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 91.44 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Pin Header male with pin space 2.54mm. Pin Count -2"
+			(at 83.82 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "f7f5bccd-8f05-4131-ac9f-bbe0b5d7e2a1")
+		)
+		(pin "1"
+			(uuid "9f6fd6e9-abd4-43a1-b433-90e6b82334ef")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "J3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Capacitors:1000uF_16V")
+		(at 52.07 48.26 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8a678252-26f1-4ac2-8cd2-3b7b5b959576")
+		(property "Reference" "C1"
+			(at 55.88 46.9899 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1000uF_16V"
+			(at 55.118 49.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:CP_Radial_D10.0mm_P5.00mm"
+			(at 48.26 49.022 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 52.07 48.768 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "1000uF, 16V Electrolytic Capacitor"
+			(at 52.07 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e2ed6124-378d-494a-8b0b-137fb9826e04")
+		)
+		(pin "2"
+			(uuid "0ac7310b-8aa3-4546-8415-26d6e681a387")
+		)
+		(instances
+			(project ""
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "C1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Resistors:470ohm")
+		(at 129.54 80.01 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8b3c8457-66a8-4dae-9165-27e8401986e8")
+		(property "Reference" "R8"
+			(at 127 81.2801 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "470ohm"
+			(at 129.286 77.216 90)
+			(effects
+				(font
+					(size 0.508 0.508)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+			(at 133.858 79.121 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 129.54 79.502 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "470Ω, 1/4W Resistor"
+			(at 129.54 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "140c9d3c-5da8-4ea6-8399-ffabbfd54358")
+		)
+		(pin "2"
+			(uuid "eeb8ede4-a39f-43e2-8168-23a5ba05dcec")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "R8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-PowerSymbol:GND")
+		(at 102.87 80.01 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8d49c2d2-3cd9-45c3-9066-5cd20908a6a0")
+		(property "Reference" "#PWR06"
+			(at 102.87 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 102.87 83.82 0)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 102.87 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 102.87 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 102.87 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e7f14e5c-6a04-4325-aa26-779a19bf752f")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "#PWR06")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Resistors:470ohm")
+		(at 119.38 80.01 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8f4061f7-cbcc-42a9-8e0f-53a73232ca52")
+		(property "Reference" "R7"
+			(at 116.84 81.2801 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "470ohm"
+			(at 118.872 77.216 90)
+			(effects
+				(font
+					(size 0.508 0.508)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+			(at 123.698 79.121 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 119.38 79.502 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "470Ω, 1/4W Resistor"
+			(at 119.38 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7a088cd9-1bf7-437d-a2ee-4f6ace3eb820")
+		)
+		(pin "2"
+			(uuid "be8176ac-fa65-4720-99cf-78e39aafae6f")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "R7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-Fuse:Fuse_Holder-Blade")
+		(at 161.29 63.5 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "94e23b14-eb01-4974-abfc-a77099415fd8")
+		(property "Reference" "F9"
+			(at 148.59 64.77 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Value" "Blade Fuse"
+			(at 149.098 64.516 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "PCM_SparkFun-Fuse:Fuseholder_Automotive"
+			(at 167.64 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.keyelco.com/userAssets/file/M65p41.pdf"
+			(at 165.1 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 170.18 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PROD_ID" ""
+			(at 161.29 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "19e8110c-c4ab-49ca-8ba0-ee8158052aae")
+		)
+		(pin "1"
+			(uuid "7ba80b3f-ce65-4a81-8dac-45025372e2f7")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "F9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Capacitors:100nF_Ceramic")
+		(at 49.53 128.27 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "98431b76-6a45-454f-818f-28df62fe1d85")
+		(property "Reference" "C11"
+			(at 49.53 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100nF_Ceramic"
+			(at 49.53 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm"
+			(at 49.53 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 49.53 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "100nF Ceramic Capacitor"
+			(at 49.53 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "50223969-1a3c-4d6e-97c6-b48eb4e97b67")
+		)
+		(pin "2"
+			(uuid "d6e8f103-f66c-4b39-a5e9-e106788bd26c")
+		)
+		(instances
+			(project ""
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "C11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Resistors:470ohm")
+		(at 66.04 69.85 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9aa77c05-a452-42c4-acb4-186b50ffe6fe")
+		(property "Reference" "R2"
+			(at 63.5 71.1201 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "470ohm"
+			(at 65.024 69.596 90)
+			(effects
+				(font
+					(size 0.762 0.762)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+			(at 70.358 68.961 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 66.04 69.342 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "470Ω, 1/4W Resistor"
+			(at 66.04 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b9db4ab3-753c-4a5b-9901-c2b085255cea")
+		)
+		(pin "2"
+			(uuid "3f7e5985-1a56-473d-bb03-abbcf374d698")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "R2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-PowerSymbol:GND")
+		(at 40.64 31.75 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a35ca73c-440b-40db-9514-2f4831400cae")
+		(property "Reference" "#PWR02"
+			(at 34.29 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 36.83 31.75 0)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 40.64 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 40.64 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 31.75 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b27b5016-6e3a-400a-a923-d07e726d8a1f")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "#PWR02")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-Fuse:Fuse_Holder-Blade")
+		(at 113.03 63.5 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a3984dd6-3050-4bc5-ab97-edf658d2f0c0")
+		(property "Reference" "F5"
+			(at 100.33 64.77 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Value" "Blade Fuse"
+			(at 100.838 64.516 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "PCM_SparkFun-Fuse:Fuseholder_Automotive"
+			(at 119.38 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.keyelco.com/userAssets/file/M65p41.pdf"
+			(at 116.84 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 121.92 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PROD_ID" ""
+			(at 113.03 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "a8df5b01-1fed-4b65-b466-95746e633b08")
+		)
+		(pin "1"
+			(uuid "6babd493-b43d-4ec0-9c48-a7892e475e08")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "F5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Capacitors:100nF_Ceramic")
+		(at 81.28 146.05 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a4c91c8c-8a37-4e07-8a91-1d5a9d946ac0")
+		(property "Reference" "C13"
+			(at 85.09 144.7799 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 85.09 146.812 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm"
+			(at 77.47 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 81.28 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "100nF Ceramic Capacitor"
+			(at 81.28 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "cf319a53-8d14-4405-978f-266dce6247fa")
+		)
+		(pin "2"
+			(uuid "15cb87cc-0aed-4372-8f7a-e98f619615e5")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "C13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Resistors:470ohm")
+		(at 146.05 69.85 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a933abd6-902c-44dd-9e0d-f100740e6681")
+		(property "Reference" "R9"
+			(at 143.51 71.1201 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "470ohm"
+			(at 145.034 66.802 90)
+			(effects
+				(font
+					(size 0.508 0.508)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+			(at 150.368 68.961 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 146.05 69.342 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "470Ω, 1/4W Resistor"
+			(at 146.05 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "cc5448ce-06af-4e44-aa6a-350104cc7040")
+		)
+		(pin "2"
+			(uuid "3f00afc0-7e49-4a85-ba80-594c30b0abc9")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "R9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Capacitors:100nF_Ceramic")
+		(at 41.91 146.05 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "abb00dff-c22f-4b2a-8794-9ab60b449edd")
+		(property "Reference" "C12"
+			(at 45.72 144.7799 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 45.72 146.812 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm"
+			(at 38.1 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 41.91 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "100nF Ceramic Capacitor"
+			(at 41.91 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1af87e34-fbe4-42a5-89ae-ff6baa97b318")
+		)
+		(pin "2"
+			(uuid "dc063e5d-95d1-40a6-9ec4-e18187899b8d")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "C12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-LED:LED_Red_5mm_PTH_NoSilk")
+		(at 66.04 76.2 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "af15d02e-929d-495b-98c2-312ce1dde01e")
+		(property "Reference" "D2"
+			(at 63.5 77.4066 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "Red"
+			(at 63.5 74.8666 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "PCM_SparkFun-LED:LED_5mm_PTH_Red_NoSilk"
+			(at 71.12 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://cdn.sparkfun.com/assets/e/c/e/c/5/COM-09590-YSL-R531R3D-D2.pdf"
+			(at 76.2 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode PTH 5mm diameter"
+			(at 78.74 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PROD_ID" "DIO-09529"
+			(at 73.66 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "34e0e308-44f5-477a-aebb-4996f03d090f")
+		)
+		(pin "2"
+			(uuid "fa316969-93b2-4585-827b-b137778f62b9")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "D2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Connectors:JST_02")
+		(at 215.9 38.1 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b1cfec8e-4830-4281-84fa-1e0033947005")
+		(property "Reference" "J11"
+			(at 218.44 36.8299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "3.3V_IN"
+			(at 212.852 33.274 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_JST:JST_EH_B2B-EH-A_1x02_P2.50mm_Vertical"
+			(at 215.9 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 215.9 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "JST Connector  2 pins"
+			(at 215.9 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "35213527-11ae-4498-b462-12595db439f7")
+		)
+		(pin "2"
+			(uuid "1e1c5b85-6ef4-4fc6-9d20-2a1046566b60")
+		)
+		(instances
+			(project ""
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "J11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-LED:LED_Red_5mm_PTH_NoSilk")
+		(at 46.99 34.29 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b903264d-4af0-4fde-9c36-7cf974b7113a")
+		(property "Reference" "D1"
+			(at 49.53 33.0834 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "Red"
+			(at 49.53 35.6234 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "PCM_SparkFun-LED:LED_5mm_PTH_Red_NoSilk"
+			(at 41.91 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://cdn.sparkfun.com/assets/e/c/e/c/5/COM-09590-YSL-R531R3D-D2.pdf"
+			(at 36.83 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode PTH 5mm diameter"
+			(at 34.29 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PROD_ID" "DIO-09529"
+			(at 39.37 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9662150b-b2df-4409-ae44-f2bf39376fbd")
+		)
+		(pin "2"
+			(uuid "98c02a41-e34f-4021-87e1-9be9595bac14")
+		)
+		(instances
+			(project ""
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "D1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Capacitors:10uF_16V")
+		(at 83.82 60.96 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "baa4c44b-656a-4f0d-926b-1ff739459e11")
+		(property "Reference" "C9"
+			(at 83.312 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10uF_16V"
+			(at 83.312 56.896 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm"
+			(at 84.582 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 84.328 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "10uF, 16V Electrolytic Capacitor"
+			(at 83.82 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "dc5ac73d-0d44-4fae-bd5b-9be55a275025")
+		)
+		(pin "2"
+			(uuid "4d8db896-be33-4e16-a668-500a4cb24386")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "C9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Pin_Headers:PINHD_1x2_Male")
+		(at 95.25 69.85 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "bcba16f4-36df-4d9e-8d6d-dfbee32f794e")
+		(property "Reference" "J4"
+			(at 94.488 72.644 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "BLDC-3"
+			(at 92.456 74.168 90)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_AMASS:AMASS_XT60-M_1x02_P7.20mm_Vertical"
+			(at 91.44 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 102.87 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Pin Header male with pin space 2.54mm. Pin Count -2"
+			(at 95.25 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "f4190b8f-7656-4647-b752-cafa9260e0fe")
+		)
+		(pin "1"
+			(uuid "55edb5f9-f253-413a-aa15-17d2d1f27871")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "J4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Sensor_Current:ACS758xCB-050B-PFF")
+		(at 60.96 142.24 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "bcf7e71f-11cc-45cb-a1f0-ae450d2f46eb")
+		(property "Reference" "U9"
+			(at 61.214 154.686 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "ACS758xCB-050B-PFF"
+			(at 62.738 158.496 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Sensor_Current:Allegro_CB_PFF"
+			(at 60.96 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.allegromicro.com/~/media/Files/Datasheets/ACS758-Datasheet.ashx?la=en"
+			(at 60.96 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "±50A Bidirectional Hall-Effect Current Sensor, +5.0V supply, 40mV/A, CB-5 PFF"
+			(at 60.96 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "5"
+			(uuid "5ca4f899-318f-422a-9025-fc786533d6f4")
+		)
+		(pin "2"
+			(uuid "548c4e6f-5cb5-4597-a3b1-a7c17e82d9a0")
+		)
+		(pin "3"
+			(uuid "d3b50b72-8db7-4cce-8b55-ff8a73a8dc68")
+		)
+		(pin "1"
+			(uuid "83e5caa9-c550-47e6-86db-82167014155b")
+		)
+		(pin "4"
+			(uuid "ead683b8-0fd5-4422-bb53-acede4d31d8c")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "U9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Resistors:470ohm")
+		(at 125.73 152.4 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c54f39a2-9269-4260-ad88-3c0bd5ac3385")
+		(property "Reference" "R13"
+			(at 127.0001 154.94 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "4.7k"
+			(at 128.27 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+			(at 124.841 148.082 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 125.222 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "470Ω, 1/4W Resistor"
+			(at 125.73 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "50859778-fc19-4287-b92f-33df51a8a0a0")
+		)
+		(pin "2"
+			(uuid "05227825-13cd-49a1-8e62-3f4c71412fec")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "R13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-PowerSymbol:GND")
+		(at 91.44 80.01 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ca932984-c26a-425c-9fab-975380ca50b5")
+		(property "Reference" "#PWR05"
+			(at 91.44 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 91.44 83.82 0)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 91.44 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 91.44 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 91.44 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e9e0db42-bbfa-414c-ba6d-5cb92b1c5589")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "#PWR05")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-LED:LED_Red_5mm_PTH_NoSilk")
+		(at 113.03 77.47 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d9ce9029-eefe-49a6-a184-b88f62bb7b2b")
+		(property "Reference" "D6"
+			(at 110.49 78.6766 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "Red"
+			(at 110.49 76.1366 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "PCM_SparkFun-LED:LED_5mm_PTH_Red_NoSilk"
+			(at 118.11 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://cdn.sparkfun.com/assets/e/c/e/c/5/COM-09590-YSL-R531R3D-D2.pdf"
+			(at 123.19 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode PTH 5mm diameter"
+			(at 125.73 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PROD_ID" "DIO-09529"
+			(at 120.65 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e8958baa-1c8e-4f38-9451-550a8da6d44a")
+		)
+		(pin "2"
+			(uuid "2d7ec9b2-6ec1-4d4e-8fd8-973a0e508494")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "D6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-PowerSymbol:GND")
+		(at 203.2 34.29 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "db87d183-d660-4fcf-9233-ac1be65f7702")
+		(property "Reference" "#PWR015"
+			(at 203.2 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 203.2 30.48 0)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 203.2 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 203.2 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 203.2 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "291bf99f-c797-4cb8-9b38-0be3c0290087")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "#PWR015")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Capacitors:100nF_Ceramic")
+		(at 120.65 146.05 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e5ae7d1c-dfe9-4825-bdad-3725cd8e7669")
+		(property "Reference" "C15"
+			(at 124.46 144.7799 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 124.46 146.812 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm"
+			(at 116.84 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 120.65 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "100nF Ceramic Capacitor"
+			(at 120.65 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "095146c9-0a05-427d-be21-e968c9a01d85")
+		)
+		(pin "2"
+			(uuid "373cff1c-d70b-4554-99ce-7bc2f7894a98")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "C15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-Fuse:Fuse_Holder-Blade")
+		(at 66.04 63.5 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e920d40d-0e76-4b34-b7af-ca9c76b7d0b6")
+		(property "Reference" "F1"
+			(at 62.484 63.246 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Value" "Blade Fuse"
+			(at 53.848 64.516 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "PCM_SparkFun-Fuse:Fuseholder_Automotive"
+			(at 72.39 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.keyelco.com/userAssets/file/M65p41.pdf"
+			(at 69.85 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 74.93 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PROD_ID" ""
+			(at 66.04 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "335ab098-419d-4ef5-86fd-ebb59261477a")
+		)
+		(pin "1"
+			(uuid "68654a21-bf76-4e55-8b02-ccbfa6fe02a4")
+		)
+		(instances
+			(project ""
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "F1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Capacitors:100nF_Ceramic")
+		(at 88.9 128.27 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ea7fdc21-5ff6-4cf3-a51f-583b7e45f9a4")
+		(property "Reference" "C14"
+			(at 88.9 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100nF_Ceramic"
+			(at 88.9 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm"
+			(at 88.9 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 88.9 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "100nF Ceramic Capacitor"
+			(at 88.9 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e3f3bb80-eca8-4c58-9533-ce86e5bc9a82")
+		)
+		(pin "2"
+			(uuid "9cdfb46e-7723-43a8-bf77-a5c932eb5a7d")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "C14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-Fuse:Fuse_Holder-Blade")
+		(at 80.01 63.5 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "eb0fc5fd-c6c5-46d7-b6b6-b8d5885df7d3")
+		(property "Reference" "F2"
+			(at 75.438 63.246 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Value" "Blade Fuse"
+			(at 68.834 64.516 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "PCM_SparkFun-Fuse:Fuseholder_Automotive"
+			(at 86.36 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.keyelco.com/userAssets/file/M65p41.pdf"
+			(at 83.82 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 88.9 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PROD_ID" ""
+			(at 80.01 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "a92bd71a-d2c7-4565-8bc4-90af973b3f53")
+		)
+		(pin "1"
+			(uuid "9cb45014-bb51-42d5-a342-00aa925b3442")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "F2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Pin_Headers:PINHD_1x2_Male")
+		(at 116.84 69.85 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ec70ce31-0b6e-4c72-ba97-5eaaf7c5af27")
+		(property "Reference" "J10"
+			(at 115.824 72.39 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "BLDC-5"
+			(at 114.3 74.168 90)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_AMASS:AMASS_XT60-M_1x02_P7.20mm_Vertical"
+			(at 113.03 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 124.46 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Pin Header male with pin space 2.54mm. Pin Count -2"
+			(at 116.84 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "56594dab-e21a-42f5-8557-f0b91ca3620b")
+		)
+		(pin "1"
+			(uuid "1f008810-e582-4b6d-a69f-8d8d990c7a7b")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "J10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-Fuse:Fuse_Holder-Blade")
+		(at 133.35 63.5 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f3f5bd98-8b1a-48ea-acb9-75389c07a530")
+		(property "Reference" "F7"
+			(at 127 67.564 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Value" "Blade Fuse"
+			(at 121.158 64.516 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "PCM_SparkFun-Fuse:Fuseholder_Automotive"
+			(at 139.7 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.keyelco.com/userAssets/file/M65p41.pdf"
+			(at 137.16 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Fuse"
+			(at 142.24 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PROD_ID" ""
+			(at 133.35 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "a33ffacd-a2ca-4c0a-92c1-9e8933bd3b91")
+		)
+		(pin "1"
+			(uuid "b8b2aedc-eee6-4719-9f69-ee6a723a3265")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "F7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Resistors:470ohm")
+		(at 86.36 152.4 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f58e08e2-f237-47dd-bf91-c0112f19a7ce")
+		(property "Reference" "R12"
+			(at 87.6301 154.94 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "4.7k"
+			(at 88.9 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
+			(at 85.471 148.082 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 85.852 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "470Ω, 1/4W Resistor"
+			(at 86.36 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b46ef284-feae-4112-8ccb-3dd28cc3524b")
+		)
+		(pin "2"
+			(uuid "6c208313-9e47-47ba-958d-c05ee8e321ae")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "R12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-LED:LED_Red_5mm_PTH_NoSilk")
+		(at 78.74 76.2 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "facffec8-1763-4e60-9bd5-1db8aad9ffbd")
+		(property "Reference" "D3"
+			(at 76.2 77.4066 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Value" "Red"
+			(at 76.2 74.8666 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "PCM_SparkFun-LED:LED_5mm_PTH_Red_NoSilk"
+			(at 83.82 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://cdn.sparkfun.com/assets/e/c/e/c/5/COM-09590-YSL-R531R3D-D2.pdf"
+			(at 88.9 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode PTH 5mm diameter"
+			(at 91.44 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PROD_ID" "DIO-09529"
+			(at 86.36 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "99bc8bfa-d18d-4633-b43d-44b024931d1f")
+		)
+		(pin "2"
+			(uuid "74b3e9a6-534b-47a8-8e47-c2cc724a729b")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "D3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SL_Pin_Headers:PINHD_1x2_Male")
+		(at 139.7 69.85 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "fe816200-3af8-4ca4-afa3-c96646b40de4")
+		(property "Reference" "J7"
+			(at 138.684 72.39 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Deposition"
+			(at 136.398 73.914 90)
+			(effects
+				(font
+					(size 1.016 1.016)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Connector_AMASS:AMASS_XT60-M_1x02_P7.20mm_Vertical"
+			(at 135.89 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 147.32 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Pin Header male with pin space 2.54mm. Pin Count -2"
+			(at 139.7 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "0cb7cd9b-ee12-44bc-9e84-388499f5edda")
+		)
+		(pin "1"
+			(uuid "d5c2c5c2-554e-4105-a490-15901761b785")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "J7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "PCM_SparkFun-PowerSymbol:GND")
+		(at 194.31 82.55 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ffcc5d67-4cf0-418e-a00d-44b0b9aa23a0")
+		(property "Reference" "#PWR016"
+			(at 194.31 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 194.31 86.36 0)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 194.31 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 194.31 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 194.31 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "77d9cd8c-21f8-4d11-9a02-b7a429c14891")
+		)
+		(instances
+			(project "ASME UM High current board"
+				(path "/43b02b23-8b3d-43d3-860b-e99f82a5acc6"
+					(reference "#PWR016")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)
