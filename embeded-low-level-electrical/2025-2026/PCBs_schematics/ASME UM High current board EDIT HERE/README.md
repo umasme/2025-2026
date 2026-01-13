@@ -46,7 +46,7 @@ This board distributes power to the following subsystems:
   </tr>
   <tr>
     <td align="center">
-      <img src="embeded-low-level-electrical/2025-2026/PCBs_schematics/assets/High_current_board_FEA_before.png"
+      <img src="assets/High_current_board_FEA_before.png" width="400" />
             alt="FEA Before" width="100%">
     </td>
     <td align="center">
