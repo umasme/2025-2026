@@ -30,16 +30,18 @@ This board distributes power to the following subsystems:
 * **Current Sensing:**
   * Initial revision includes main bus current sensor (or limited sensors).
   * PCB design preserves expandability for future per-output current sensing.
-* **Optional Add-ons:**
-  * Onboard DC-DC buck converter.
+* ** Add-ons:**
+  * Onboard DC-DC buck converter based on AP64502Q synchronous DC-DC buck converter (5V/5A). 
   * Linear 3.3 V regulator (not required for current system architecture).
+
+## PCB design considerations: 
+* Followed the IPC-2221-compliant power plane optimization
+* Follwed the recommeded layout from the data sheets of DC DC converter. You can find through this link [https://www.diodes.com/datasheet/download/AP64502Q.pdf]
 
 ## Design Objectives
 * **Reliability:** Consistent operation under high-current and transient conditions.
 * **Efficiency:** Low-resistance power paths to minimize voltage drop.
 * **Usability:** Clear visual diagnostics for fast fault identification.
-* **Scalability:** Modular and expandable architecture.
-* **Durability:** Robust design suitable for mobile robotic platforms.
 
 ## Safety and Protection
 * **Input:** Reverse-polarity protection.
