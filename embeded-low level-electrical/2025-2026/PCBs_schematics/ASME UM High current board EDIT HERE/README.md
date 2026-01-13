@@ -7,10 +7,10 @@ The High-Current Power Distribution Board (PDB) is designed to safely and effici
 ## Supported Loads
 This board distributes power to the following subsystems:
 
-* **4×** Drivetrain motors
-* **1×** Excavation motor
-* **1×** Deposition motor
-* **2×** Linear actuators
+* **4×** Drivetrain motors (BLDC)
+* **1×** Excavation motor (BLDC)
+* **1×** Deposition motor (DC)
+* **2×** Linear actuators 
 
 > **Note:** The Jetson Nano is powered through an external power supply with a dedicated DC-DC converter and is **not** powered directly from this board.
 
