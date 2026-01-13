@@ -35,8 +35,11 @@ This board distributes power to the following subsystems:
   * Linear 3.3 V regulator (not required for current system architecture).
 
 ## PCB design considerations: 
-* Followed the IPC-2221-compliant power plane optimization
-* Follwed the recommeded layout from the data sheets of DC DC converter. You can find through this link [https://www.diodes.com/datasheet/download/AP64502Q.pdf]
+* Followed the IPC-2221-compliant power plane optimization for high current power copper pours.
+* Follwed the recommeded layout from the data sheets of DC DC converter. You can find through this link [https://www.diodes.com/datasheet/download/AP64502Q.pdf].
+* Used the Power Analayzer Tool in Altium for optimizing the design for high current requirement removeing all bottlenecks as you see here
+
+  
 
 ## Design Objectives
 * **Reliability:** Consistent operation under high-current and transient conditions.
