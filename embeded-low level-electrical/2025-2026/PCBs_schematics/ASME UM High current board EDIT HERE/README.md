@@ -38,11 +38,23 @@ This board distributes power to the following subsystems:
 * **High-Current Optimization:** Adhered to IPC-2221 standards for power plane optimization to handle high-current loads and manage thermal dissipation.
 * **Component Layout:** Strictly followed the recommended layout guidelines specified in the [AP64502Q DC-DC Converter Datasheet](https://www.diodes.com/datasheet/download/AP64502Q.pdf) to minimize noise and ensure stability.
 * **Power Integrity Analysis:** Utilized Altium's Power Analyzer tool to simulate current density and eliminate bottlenecks.
-    * *Figure 1: Current density simulation before optimization (bottlenecks visible).*
-        ![FEA Analysis Before](embeded-low level-electrical/2025-2026/PCBs_schematics/assets/High_current_board_FEA_before.png)
-    * *Figure 2: Current density simulation after optimization (bottlenecks removed).*
-        ![FEA Analysis After](embeded-low level-electrical/2025-2026/PCBs_schematics/assets/High_current_board_FEA_after.png)
-## Design Objectives
+<h3>Power Analyzer Results</h3>
+<table width="100%">
+  <tr>
+    <th width="50%">Before Optimization</th>
+    <th width="50%">After Optimization</th>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="embeded-low%20level-electrical/2025-2026/PCBs_schematics/assets/High_current_board_FEA_before.png" 
+           alt="FEA Before" width="100%">
+    </td>
+    <td align="center">
+      <img src="embeded-low%20level-electrical/2025-2026/PCBs_schematics/assets/High_current_board_FEA_after.png" 
+           alt="FEA After" width="100%">
+    </td>
+  </tr>
+</table>## Design Objectives
 * **Reliability:** Consistent operation under high-current and transient conditions.
 * **Efficiency:** Low-resistance power paths to minimize voltage drop.
 * **Usability:** Clear visual diagnostics for fast fault identification.
