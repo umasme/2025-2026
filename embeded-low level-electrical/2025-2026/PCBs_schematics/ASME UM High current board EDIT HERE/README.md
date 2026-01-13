@@ -21,7 +21,7 @@ This board distributes power to the following subsystems:
   * **1** dedicated output for a DC-DC converter.
 
 ## Board Features
-* **Protection:** Reverse-polarity protection on the main power input and individual fuses for each output bus.
+* **Protection:** Reverse-polarity protection on the main power input and individual fuses for each output bus. (To be added)
 * **Diagnostics:**
   * Power indication LED for board power status.
   * Individual LED indicators for each output to identify blown or faulted fuses.
