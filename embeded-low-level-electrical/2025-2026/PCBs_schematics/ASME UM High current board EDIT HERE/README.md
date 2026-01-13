@@ -47,14 +47,18 @@ This board distributes power to the following subsystems:
   <tr>
     <td align="center">
       <img src="../assets/High_current_board_FEA_before.png" 
-     alt="FEA Before" width="100%">
+     alt="Before" width="100%">
     </td>
     <td align="center">
       <img src="../assets/High_current_board_FEA_after.png" 
-           alt="FEA After" width="100%">
+           alt="After" width="100%">
     </td>
   </tr>
-</table>## Design Objectives
+</table>
+## Final Board Design
+ <img src="../assets/pcb_PDB_board.png" 
+           alt="Hey!" width="100%">
+## Design Objectives
 * **Reliability:** Consistent operation under high-current and transient conditions.
 * **Efficiency:** Low-resistance power paths to minimize voltage drop.
 * **Usability:** Clear visual diagnostics for fast fault identification.
