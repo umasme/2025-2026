@@ -3,7 +3,7 @@
 
 ## Overview
 The High-Current Power Distribution Board (PDB) is designed to safely and efficiently distribute electrical power to all high-power subsystems of the rover. It serves as the central power hub, handling high transient currents while providing protection, diagnostics, and future expandability.
----
+
 ## Final Board Design
  <img src="../assets/pcb_PDB_board.png" 
            alt="Hey!" width="100%">
