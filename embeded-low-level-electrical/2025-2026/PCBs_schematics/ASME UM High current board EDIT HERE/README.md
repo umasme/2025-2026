@@ -59,10 +59,7 @@ This board distributes power to the following subsystems:
     </td>
   </tr>
 </table>
----
-## Final Board Design
- <img src="../assets/pcb_PDB_board.png" 
-           alt="Hey!" width="100%">
+
 ## Design Objectives
 * **Reliability:** Consistent operation under high-current and transient conditions.
 * **Efficiency:** Low-resistance power paths to minimize voltage drop.
@@ -73,3 +70,5 @@ This board distributes power to the following subsystems:
 * **Output:** Fuse protection per channel.
 * **Visuals:** Fault detection via LED indicators.
 * **Noise:** Electrical noise suppression using decoupling capacitors.
+
+## Please Stay Tuned for the fabrication and prototyping
