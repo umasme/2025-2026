@@ -34,13 +34,14 @@ This board distributes power to the following subsystems:
   * Onboard DC-DC buck converter based on AP64502Q synchronous DC-DC buck converter (5V/5A). 
   * Linear 3.3 V regulator (not required for current system architecture).
 
-## PCB design considerations: 
-* Followed the IPC-2221-compliant power plane optimization for high current power copper pours.
-* Follwed the recommeded layout from the data sheets of DC DC converter. You can find through this link [https://www.diodes.com/datasheet/download/AP64502Q.pdf].
-* Used the Power Analayzer Tool in Altium for optimizing the design for high current requirement removeing all bottlenecks as you see here
-
-  
-
+## PCB Design Considerations
+* **High-Current Optimization:** Adhered to IPC-2221 standards for power plane optimization to handle high-current loads and manage thermal dissipation.
+* **Component Layout:** Strictly followed the recommended layout guidelines specified in the [AP64502Q DC-DC Converter Datasheet](https://www.diodes.com/datasheet/download/AP64502Q.pdf) to minimize noise and ensure stability.
+* **Power Integrity Analysis:** Utilized Altium's Power Analyzer tool to simulate current density and eliminate bottlenecks.
+    * *Figure 1: Current density simulation before optimization (bottlenecks visible).*
+        ![FEA Analysis Before](embeded-low level-electrical/2025-2026/PCBs_schematics/assets/High_current_board_FEA_before.png)
+    * *Figure 2: Current density simulation after optimization (bottlenecks removed).*
+        ![FEA Analysis After](embeded-low level-electrical/2025-2026/PCBs_schematics/assets/High_current_board_FEA_after.png)
 ## Design Objectives
 * **Reliability:** Consistent operation under high-current and transient conditions.
 * **Efficiency:** Low-resistance power paths to minimize voltage drop.
