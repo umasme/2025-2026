@@ -12,7 +12,7 @@ This repository documents the design, implementation, and testing of the roverâ€
 - Design an effective system with high reliability, minimal points of failure, and strategic redundancies while keeping it simple with minimal components and maximum efficiency.
 
 - Focus on real-time data logging of current, voltage, power, temperature, and speed for post-analysis and future optimization.
-
+d
 - Reduce wiring complexity by using multiplexed communication protocols.
 
 - Ensure reliable wired communication and power distribution to motors and other subsystems.
