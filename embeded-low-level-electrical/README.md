@@ -72,7 +72,7 @@ This high-current board distributes power to all outputs, including the four dri
   <b> Low-Level Control Board based on Teensy 4.1 PCB </b>
 </p>
 
-For more details refer to this link: [To be added]
+[For more details refer to this link](https://github.com/umasme/2025-2026/tree/main/embeded-low-level-electrical/2025-2026/PCBs_schematics/ASME%20UM%20Control%20Board%20EDIT%20HERE)
 
 
 ---
