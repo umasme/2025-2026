@@ -34,7 +34,7 @@ d
   </p>
 
 ---
-## Prelimnary Design Review 
+## Preliminary Design Review (PDR)
 
 As part of the NASA Systems Engineering methodology, our team conducts a **Preliminary Design Review (PDR)** to evaluate and validate the proposed system design before detailed development.  
 
@@ -46,8 +46,8 @@ This review presentation includes:
 4. **Verification Plans** – How the design will be tested and validated  
 5. **Risk Matrix** – Identification and mitigation of potential risks
 
-You can find the presentation though this link: 
-
+📄 **View the PDR presentation:**  
+[Electrical PDR – ASME UM (PDF)](https://github.com/umasme/2025-2026/blob/main/embeded-low-level-electrical/2025-2026/Assets/Electrical%20PDR--%20ASME%20UM.pdf)
 
 ---
 ## High-Current Power Distribution Board
