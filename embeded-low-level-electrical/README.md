@@ -33,6 +33,21 @@ d
   <b> Control Electrical Architecture </b>
   </p>
 
+---
+## Prelimnary Design Review 
+
+As part of the NASA Systems Engineering methodology, our team conducts a **Preliminary Design Review (PDR)** to evaluate and validate the proposed system design before detailed development.  
+
+This review presentation includes:
+
+1. **Responsibilities and Main Goals** – Overview of team roles and project objectives  
+2. **Last Year’s System and Proposed Changes** – Comparison and improvements over the previous design  
+3. **Design Overview** – High-level architecture and subsystem details  
+4. **Verification Plans** – How the design will be tested and validated  
+5. **Risk Matrix** – Identification and mitigation of potential risks
+
+You can find the presentation though this link: 
+
 
 ---
 ## High-Current Power Distribution Board
