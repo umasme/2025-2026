@@ -60,7 +60,7 @@ This high-current board distributes power to all outputs, including the four dri
   <b> High-Current Power Distribution Board PCB </b>
 </p>
 
-For more details refer to this link: [to be added]
+[For more details refer to this link](https://github.com/umasme/2025-2026/tree/main/embeded-low-level-electrical/2025-2026/PCBs_schematics/ASME%20UM%20High%20current%20board%20EDIT%20HERE)
 
 ---
 ## Low-Level Control Board based on Teensy 4.1
