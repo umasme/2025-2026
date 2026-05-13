@@ -121,7 +121,11 @@ try:
             print("Configuring Front Camera (Depth + RGB + IMU)")
             config.enable_stream(rs.stream.depth, 640, 480, rs.format.z16, 30)
             config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
+            # Enable both gyroscope and accelerometer so we can compute
+            # an integrated attitude (yaw/pitch/roll) similar to the
+            # DepthAI example in Tests/yawyall.py
             config.enable_stream(rs.stream.gyro, rs.format.motion_xyz32f, 200)
+            config.enable_stream(rs.stream.accel, rs.format.motion_xyz32f, 250)
             
         elif serial == REAR_CAMERA_SERIAL:
             print("Configuring Rear Camera (RGB Only for ArUco)")
@@ -150,6 +154,11 @@ print("\n--- Perception System Active (Per-Column Floor Scan) ---")
 # Temporal consistency buffer
 obstacle_history = []
 
+# IMU integration state (angles in degrees: [roll, pitch, yaw])
+angles = np.array([0.0, 0.0, 0.0], dtype=float)
+# history_vars = [base_ts, prev_gyro_ts, prev_gyro_rotated]
+angle_history = [None, None, np.array([0.0, 0.0, 0.0], dtype=float)]
+
 
 def deproject_pixel(row, col, depth_m, intrin):
     """
@@ -165,6 +174,77 @@ def deproject_pixel(row, col, depth_m, intrin):
     y = (row - intrin.ppy) / intrin.fy * depth_m
     z = depth_m
     return x, y, z
+
+
+def integrate_angles_realsense(current_angle: np.ndarray, accel, gyro, history_vars: list, ts: float):
+    """
+    Integrate gyro readings into Euler angles using accelerometer to
+    estimate gravity for sensor-frame rotation. This is a lightweight
+    port of the integrate_angles logic from Tests/yawyall.py adapted
+    for pyrealsense2 motion frames.
+
+    - current_angle: np.array([roll_deg, pitch_deg, yaw_deg])
+    - accel, gyro: objects with .x, .y, .z (pyrealsense2 motion data)
+    - history_vars: [base_ts, prev_gyro_ts, prev_gyro_rotated]
+    - ts: current timestamp (seconds)
+    """
+    baseTs, prev_gyroTs, prev_gyro_rotated = history_vars
+    angles = current_angle
+
+    if baseTs is None:
+        baseTs = ts
+        prev_gyroTs = ts
+        history_vars = [baseTs, prev_gyroTs, prev_gyro_rotated]
+        return angles, history_vars
+
+    # time difference in seconds between current and previous gyro
+    dt_gyro = ts - prev_gyroTs if prev_gyroTs is not None else 0.0
+    prev_gyroTs = ts
+
+    # Build gravity vector from accelerometer (match yawyall sign convention)
+    g_accel = np.array([-accel.x, accel.y, accel.z], dtype=float)
+    g_mag = np.linalg.norm(g_accel)
+    if g_mag == 0:
+        g_norm = g_accel
+    else:
+        g_norm = g_accel / g_mag
+
+    # Rotate about X to make gravity lie in Y-Z plane
+    theta_x = -np.arctan2(g_norm[2], g_norm[1])
+    rot_x = np.array([
+        [1, 0, 0],
+        [0, np.cos(theta_x), -np.sin(theta_x)],
+        [0, np.sin(theta_x), np.cos(theta_x)]
+    ])
+    g_norm = rot_x.dot(g_norm)
+
+    # Rotate about Z to align gravity with +Y axis
+    theta_z = np.arctan2(g_norm[0], g_norm[1])
+    rot_z = np.array([
+        [np.cos(theta_z), -np.sin(theta_z), 0],
+        [np.sin(theta_z), np.cos(theta_z), 0],
+        [0, 0, 1]
+    ])
+    g_norm = rot_z.dot(g_norm)
+
+    # Rotate gyro into that frame
+    gyro_vec = np.array([gyro.x, gyro.y, gyro.z], dtype=float)
+    gyro_rotated = rot_z.dot(rot_x.dot(gyro_vec))
+
+    # Trapezoidal integration (deg)
+    angles = angles + ((gyro_rotated + prev_gyro_rotated) / 2.0) * dt_gyro * 180.0 / np.pi
+
+    prev_gyro_rotated = gyro_rotated
+
+    history_vars = [baseTs, prev_gyroTs, prev_gyro_rotated]
+    return angles, history_vars
+
+
+def printvec(vec, ending='\n'):
+    ps1 = ("+" if vec[0] > 0 else "-") + f"{abs(vec[0]):.2f},"
+    ps2 = ("+" if vec[1] > 0 else "-") + f"{abs(vec[1]):.2f},"
+    ps3 = ("+" if vec[2] > 0 else "-") + f"{abs(vec[2]):.2f}"
+    print(ps1 + ps2 + ps3, end=ending)
 
 
 def scan_columns_for_obstacles(depth_image, intrin):
@@ -305,6 +385,7 @@ while True:
         "localization_mode": "BLIND (ENC)",
         "aruco_pos": [],
         "imu_yaw_rate": 0.0,
+        "imu_yaw_deg": float(angles[2]),
         "vo_dx": 0.0,
         "vo_dz": 0.0,
         "vo_status": "NONE",
@@ -316,9 +397,23 @@ while True:
             front_frames = pipelines[FRONT_CAMERA_SERIAL].wait_for_frames()
 
             gyro_frame = front_frames.first_or_default(rs.stream.gyro)
+            accel_frame = front_frames.first_or_default(rs.stream.accel)
             if gyro_frame:
                 gyro_data = gyro_frame.as_motion_frame().get_motion_data()
-                payload["imu_yaw_rate"] = float(-gyro_data.y) 
+                payload["imu_yaw_rate"] = float(-gyro_data.y)
+
+                # If we have an accelerometer sample, use accel+gyro to
+                # compute integrated attitude (roll, pitch, yaw).
+                if accel_frame:
+                    try:
+                        accel_data = accel_frame.as_motion_frame().get_motion_data()
+                        ts = float(gyro_frame.get_timestamp())
+                        angles, angle_history = integrate_angles_realsense(angles, accel_data, gyro_data, angle_history, ts)
+                        # Yaw is stored in angles[2] (degrees)
+                        payload["imu_yaw_deg"] = float(angles[2])
+                    except Exception as e:
+                        # Don't crash perception on unexpected IMU data
+                        print(f"IMU integration error: {e}")
 
             depth_frame = front_frames.get_depth_frame()
             color_frame = front_frames.get_color_frame()
