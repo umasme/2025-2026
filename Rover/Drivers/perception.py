@@ -70,7 +70,26 @@ CONFIRM_FRAMES = 3
 VIEW_WIDTH = 2.4  # Total X width shown on radar (meters)
 
 MARKER_GLOBAL_X = 0.0   # Origin IS the ArUco marker
-MARKER_GLOBAL_Z = 0.0
+MARKER_GLOBAL_Z = 6.0
+
+# =====================================================================
+# ARENA CONFIG — Select ArUco marker position at startup
+# =====================================================================
+print("=============================================")
+print("    ARENA CONFIGURATION — ArUco Position     ")
+print("=============================================")
+print("  Option 1 (Default): ArUco at (0, 0)")
+print("  Option 2 (Secondary): ArUco at (0, 6)")
+print("=============================================")
+arena_choice = input("Select (1/2): ").strip()
+if arena_choice == "2":
+    MARKER_GLOBAL_X = 0.0
+    MARKER_GLOBAL_Z = 6.0
+    print(f"=> ArUco position set to ({MARKER_GLOBAL_X}, {MARKER_GLOBAL_Z})")
+else:
+    MARKER_GLOBAL_X = 0.0
+    MARKER_GLOBAL_Z = 0.0
+    print(f"=> ArUco position set to ({MARKER_GLOBAL_X}, {MARKER_GLOBAL_Z})")
 
 # =====================================================================
 # SETUP

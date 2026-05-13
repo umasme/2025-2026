@@ -61,13 +61,10 @@ ROVER_LENGTH_M = 0.686  # 2'3" front to back
 # --- Obstacle Definitions ---
 # Guidebook: rocks 30-40cm diameter, craters 40-50cm wide
 obstacles = [
-    {"x": 1.2, "z": 3.9, "r": 0.20, "type": "rock"},   
-    {"x": 2.3, "z": 2.4, "r": 0.25, "type": "crater"}, 
-    {"x": 3.6, "z": 4.1, "r": 0.25, "type": "crater"}, 
-    {"x": 3.9, "z": 2.4, "r": 0.20, "type": "rock"},   
-    {"x": 5.1, "z": 3.9, "r": 0.20, "type": "rock"},   
-    {"x": 5.0, "z": 1.8, "r": 0.25, "type": "crater"}, 
-    {"x": 6.3, "z": 2.5, "r": 0.20, "type": "rock"},   
+    {"x": 5.0, "z": 3.4, "r": 0.30, "type": "rock"},
+    {"x": 3.0, "z": 3.4, "r": 0.1, "type": "rock"},    
+    {"x": 5.0, "z": 1.2, "r": 0.30, "type": "rock"},   
+    {"x": 3.5, "z": 1.2, "r": 0.1, "type": "rock"}, 
 ]
 
 # Arena walls (the rover must detect these as obstacles per guidebook rules)

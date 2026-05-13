@@ -57,21 +57,28 @@ const MAP_OFFSET: f32 = 2.0;
 // CENTER of the rover safe. So inflate by half the larger dimension (the 
 // side width) plus a safety margin.
 // 
-// Half side width: 0.889 / 2 = 0.445m
-// Safety margin: 0.05m  
-// Total inflation radius: ~0.50m = 10 cells at 0.05m resolution
+// Half side width: 0.889 / 2 = 0.445m = ~9 cells at 0.05m resolution
 //
-// BUT: 10 cells was the old value that caused wall fusion. The key insight
-// is that the perception system now sends fewer, higher-quality obstacles.
-// With only 16 bands and temporal confirmation, we get 2-3 detections per 
-// rock instead of 5-8. So we can safely use a larger inflation without 
-// obstacles fusing together.
+// TWO-LAYER CLEARANCE SYSTEM:
+// Instead of inflating obstacles by the full 9 cells (which causes nearby
+// obstacles to fuse into impassable walls), we split the clearance:
 //
-// Using 8 cells = 0.40m radius. This is slightly under the true half-width
-// (0.445m) but provides clearance for the FRONT of the rover (0.343m half)
-// with good margin, and is only 4.5cm short for the sides. The rover won't
-// be driving sideways into obstacles — it approaches them head-on and 
-// dodges left/right, so front clearance matters most.
+//   Layer 1 — INFLATION_RADIUS_CELLS = 4 (0.20m): Obstacles are inflated
+//     on the occupancy grid. Keeps obstacles visually distinct and prevents
+//     grid-level fusion when obstacles are 0.5-1.0m apart.
+//
+//   Layer 2 — ROVER_CLEARANCE_CELLS = 5 (0.25m) in planner.rs: A* checks
+//     a square footprint around each candidate cell. If ANY cell within 5
+//     cells is blocked, that cell is impassable for the rover.
+//
+//   Total: 4 + 5 = 9 cells = 0.45m ≈ rover half-width (0.445m)
+//
+// This means two obstacles 0.6m apart (12 cells) will NOT fuse on the grid
+// (their inflated zones are 4+4=8 cells, leaving a 4-cell gap). But A*
+// will correctly refuse to route through that gap because the rover 
+// clearance check (5 cells) would overlap the inflated zones on both sides.
+// A* only routes through gaps >= 2*(4+5) = 18 cells = 0.90m, which matches
+// the rover's full width (0.889m).
 const INFLATION_RADIUS_CELLS: isize = 4; 
 
 // =====================================================================
@@ -80,7 +87,7 @@ const INFLATION_RADIUS_CELLS: isize = 4;
 // Only obstacles within this range of the rover get added to tracking.
 // Anything further is "I'll deal with it when I get there." This prevents
 // distant background clutter from polluting the A* grid.
-const OBSTACLE_ACCEPT_RANGE_M: f32 = 0.8;
+const OBSTACLE_ACCEPT_RANGE_M: f32 = 0.5;
 
 // Clustering radius: detections within this distance merge into one tracked
 // obstacle instead of creating separate grid entries.
@@ -131,8 +138,8 @@ const MAX_CONSECUTIVE_REPLANS: u8 = 5;
 // so the X offset is negligible).
 
 // Make berm x 3.00 and z 0.50 for straight line
-const TARGET_BERM_X: f32 = 3.00; // 6.80
-const TARGET_BERM_Z: f32 = 0.50; // 2.57
+const TARGET_BERM_X: f32 = 6.80; // 6.80
+const TARGET_BERM_Z: f32 = 2.57; // 2.57
 const TARGET_DIG_X: f32 = 1.00;
 const TARGET_DIG_Z: f32 = 1.00;
 
@@ -184,7 +191,7 @@ const DEADBAND_DEPO_CM: f32 = 0.2;
 // The clamp still applies, so values above 127 are capped.
 //
 // DOWN (positive error = actuator extending/plunging deeper):
-const ACTUATOR_SPEED_SCALE_DOWN: f32 = 0.5;
+const ACTUATOR_SPEED_SCALE_DOWN: f32 = 0.3;
 // UP (negative error = actuator retracting/raising):
 const ACTUATOR_SPEED_SCALE_UP: f32 = 1.0;
 const DEPOSITION_SPEED_SCALE: f32 = 1.0;
@@ -205,8 +212,8 @@ const DEPOSITION_SPEED_SCALE: f32 = 1.0;
 // Conveyor belt total length is 1ft 5in (~43cm). Once the belt moves 
 // beyond that the regolith is deposited into the hopper.
 // =====================================================================
-const EXCAVATE_TARGET_DEPTH_CM: f32 = 2.0;       // How deep the actuator plunges
-const EXCAVATE_DIG_MOTOR_EFFORT: f32 = -14.0;     // cmd_m5 effort during digging (negative = reverse)
+const EXCAVATE_TARGET_DEPTH_CM: f32 = 18.0;       // How deep the actuator plunges
+const EXCAVATE_DIG_MOTOR_EFFORT: f32 = -10.0;     // cmd_m5 effort during digging (negative = reverse)
 const EXCAVATE_BELT_PAUSE_SECS: f32 = 3.0;       // Pause between each belt lap (stopped)
 const EXCAVATE_BELT_INCREMENT_CM: f32 = -5.0;     // Belt moves this much per lap (negative = reverse)
 const EXCAVATE_BELT_TOTAL_CM: f32 = -25.0;        // Total belt travel before dig motor stops (negative)
@@ -261,8 +268,8 @@ const DUMP_OFFSET_Z_PER_CYCLE: f32 = 0.4;        // Z shift per cycle (meters)
 // transition normally. This lets you test the full mission cycle
 // (navigation, localization, state transitions) without needing
 // the actuator, dig motor, or conveyor belt connected.
-const WITH_EXCAVATION: bool = true;
-const WITH_DUMPING: bool = true;
+const WITH_EXCAVATION: bool = false; 
+const WITH_DUMPING: bool = false;
 const FAKE_EXCAVATE_SECS: f32 = 5.0;  // How long to pretend-excavate
 const FAKE_DUMP_SECS: f32 = 5.0;      // How long to pretend-dump
 
@@ -405,8 +412,16 @@ fn send_sabertooth_command(socket: &CanSocket, act_speed: i16, depo_speed: i16) 
     let _ = socket.write_frame(&frame);
 }
 
-// CHANGED: is_path_blocked now checks against the confidence threshold
-// instead of binary 0/1.
+// CHANGED: is_path_blocked now sweeps a CORRIDOR matching the rover's
+// clearance radius, not a single-pixel line. This ensures that if A*
+// planned a path through a gap, the runtime check uses the same width
+// criteria, preventing the plan-block-replan oscillation.
+//
+// The corridor half-width matches ROVER_CLEARANCE_CELLS from planner.rs
+// (5 cells = 0.25m). Combined with INFLATION_RADIUS_CELLS (4 = 0.20m),
+// total clearance = 0.45m ≈ rover half-width.
+const PATH_CHECK_CORRIDOR_CELLS: isize = 5;
+
 fn is_path_blocked(map: &[[u8; MAP_SIZE]; MAP_SIZE], start_x: f32, start_z: f32, goal_x: f32, goal_z: f32) -> bool {
     let mut x0 = ((start_x + MAP_OFFSET) / MAP_RES).round() as isize;
     let mut z0 = ((start_z + MAP_OFFSET) / MAP_RES).round() as isize;
@@ -417,8 +432,15 @@ fn is_path_blocked(map: &[[u8; MAP_SIZE]; MAP_SIZE], start_x: f32, start_z: f32,
     let mut err = dx - dz;
 
     while x0 != x1 || z0 != z1 {
-        if x0 >= 0 && x0 < MAP_SIZE as isize && z0 >= 0 && z0 < MAP_SIZE as isize {
-            if map[x0 as usize][z0 as usize] >= CONFIDENCE_THRESHOLD { return true; }
+        // Check a square corridor around each point on the line
+        for cx in -PATH_CHECK_CORRIDOR_CELLS..=PATH_CHECK_CORRIDOR_CELLS {
+            for cz in -PATH_CHECK_CORRIDOR_CELLS..=PATH_CHECK_CORRIDOR_CELLS {
+                let check_x = x0 + cx;
+                let check_z = z0 + cz;
+                if check_x >= 0 && check_x < MAP_SIZE as isize && check_z >= 0 && check_z < MAP_SIZE as isize {
+                    if map[check_x as usize][check_z as usize] >= CONFIDENCE_THRESHOLD { return true; }
+                }
+            }
         }
         let e2 = 2 * err;
         if e2 > -dz { err -= dz; x0 += sx; }
@@ -434,12 +456,13 @@ fn is_path_blocked(map: &[[u8; MAP_SIZE]; MAP_SIZE], start_x: f32, start_z: f32,
 // far (in meters) it can travel in that direction before hitting any
 // wall of the operational envelope. Used during dump backout to pick
 // the direction (forward vs backward) with the MOST clearance.
-fn distance_to_boundary(x: f32, z: f32, dx: f32, dz: f32) -> f32 {
+fn distance_to_boundary(x: f32, z: f32, dx: f32, dz: f32,
+                        bx_min: f32, bx_max: f32, bz_min: f32, bz_max: f32) -> f32 {
     let mut t_min = f32::MAX;
-    if dx >  0.001 { t_min = t_min.min((BOUNDS_X_MAX - x) / dx); }
-    if dx < -0.001 { t_min = t_min.min((BOUNDS_X_MIN - x) / dx); }
-    if dz >  0.001 { t_min = t_min.min((BOUNDS_Z_MAX - z) / dz); }
-    if dz < -0.001 { t_min = t_min.min((BOUNDS_Z_MIN - z) / dz); }
+    if dx >  0.001 { t_min = t_min.min((bx_max - x) / dx); }
+    if dx < -0.001 { t_min = t_min.min((bx_min - x) / dx); }
+    if dz >  0.001 { t_min = t_min.min((bz_max - z) / dz); }
+    if dz < -0.001 { t_min = t_min.min((bz_min - z) / dz); }
     t_min.max(0.0)
 }
 
@@ -494,6 +517,23 @@ fn main() {
     // This replaces the old -1.57 which pointed in the -X direction.
     // =====================================================================
     let mut loc_mode = String::from("WAITING");
+
+    // =====================================================================
+    // RUNTIME CONFIG — Set by 'G' menu before mission start
+    // =====================================================================
+    // These override the compile-time constants based on arena orientation.
+    let mut cfg_target_berm_x: f32 = TARGET_BERM_X;
+    let mut cfg_target_berm_z: f32 = TARGET_BERM_Z;
+    let mut cfg_target_dig_x: f32 = TARGET_DIG_X;
+    let mut cfg_target_dig_z: f32 = TARGET_DIG_Z;
+    let mut cfg_bounds_x_min: f32 = BOUNDS_X_MIN;
+    let mut cfg_bounds_x_max: f32 = BOUNDS_X_MAX;
+    let mut cfg_bounds_z_min: f32 = BOUNDS_Z_MIN;
+    let mut cfg_bounds_z_max: f32 = BOUNDS_Z_MAX;
+    let mut cfg_berm_excl_x_min: f32 = BERM_EXCLUSION_X_MIN;
+    let mut cfg_berm_excl_x_max: f32 = BERM_EXCLUSION_X_MAX;
+    let mut cfg_berm_excl_z_min: f32 = BERM_EXCLUSION_Z_MIN;
+    let mut cfg_berm_excl_z_max: f32 = BERM_EXCLUSION_Z_MAX;
 
     let mut turn_in_progress = false;
     let mut turn_target_pos: f32 = 0.0;
@@ -618,6 +658,70 @@ fn main() {
                     KeyCode::Char('p') | KeyCode::Char('P') => { show_map = !show_map; execute!(io::stdout(), Clear(ClearType::All)).unwrap(); },
                     KeyCode::Char('g') | KeyCode::Char('G') => {
                         if current_state == RobotState::Localizing || current_state == RobotState::Manual {
+                            disable_raw_mode().expect("Failed to disable raw mode");
+                            execute!(io::stdout(), MoveTo(0, 0), Clear(ClearType::All)).unwrap();
+
+                            println!("=============================================");
+                            println!("       ARENA CONFIGURATION — PRESS 1 OR 2    ");
+                            println!("=============================================");
+                            println!("  Option 1 (Default — ArUco at origin):");
+                            println!("    Berm:  ({:.2}, {:.2})", TARGET_BERM_X, TARGET_BERM_Z);
+                            println!("    Dig:   ({:.2}, {:.2})", TARGET_DIG_X, TARGET_DIG_Z);
+                            println!("    Start: (0.50, 0.50)  ArUco (0, 0)");
+                            println!("");
+                            println!("  Option 2 (Secondary — ArUco at Z=6):");
+                            println!("    Berm:  (6.80, 1.57)");
+                            println!("    Dig:   (1.00, 6.00)");
+                            println!("    Start: (0.50, 5.50)  ArUco (0, 6)");
+                            println!("=============================================");
+                            print!("Select (1/2): ");
+                            io::stdout().flush().unwrap();
+
+                            let mut input = String::new();
+                            let mut selected = 1u8;
+                            if io::stdin().read_line(&mut input).is_ok() {
+                                if input.trim() == "2" { selected = 2; }
+                            }
+
+                            if selected == 2 {
+                                cfg_target_berm_x = 6.80;
+                                cfg_target_berm_z = 1.57;
+                                cfg_target_dig_x = 1.00;
+                                cfg_target_dig_z = 6.00;
+                                global_x = 0.50;
+                                global_z = 5.50;
+                                logical_yaw = std::f32::consts::PI / 2.0;
+                                // Bounds: X same, Z expanded for dig at Z=6
+                                cfg_bounds_x_min = BOUNDS_X_MIN;
+                                cfg_bounds_x_max = BOUNDS_X_MAX;
+                                cfg_bounds_z_min = -0.20;
+                                cfg_bounds_z_max = 7.00; // dig Z (6.00) + 1.0m margin
+                                // Berm exclusion shifted for berm at Z=1.57
+                                cfg_berm_excl_x_min = BERM_EXCLUSION_X_MIN;
+                                cfg_berm_excl_x_max = BERM_EXCLUSION_X_MAX;
+                                cfg_berm_excl_z_min = 0.72;  // 1.57 - 0.85
+                                cfg_berm_excl_z_max = 2.42;  // 1.57 + 0.85
+                            } else {
+                                cfg_target_berm_x = TARGET_BERM_X;
+                                cfg_target_berm_z = TARGET_BERM_Z;
+                                cfg_target_dig_x = TARGET_DIG_X;
+                                cfg_target_dig_z = TARGET_DIG_Z;
+                                global_x = 0.50;
+                                global_z = 0.50;
+                                logical_yaw = std::f32::consts::PI / 2.0;
+                                cfg_bounds_x_min = BOUNDS_X_MIN;
+                                cfg_bounds_x_max = BOUNDS_X_MAX;
+                                cfg_bounds_z_min = BOUNDS_Z_MIN;
+                                cfg_bounds_z_max = BOUNDS_Z_MAX;
+                                cfg_berm_excl_x_min = BERM_EXCLUSION_X_MIN;
+                                cfg_berm_excl_x_max = BERM_EXCLUSION_X_MAX;
+                                cfg_berm_excl_z_min = BERM_EXCLUSION_Z_MIN;
+                                cfg_berm_excl_z_max = BERM_EXCLUSION_Z_MAX;
+                            }
+
+                            enable_raw_mode().expect("Failed to enable raw mode");
+                            execute!(io::stdout(), Clear(ClearType::All)).unwrap();
+
                             current_state = RobotState::MissionStart;
                             consecutive_replans = 0;
                         }
@@ -1005,8 +1109,8 @@ fn main() {
 
             // BERM EXCLUSION: Skip obstacles inside the berm zone when heading to dump
             if berm_exclusion_active 
-                && obs.x >= BERM_EXCLUSION_X_MIN && obs.x <= BERM_EXCLUSION_X_MAX
-                && obs.z >= BERM_EXCLUSION_Z_MIN && obs.z <= BERM_EXCLUSION_Z_MAX
+                && obs.x >= cfg_berm_excl_x_min && obs.x <= cfg_berm_excl_x_max
+                && obs.z >= cfg_berm_excl_z_min && obs.z <= cfg_berm_excl_z_max
             {
                 continue; // Don't paint berm regolith as obstacles
             }
@@ -1042,10 +1146,10 @@ fn main() {
         // (0.2m) because the wall is right there. The arena side (large X/Z)
         // has 1.0m margin for obstacle avoidance near targets.
         {
-            let grid_x_min = ((BOUNDS_X_MIN + MAP_OFFSET) / MAP_RES).round() as isize;
-            let grid_x_max = ((BOUNDS_X_MAX + MAP_OFFSET) / MAP_RES).round() as isize;
-            let grid_z_min = ((BOUNDS_Z_MIN + MAP_OFFSET) / MAP_RES).round() as isize;
-            let grid_z_max = ((BOUNDS_Z_MAX + MAP_OFFSET) / MAP_RES).round() as isize;
+            let grid_x_min = ((cfg_bounds_x_min + MAP_OFFSET) / MAP_RES).round() as isize;
+            let grid_x_max = ((cfg_bounds_x_max + MAP_OFFSET) / MAP_RES).round() as isize;
+            let grid_z_min = ((cfg_bounds_z_min + MAP_OFFSET) / MAP_RES).round() as isize;
+            let grid_z_max = ((cfg_bounds_z_max + MAP_OFFSET) / MAP_RES).round() as isize;
 
             for x in 0..MAP_SIZE {
                 for z in 0..MAP_SIZE {
@@ -1101,8 +1205,8 @@ fn main() {
             && current_state != RobotState::MissionComplete 
             && current_state != RobotState::ArucoCheck
         {
-            if global_x < BOUNDS_X_MIN || global_x > BOUNDS_X_MAX 
-                || global_z < BOUNDS_Z_MIN || global_z > BOUNDS_Z_MAX 
+            if global_x < cfg_bounds_x_min || global_x > cfg_bounds_x_max 
+                || global_z < cfg_bounds_z_min || global_z > cfg_bounds_z_max 
             {
                 cmd_m1 = 0.0; cmd_m2 = 0.0; cmd_m3 = 0.0; cmd_m4 = 0.0; cmd_m5 = 0.0;
                 path_status = format!(
@@ -1177,8 +1281,8 @@ fn main() {
 
                     if elapsed >= FAKE_EXCAVATE_SECS {
                         path_status = format!("[CYCLE {}] FAKE EXCAVATION COMPLETE", cycle_count + 1);
-                        target_x = TARGET_BERM_X;
-                        target_z = TARGET_BERM_Z + (DUMP_OFFSET_Z_PER_CYCLE * cycle_count as f32);
+                        target_x = cfg_target_berm_x;
+                        target_z = cfg_target_berm_z + (DUMP_OFFSET_Z_PER_CYCLE * cycle_count as f32);
                         consecutive_replans = 0;
                         berm_exclusion_active = true;
                         current_state = RobotState::PlanToBerm;  // Go directly, no ArucoCheck
@@ -1186,24 +1290,20 @@ fn main() {
                 } else {
                     // --- REAL EXCAVATION ---
                     match excavate_phase {
+                        // --- PHASE 0: Validate actuator encoder ---
                         0 => {
                             path_status = format!("[CYCLE {}] EXCAVATE: CHECKING ACTUATOR...", cycle_count + 1);
                             if current_adc_reading == 0 {
                                 path_status = format!("[CYCLE {}] EXCAVATE FAILED: NO ACTUATOR DATA", cycle_count + 1);
                                 cmd_m5 = 0.0;
-                                target_x = TARGET_BERM_X;
-                                target_z = TARGET_BERM_Z + (DUMP_OFFSET_Z_PER_CYCLE * cycle_count as f32);
+                                target_x = cfg_target_berm_x;
+                                target_z = cfg_target_berm_z + (DUMP_OFFSET_Z_PER_CYCLE * cycle_count as f32);
                                 consecutive_replans = 0;
                                 berm_exclusion_active = true;
                                 current_state = RobotState::PlanToBerm;
                             } else {
                                 excavate_phase = 1;
-                                
-                                // --- FIXED: Calculate current depth and add target relatively ---
-                                let current_cm = (current_adc_reading as f32 - CAL_B) / CAL_M;
-                                target_depth_cm = Some(current_cm + EXCAVATE_TARGET_DEPTH_CM);
-                                // --------------------------------------------------------------
-                                
+                                target_depth_cm = Some(EXCAVATE_TARGET_DEPTH_CM);
                                 excavate_belt_laps_done = 0;
                                 excavate_belt_paused = false;
                                 target_depo_cm = Some(current_depo_cm + EXCAVATE_BELT_INCREMENT_CM);
@@ -1261,8 +1361,8 @@ fn main() {
 
                             if error_ticks.abs() < DEADBAND_ADC {
                                 path_status = format!("[CYCLE {}] EXCAVATION COMPLETE", cycle_count + 1);
-                                target_x = TARGET_BERM_X;
-                                target_z = TARGET_BERM_Z + (DUMP_OFFSET_Z_PER_CYCLE * cycle_count as f32);
+                                target_x = cfg_target_berm_x;
+                                target_z = cfg_target_berm_z + (DUMP_OFFSET_Z_PER_CYCLE * cycle_count as f32);
                                 consecutive_replans = 0;
                                 berm_exclusion_active = true;
                                 current_state = RobotState::PlanToBerm;
@@ -1271,8 +1371,8 @@ fn main() {
 
                         _ => {
                             cmd_m5 = 0.0;
-                            target_x = TARGET_BERM_X;
-                            target_z = TARGET_BERM_Z + (DUMP_OFFSET_Z_PER_CYCLE * cycle_count as f32);
+                            target_x = cfg_target_berm_x;
+                            target_z = cfg_target_berm_z + (DUMP_OFFSET_Z_PER_CYCLE * cycle_count as f32);
                             consecutive_replans = 0;
                             berm_exclusion_active = true;
                             current_state = RobotState::PlanToBerm;
@@ -1357,7 +1457,7 @@ fn main() {
             
             RobotState::AutoDrive => {
                 if waypoints.is_empty() {
-                    if target_x == TARGET_BERM_X {
+                    if target_x == cfg_target_berm_x {
                         current_state = RobotState::Dump;
                         dump_phase = 0;
                         action_timer = Instant::now();
@@ -1380,7 +1480,7 @@ fn main() {
                     cmd_m1 = 0.0; cmd_m2 = 0.0; cmd_m3 = 0.0; cmd_m4 = 0.0; cmd_m5 = 0.0;
                     waypoints.clear(); 
                     
-                    if target_x == TARGET_BERM_X { current_state = RobotState::PlanToBerm; } 
+                    if target_x == cfg_target_berm_x { current_state = RobotState::PlanToBerm; } 
                     else { current_state = RobotState::PlanToDig; }
                     continue; 
                 }
@@ -1405,7 +1505,7 @@ fn main() {
                         current_state = RobotState::AutoTurn;
                     } else {
                         cmd_m1 = 0.0; cmd_m2 = 0.0; cmd_m3 = 0.0; cmd_m4 = 0.0;
-                        if target_x == TARGET_BERM_X {
+                        if target_x == cfg_target_berm_x {
                             current_state = RobotState::Dump;
                             dump_phase = 0;
                             action_timer = Instant::now();
@@ -1445,8 +1545,8 @@ fn main() {
                         berm_exclusion_active = false;
                         cycle_count += 1;
                         if cycle_count < 2 {
-                            target_x = TARGET_DIG_X;
-                            target_z = TARGET_DIG_Z;
+                            target_x = cfg_target_dig_x;
+                            target_z = cfg_target_dig_z;
                             consecutive_replans = 0;
                             // Go to ArucoCheck before PlanToDig
                             aruco_check_phase = 0;
@@ -1483,8 +1583,8 @@ fn main() {
                             if belt_settled || belt_timed_out {
                                 let fwd_dx = logical_yaw.sin();
                                 let fwd_dz = logical_yaw.cos();
-                                let fwd_clearance = distance_to_boundary(global_x, global_z, fwd_dx, fwd_dz);
-                                let bwd_clearance = distance_to_boundary(global_x, global_z, -fwd_dx, -fwd_dz);
+                                let fwd_clearance = distance_to_boundary(global_x, global_z, fwd_dx, fwd_dz, cfg_bounds_x_min, cfg_bounds_x_max, cfg_bounds_z_min, cfg_bounds_z_max);
+                                let bwd_clearance = distance_to_boundary(global_x, global_z, -fwd_dx, -fwd_dz, cfg_bounds_x_min, cfg_bounds_x_max, cfg_bounds_z_min, cfg_bounds_z_max);
                                 dump_backout_forward = fwd_clearance >= bwd_clearance;
 
                                 let chosen_dir = if dump_backout_forward { "FWD" } else { "REV" };
@@ -1519,7 +1619,7 @@ fn main() {
                                     cmd_m3 = -backout_effort; cmd_m4 = -backout_effort;
                                 }
                             }
-                        }, 
+                        },
 
                         // --- PHASE 3: Transition to next cycle ---
                         3 => {
@@ -1529,8 +1629,8 @@ fn main() {
                             cycle_count += 1;
                             if cycle_count < 2 {
                                 path_status = format!("[CYCLE {}] DUMP COMPLETE — HEADING TO DIG", cycle_count + 1);
-                                target_x = TARGET_DIG_X;
-                                target_z = TARGET_DIG_Z;
+                                target_x = cfg_target_dig_x;
+                                target_z = cfg_target_dig_z;
                                 consecutive_replans = 0;
                                 // Go to ArucoCheck before PlanToDig
                                 aruco_check_phase = 0;
@@ -1548,8 +1648,8 @@ fn main() {
                             berm_exclusion_active = false;
                             cycle_count += 1;
                             if cycle_count < 2 {
-                                target_x = TARGET_DIG_X;
-                                target_z = TARGET_DIG_Z;
+                                target_x = cfg_target_dig_x;
+                                target_z = cfg_target_dig_z;
                                 consecutive_replans = 0;
                                 aruco_check_phase = 0;
                                 aruco_check_resume_state = 1;
@@ -1680,13 +1780,9 @@ fn main() {
                             cmd_m5 = 0.0;
                             current_state = RobotState::Manual;
                         } else {
+                            // Start everything at once: actuator down, M5 spinning, belt moving
                             excavate_phase = 1;
-                            
-                            // --- FIXED: Calculate current depth and add target relatively ---
-                            let current_cm = (current_adc_reading as f32 - CAL_B) / CAL_M;
-                            target_depth_cm = Some(current_cm + EXCAVATE_TARGET_DEPTH_CM);
-                            // --------------------------------------------------------------
-                            
+                            target_depth_cm = Some(EXCAVATE_TARGET_DEPTH_CM);
                             excavate_belt_laps_done = 0;
                             excavate_belt_paused = false;
                             target_depo_cm = Some(current_depo_cm + EXCAVATE_BELT_INCREMENT_CM);
@@ -1780,8 +1876,8 @@ fn main() {
                             // direction with more clearance from boundaries.
                             let fwd_dx = logical_yaw.sin();
                             let fwd_dz = logical_yaw.cos();
-                            let fwd_clearance = distance_to_boundary(global_x, global_z, fwd_dx, fwd_dz);
-                            let bwd_clearance = distance_to_boundary(global_x, global_z, -fwd_dx, -fwd_dz);
+                            let fwd_clearance = distance_to_boundary(global_x, global_z, fwd_dx, fwd_dz, cfg_bounds_x_min, cfg_bounds_x_max, cfg_bounds_z_min, cfg_bounds_z_max);
+                            let bwd_clearance = distance_to_boundary(global_x, global_z, -fwd_dx, -fwd_dz, cfg_bounds_x_min, cfg_bounds_x_max, cfg_bounds_z_min, cfg_bounds_z_max);
                             dump_backout_forward = fwd_clearance >= bwd_clearance;
 
                             let chosen_dir = if dump_backout_forward { "FWD" } else { "REV" };

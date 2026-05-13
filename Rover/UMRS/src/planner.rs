@@ -4,6 +4,29 @@ use std::cmp::Ordering;
 // Must match the value in main.rs
 const CONFIDENCE_THRESHOLD: u8 = 40;
 
+// =====================================================================
+// ROVER CLEARANCE RADIUS — Dynamic passability check in A*
+// =====================================================================
+// Instead of relying solely on obstacle inflation to keep the rover safe,
+// A* checks a square footprint around each candidate cell. This prevents
+// the planner from routing through gaps that are physically too narrow
+// for the rover, even if individual cells appear clear.
+//
+// The TOTAL clearance from an obstacle center to the rover center is:
+//   INFLATION_RADIUS_CELLS (in main.rs) + ROVER_CLEARANCE_CELLS
+//
+// With INFLATION_RADIUS_CELLS = 4 (0.20m) and ROVER_CLEARANCE_CELLS = 5 (0.25m),
+// total = 9 cells = 0.45m ≈ rover half-width (0.445m).
+//
+// Why split into two values instead of just inflating by 9?
+//   - Inflation of 9 cells causes nearby obstacles to FUSE into one giant
+//     blob on the grid, making valid paths disappear entirely.
+//   - Keeping inflation small (4) means obstacles stay distinct on the grid.
+//   - The clearance check at query time means A* won't route between them
+//     if the gap is too narrow, but WILL route between them if there's room.
+// =====================================================================
+const ROVER_CLEARANCE_CELLS: isize = 5;
+
 #[derive(Copy, Clone, Eq, PartialEq, Hash, Debug)]
 pub enum Direction {
     North, East, South, West, None
@@ -27,6 +50,26 @@ impl PartialOrd for State {
     fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
         Some(self.cmp(other))
     }
+}
+
+/// Check if a cell is passable for the rover's full footprint.
+/// Returns true if ANY cell within ROVER_CLEARANCE_CELLS of (cx, cz)
+/// is above the confidence threshold (i.e. blocked).
+#[inline]
+fn cell_blocked_for_rover(map: &[[u8; 300]; 300], cx: isize, cz: isize) -> bool {
+    for dx in -ROVER_CLEARANCE_CELLS..=ROVER_CLEARANCE_CELLS {
+        for dz in -ROVER_CLEARANCE_CELLS..=ROVER_CLEARANCE_CELLS {
+            let nx = cx + dx;
+            let nz = cz + dz;
+            if nx < 0 || nx >= 300 || nz < 0 || nz >= 300 {
+                return true; // Out of bounds = blocked
+            }
+            if map[nx as usize][nz as usize] >= CONFIDENCE_THRESHOLD {
+                return true;
+            }
+        }
+    }
+    false
 }
 
 pub fn find_manhattan_path(
@@ -74,8 +117,9 @@ pub fn find_manhattan_path(
 
         for (nx, nz, ndir) in neighbors.iter() {
             if *nx < 0 || *nx >= 300 || *nz < 0 || *nz >= 300 { continue; }
-            // CHANGED: Check against confidence threshold instead of binary 1
-            if map[*nx as usize][*nz as usize] >= CONFIDENCE_THRESHOLD { continue; } 
+            // CHANGED: Check the full rover footprint, not just the single cell.
+            // This prevents A* from routing through gaps narrower than the rover.
+            if cell_blocked_for_rover(map, *nx, *nz) { continue; }
 
             let move_cost = if dir == Direction::None || dir == *ndir { 1 } else { 1 + turn_penalty };
             let tentative_g = g + move_cost;
