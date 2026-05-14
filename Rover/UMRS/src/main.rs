@@ -511,11 +511,13 @@ fn main() {
     let mut global_z: f32 = 0.50;
     let mut logical_yaw: f32 = std::f32::consts::PI / 2.0;
     // =====================================================================
-    // YAW FIX: The rover's rear camera faces the ArUco marker, and the 
-    // rover faces INTO the arena. In the new coordinate system, "into the 
-    // arena" is the +X direction. atan2(dx, dz) with dx>0 dz=0 gives π/2.
-    // This replaces the old -1.57 which pointed in the -X direction.
+    // IMU YAW INTEGRATION: The IMU (BNO08x) on the Teensy provides accurate
+    // yaw/pitch/roll data via CAN message 0x200002. This replaces the noisy
+    // encoder-based yaw estimation. logical_yaw now directly tracks IMU yaw.
     // =====================================================================
+    let mut imu_yaw: f32 = std::f32::consts::PI / 2.0;  // IMU yaw from Teensy
+    let mut imu_pitch: f32 = 0.0;  // For potential future use
+    let mut imu_roll: f32 = 0.0;   // For potential future use
     let mut loc_mode = String::from("WAITING");
 
     // =====================================================================
@@ -902,6 +904,33 @@ fn main() {
                         let offset = *initial_depo_offset.get_or_insert(raw_depo);
                         current_depo_cm = raw_depo - offset;
                     }
+                } else if can_id == 0x200002 {
+                    // ========================================================
+                    // IMU DATA FROM TEENSY: Extract yaw/pitch/roll
+                    // Message format (from Arduino):
+                    //   Bytes 0-1: yaw * 100 (int16_t, degrees)
+                    //   Bytes 2-3: pitch * 100 (int16_t, degrees)
+                    //   Bytes 4-5: roll * 100 (int16_t, degrees)
+                    // ========================================================
+                    let payload = frame.data();
+                    if payload.len() >= 6 {
+                        // Extract yaw (int16_t at bytes 0-1)
+                        let yaw_raw = i16::from_le_bytes([payload[0], payload[1]]) as f32;
+                        let yaw_degrees = yaw_raw / 100.0;
+                        imu_yaw = yaw_degrees.to_radians();
+                        
+                        // Normalize to [-π, π]
+                        while imu_yaw > std::f32::consts::PI { imu_yaw -= 2.0 * std::f32::consts::PI; }
+                        while imu_yaw < -std::f32::consts::PI { imu_yaw += 2.0 * std::f32::consts::PI; }
+                        
+                        // Extract pitch (int16_t at bytes 2-3) for future use
+                        let pitch_raw = i16::from_le_bytes([payload[2], payload[3]]) as f32;
+                        imu_pitch = (pitch_raw / 100.0).to_radians();
+                        
+                        // Extract roll (int16_t at bytes 4-5) for future use
+                        let roll_raw = i16::from_le_bytes([payload[4], payload[5]]) as f32;
+                        imu_roll = (roll_raw / 100.0).to_radians();
+                    }
                 } else {
                     let device_id = can_id & 0x3F; let api_index = (can_id >> 6) & 0xF; 
                     let api_class = (can_id >> 10) & 0x3F; let manufacturer = (can_id >> 16) & 0xFF;
@@ -1184,10 +1213,13 @@ fn main() {
         last_kinematics_time = Instant::now();
 
         if dt_kinematics < 0.2 {
+            // ================================================================
+            // IMU-BASED YAW UPDATE (NEW)
+            // The Teensy IMU now provides direct yaw measurement via CAN.
+            // We use this instead of encoder omega for much better accuracy.
+            // ================================================================
             if current_state != RobotState::Localizing && current_state != RobotState::ArucoCheck {
-                logical_yaw += (encoder_omega * dt_kinematics) / TURN_SCRUB_MULTIPLIER;
-                while logical_yaw > std::f32::consts::PI { logical_yaw -= 2.0 * std::f32::consts::PI; }
-                while logical_yaw < -std::f32::consts::PI { logical_yaw += 2.0 * std::f32::consts::PI; }
+                logical_yaw = imu_yaw;  // Direct IMU yaw (no drift accumulation)
             }
 
             let delta_d = (encoder_v_forward * dt_kinematics) * FORWARD_SLIP_MULTIPLIER;
