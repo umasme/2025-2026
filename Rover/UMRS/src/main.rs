@@ -511,11 +511,11 @@ fn main() {
     let mut global_z: f32 = 0.50;
     let mut logical_yaw: f32 = std::f32::consts::PI / 2.0;
     // =====================================================================
-    // IMU YAW INTEGRATION: The IMU (BNO08x) on the Teensy provides accurate
+    // IMU YAW INTEGRATION: The LSM9DS1 IMU on the Teensy provides accurate
     // yaw/pitch/roll data via CAN message 0x200002. This replaces the noisy
     // encoder-based yaw estimation. logical_yaw now directly tracks IMU yaw.
     // =====================================================================
-    let mut imu_yaw: f32 = std::f32::consts::PI / 2.0;  // IMU yaw from Teensy
+    let mut imu_yaw: f32 = std::f32::consts::PI / 2.0;  // IMU yaw from Teensy (degrees to radians)
     let mut imu_pitch: f32 = 0.0;  // For potential future use
     let mut imu_roll: f32 = 0.0;   // For potential future use
     let mut loc_mode = String::from("WAITING");
@@ -907,27 +907,28 @@ fn main() {
                 } else if can_id == 0x200002 {
                     // ========================================================
                     // IMU DATA FROM TEENSY: Extract yaw/pitch/roll
+                    // LSM9DS1 + Madgwick AHRS filter
                     // Message format (from Arduino):
-                    //   Bytes 0-1: yaw * 100 (int16_t, degrees)
-                    //   Bytes 2-3: pitch * 100 (int16_t, degrees)
-                    //   Bytes 4-5: roll * 100 (int16_t, degrees)
+                    //   Bytes 0-1: yaw_centideg (int16_t, degrees*100)
+                    //   Bytes 2-3: pitch_centideg (int16_t, degrees*100)
+                    //   Bytes 4-5: roll_centideg (int16_t, degrees*100)
                     // ========================================================
                     let payload = frame.data();
                     if payload.len() >= 6 {
-                        // Extract yaw (int16_t at bytes 0-1)
+                        // Extract yaw (int16_t at bytes 0-1, in centidegrees)
                         let yaw_raw = i16::from_le_bytes([payload[0], payload[1]]) as f32;
                         let yaw_degrees = yaw_raw / 100.0;
                         imu_yaw = yaw_degrees.to_radians();
                         
-                        // Normalize to [-π, π]
+                        // Normalize to [-pi, pi]
                         while imu_yaw > std::f32::consts::PI { imu_yaw -= 2.0 * std::f32::consts::PI; }
                         while imu_yaw < -std::f32::consts::PI { imu_yaw += 2.0 * std::f32::consts::PI; }
                         
-                        // Extract pitch (int16_t at bytes 2-3) for future use
+                        // Extract pitch (int16_t at bytes 2-3, in centidegrees) for future use
                         let pitch_raw = i16::from_le_bytes([payload[2], payload[3]]) as f32;
                         imu_pitch = (pitch_raw / 100.0).to_radians();
                         
-                        // Extract roll (int16_t at bytes 4-5) for future use
+                        // Extract roll (int16_t at bytes 4-5, in centidegrees) for future use
                         let roll_raw = i16::from_le_bytes([payload[4], payload[5]]) as f32;
                         imu_roll = (roll_raw / 100.0).to_radians();
                     }
