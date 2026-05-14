@@ -6,7 +6,7 @@ import cv2
 import math
 import time
 
-headless = True
+headless = False
 
 FRONT_CAMERA_SERIAL = '327122073351' 
 REAR_CAMERA_SERIAL  = '247122073398'
@@ -254,7 +254,7 @@ def scan_columns_for_obstacles(depth_image, intrin):
             
             if depth_m < MIN_DISTANCE or depth_m > MAX_DISTANCE:
                 continue
-            # Save
+            
             x, y, z = deproject_pixel(row, col, depth_m, intrin)
             
             # Where SHOULD the floor be at this Z depth?
