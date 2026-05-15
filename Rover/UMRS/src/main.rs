@@ -260,6 +260,8 @@ fn main() {
     let mut cfg_berm_excl_x_max: f32 = BERM_EXCLUSION_X_MAX;
     let mut cfg_berm_excl_z_min: f32 = BERM_EXCLUSION_Z_MIN;
     let mut cfg_berm_excl_z_max: f32 = BERM_EXCLUSION_Z_MAX;
+    let mut cfg_marker_x: f32 = 0.0;
+    let mut cfg_marker_z: f32 = 0.0;
     let mut turn_in_progress = false;
     let mut turn_target_pos: f32 = 0.0;
     let mut arena_map = [[0u8; MAP_SIZE]; MAP_SIZE];
@@ -389,6 +391,8 @@ fn main() {
                                 cfg_berm_excl_x_max = BERM_EXCLUSION_X_MAX;
                                 cfg_berm_excl_z_min = 0.72;
                                 cfg_berm_excl_z_max = 2.42;
+                                cfg_marker_x = 0.0;
+                                cfg_marker_z = 6.0;
                             } else {
                                 cfg_target_berm_x = TARGET_BERM_X;
                                 cfg_target_berm_z = TARGET_BERM_Z;
@@ -405,6 +409,8 @@ fn main() {
                                 cfg_berm_excl_x_max = BERM_EXCLUSION_X_MAX;
                                 cfg_berm_excl_z_min = BERM_EXCLUSION_Z_MIN;
                                 cfg_berm_excl_z_max = BERM_EXCLUSION_Z_MAX;
+                                cfg_marker_x = 0.0;
+                                cfg_marker_z = 0.0;
                             }
 
                             enable_raw_mode().expect("Failed to enable raw mode");
@@ -657,10 +663,13 @@ fn main() {
 
         while let Ok(Ok(msg)) = subscriber.recv_string(zmq::DONTWAIT) {
             if let Ok(data) = serde_json::from_str::<TelemetryData>(&msg) {
-                if data.localization_mode == "ARUCO_LOCKED" && data.aruco_pos.len() >= 2 {
-                    let aruco_x = data.aruco_pos[0];
-                    let aruco_z = data.aruco_pos[1];
-                    let dist_to_marker = f32::sqrt(aruco_x * aruco_x + aruco_z * aruco_z);
+                if data.localization_mode == "ARUCO_LOCKED" && data.aruco_pos.len() >= 4 {
+                    let tvec_x = data.aruco_pos[0];
+                    let _tvec_y = data.aruco_pos[1];
+                    let tvec_z = data.aruco_pos[2];
+                    let aruco_yaw = data.aruco_pos[3];
+
+                    let dist_to_marker = f32::sqrt(tvec_x * tvec_x + tvec_z * tvec_z);
                     let trust = if dist_to_marker <= ARUCO_TRUST_CLOSE_DIST {
                         ARUCO_TRUST_CLOSE
                     } else if dist_to_marker >= ARUCO_TRUST_FAR_DIST {
@@ -671,6 +680,18 @@ fn main() {
                         ARUCO_TRUST_CLOSE + t * (ARUCO_TRUST_FAR - ARUCO_TRUST_CLOSE)
                     };
 
+                    let rear_yaw = logical_yaw + std::f32::consts::PI;
+                    let cam_fwd_x = rear_yaw.sin();
+                    let cam_fwd_z = rear_yaw.cos();
+                    let cam_right_x = cam_fwd_z;
+                    let cam_right_z = -cam_fwd_x;
+
+                    let marker_arena_x = global_x + tvec_z * cam_fwd_x + tvec_x * cam_right_x;
+                    let marker_arena_z = global_z + tvec_z * cam_fwd_z + tvec_x * cam_right_z;
+
+                    let aruco_rover_x = cfg_marker_x - (marker_arena_x - global_x);
+                    let aruco_rover_z = cfg_marker_z - (marker_arena_z - global_z);
+
                     let at_natural_stop = match current_state {
                         RobotState::Localizing => true,
                         RobotState::ArucoCheck => true,
@@ -678,11 +699,11 @@ fn main() {
                     };
 
                     if at_natural_stop {
-                        global_x = global_x * (1.0 - trust) + aruco_x * trust; 
-                        global_z = global_z * (1.0 - trust) + aruco_z * trust;
-                        
-                        if data.aruco_pos.len() == 3 { 
-                            let mut yaw_diff = data.aruco_pos[2] - logical_yaw;
+                        global_x = global_x * (1.0 - trust) + aruco_rover_x * trust; 
+                        global_z = global_z * (1.0 - trust) + aruco_rover_z * trust;
+
+                        if current_state == RobotState::Localizing {
+                            let mut yaw_diff = aruco_yaw - logical_yaw;
                             while yaw_diff > std::f32::consts::PI { yaw_diff -= 2.0 * std::f32::consts::PI; }
                             while yaw_diff < -std::f32::consts::PI { yaw_diff += 2.0 * std::f32::consts::PI; }
                             let yaw_trust = trust.min(0.5);
