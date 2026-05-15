@@ -75,6 +75,9 @@ const EXCAVATE_DRIVE_SPEED_SCALE: f32 = 0.05;
 const DUMP_BELT_TRAVEL_CM: f32 = -43.0;          
 const DUMP_BELT_SETTLE_TIMEOUT_SECS: f32 = 5.0; 
 const DUMP_BACKOUT_DISTANCE_M: f32 = 1.5;    
+const DUMP_IN_DISTANCE_M: f32 = 1.0;
+const DUMP_IN_EFFORT: f32 = 2.0;     
+const DUMP_IN_SPEED_SCALE: f32 = 0.5;    
 const DUMP_BACKOUT_EFFORT: f32 = 2.0;     
 const DUMP_BACKOUT_SPEED_SCALE: f32 = 0.5;    
 const DUMP_OFFSET_Z_PER_CYCLE: f32 = 0.4;      
@@ -452,6 +455,8 @@ fn main() {
                     KeyCode::Char('9') => {
                         if current_state == RobotState::Manual || current_state == RobotState::Localizing {
                             dump_phase = 0;
+                            dump_backout_start_x = global_x;
+                            dump_backout_start_z = global_z;
                             current_state = RobotState::TestDump;
                             action_timer = Instant::now();
                             path_status = String::from("TEST DUMP STARTED");
@@ -826,6 +831,9 @@ fn main() {
             && current_state != RobotState::Localizing 
             && current_state != RobotState::MissionComplete 
             && current_state != RobotState::ArucoCheck
+            && current_state != RobotState::TestExcavate
+            && current_state != RobotState::TestDump
+            && current_state != RobotState::TestTurn
         {
             if global_x < cfg_bounds_x_min || global_x > cfg_bounds_x_max 
                 || global_z < cfg_bounds_z_min || global_z > cfg_bounds_z_max 
@@ -1380,14 +1388,31 @@ fn main() {
             RobotState::TestDump => {
                 match dump_phase {
                     0 => {
+                        let dx_in = global_x - dump_backout_start_x;
+                        let dz_in = global_z - dump_backout_start_z;
+                        let dist_in = f32::sqrt(dx_in * dx_in + dz_in * dz_in);
+
+                        path_status = format!("[TEST] DUMP: GOING IN ({:.2}/{:.2}m)...", dist_in, DUMP_IN_DISTANCE_M);
+
+                        if dist_in >= DUMP_IN_DISTANCE_M {
+                            cmd_m1 = 0.0; cmd_m2 = 0.0; cmd_m3 = 0.0; cmd_m4 = 0.0;
+                            dump_phase = 1;
+                        } else {
+                            let in_effort = DUMP_IN_EFFORT * DUMP_IN_SPEED_SCALE;
+                            cmd_m1 = in_effort; cmd_m2 = in_effort; 
+                            cmd_m3 = -in_effort; cmd_m4 = -in_effort;
+                        }
+                    },
+
+                    1 => {
                         cmd_m1 = 0.0; cmd_m2 = 0.0; cmd_m3 = 0.0; cmd_m4 = 0.0;
                         path_status = format!("[TEST] DUMP: BELT MOVING ({:.0}cm)...", DUMP_BELT_TRAVEL_CM);
                         target_depo_cm = Some(current_depo_cm + DUMP_BELT_TRAVEL_CM);
                         action_timer = Instant::now();
-                        dump_phase = 1;
+                        dump_phase = 2;
                     },
 
-                    1 => {
+                    2 => {
                         cmd_m1 = 0.0; cmd_m2 = 0.0; cmd_m3 = 0.0; cmd_m4 = 0.0;
                         path_status = format!("[TEST] DUMP: WAITING FOR BELT (err:{:.1}cm)...", error_depo);
 
@@ -1406,11 +1431,11 @@ fn main() {
                             dump_backout_start_x = global_x;
                             dump_backout_start_z = global_z;
                             target_depo_cm = Some(current_depo_cm); 
-                            dump_phase = 2;
+                            dump_phase = 3;
                         }
                     },
 
-                    2 => {
+                    3 => {
                         let dx_backout = global_x - dump_backout_start_x;
                         let dz_backout = global_z - dump_backout_start_z;
                         let dist_backed = f32::sqrt(dx_backout * dx_backout + dz_backout * dz_backout);
@@ -1421,7 +1446,7 @@ fn main() {
 
                         if dist_backed >= DUMP_BACKOUT_DISTANCE_M {
                             cmd_m1 = 0.0; cmd_m2 = 0.0; cmd_m3 = 0.0; cmd_m4 = 0.0;
-                            dump_phase = 3;
+                            dump_phase = 4;
                         } else {
                             let backout_effort = DUMP_BACKOUT_EFFORT * DUMP_BACKOUT_SPEED_SCALE;
                             if dump_backout_forward {
@@ -1434,7 +1459,7 @@ fn main() {
                         }
                     },
 
-                    3 => {
+                    4 => {
                         cmd_m1 = 0.0; cmd_m2 = 0.0; cmd_m3 = 0.0; cmd_m4 = 0.0;
                         target_depo_cm = Some(current_depo_cm);
                         path_status = String::from("[TEST] DUMP COMPLETE");

@@ -6,7 +6,7 @@ import cv2
 import math
 import time
 
-headless = False
+headless = True
 USE_REAR_CAMERA = True
 
 FRONT_CAMERA_SERIAL = '327122073351' 
