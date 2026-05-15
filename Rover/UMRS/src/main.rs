@@ -64,14 +64,14 @@ const DEADBAND_DEPO_CM: f32 = 0.2;
 const ACTUATOR_SPEED_SCALE_DOWN: f32 = 0.3;
 const ACTUATOR_SPEED_SCALE_UP: f32 = 1.0;
 const DEPOSITION_SPEED_SCALE: f32 = 1.0;
-const EXCAVATE_TARGET_DEPTH_CM: f32 = 9.0;     
-const EXCAVATE_DIG_MOTOR_EFFORT: f32 = -16.0;   
+const EXCAVATE_TARGET_DEPTH_CM: f32 = 12.0;     
+const EXCAVATE_DIG_MOTOR_EFFORT: f32 = -14.0;   
 const EXCAVATE_BELT_PAUSE_SECS: f32 = 2.0;     
 const EXCAVATE_BELT_INCREMENT_CM: f32 = -5.0;  
 const EXCAVATE_BELT_TOTAL_CM: f32 = -25.0;    
 const EXCAVATE_BELT_SETTLE_TIMEOUT_SECS: f32 = 2.0;
 const EXCAVATE_DRIVE_EFFORT: f32 = 2.0;        
-const EXCAVATE_DRIVE_SPEED_SCALE: f32 = 0.05;     
+const EXCAVATE_DRIVE_SPEED_SCALE: f32 = 0.09;     
 const DUMP_BELT_TRAVEL_CM: f32 = -43.0;          
 const DUMP_BELT_SETTLE_TIMEOUT_SECS: f32 = 5.0; 
 const DUMP_BACKOUT_DISTANCE_M: f32 = 1.5;    
@@ -202,8 +202,7 @@ fn is_path_blocked(map: &[[u8; MAP_SIZE]; MAP_SIZE], start_x: f32, start_z: f32,
     false
 }
 
-fn distance_to_boundary(x: f32, z: f32, dx: f32, dz: f32,
-                        bx_min: f32, bx_max: f32, bz_min: f32, bz_max: f32) -> f32 {
+fn distance_to_boundary(x: f32, z: f32, dx: f32, dz: f32, bx_min: f32, bx_max: f32, bz_min: f32, bz_max: f32) -> f32 {
     let mut t_min = f32::MAX;
     if dx >  0.001 { t_min = t_min.min((bx_max - x) / dx); }
     if dx < -0.001 { t_min = t_min.min((bx_min - x) / dx); }
@@ -266,7 +265,7 @@ fn main() {
     let mut show_map = false; 
     let mut consecutive_replans: u8 = 0;
     let mut berm_exclusion_active: bool = false;
-    let mut base_speed: f32 = 80.0;
+    let mut base_speed: f32 = 160.0;
     let mut cmd_m1: f32 = 0.0; 
     let mut cmd_m2: f32 = 0.0; 
     let mut cmd_m3: f32 = 0.0; 
@@ -531,10 +530,10 @@ fn main() {
                     _ => {
                         if current_state == RobotState::Manual || current_state == RobotState::Localizing {
                             match key_event.code {
-                                KeyCode::Char('w') | KeyCode::Char('W') => { cmd_m1 = -2.0; cmd_m2 = -2.0; cmd_m3 = 2.0; cmd_m4 = 2.0; },
-                                KeyCode::Char('s') | KeyCode::Char('S') => { cmd_m1 = 2.0; cmd_m2 = 2.0; cmd_m3 = -2.0; cmd_m4 = -2.0; },
-                                KeyCode::Char('a') | KeyCode::Char('A') => { cmd_m1 = 2.0; cmd_m2 = 2.0; cmd_m3 = 2.0; cmd_m4 = 2.0; }, 
-                                KeyCode::Char('d') | KeyCode::Char('D') => { cmd_m1 = -2.0; cmd_m2 = -2.0; cmd_m3 = -2.0; cmd_m4 = -2.0; }, 
+                                KeyCode::Char('w') | KeyCode::Char('W') => { cmd_m1 = -1.0; cmd_m2 = -1.0; cmd_m3 = 1.0; cmd_m4 = 1.0; },
+                                KeyCode::Char('s') | KeyCode::Char('S') => { cmd_m1 = 1.0; cmd_m2 = 1.0; cmd_m3 = -1.0; cmd_m4 = -1.0; },
+                                KeyCode::Char('a') | KeyCode::Char('A') => { cmd_m1 = 1.0; cmd_m2 = 1.0; cmd_m3 = 1.0; cmd_m4 = 1.0; }, 
+                                KeyCode::Char('d') | KeyCode::Char('D') => { cmd_m1 = -1.0; cmd_m2 = -1.0; cmd_m3 = -1.0; cmd_m4 = -1.0; }, 
 
                                 KeyCode::Char('x') | KeyCode::Char('X') => { 
                                     cmd_m5 = 0.0; 
@@ -548,8 +547,8 @@ fn main() {
                                     target_depo_cm = Some(current_depo_cm);
                                 },
                                 
-                                KeyCode::Up => { base_speed += 50.0; },
-                                KeyCode::Down => { if base_speed > 50.0 { base_speed -= 50.0; } },
+                                KeyCode::Up => { base_speed = (base_speed + 10.0).min(500.0); cmd_m1 = 0.0; cmd_m2 = 0.0; cmd_m3 = 0.0; cmd_m4 = 0.0; },
+                                KeyCode::Down => { base_speed = (base_speed - 10.0).max(0.0); cmd_m1 = 0.0; cmd_m2 = 0.0; cmd_m3 = 0.0; cmd_m4 = 0.0; },
                                 _ => {}
                             }
                         }
@@ -1535,9 +1534,9 @@ fn main() {
                 let tgt_act = target_depth_cm.unwrap_or(actual_cm);
                 let tgt_dep = target_depo_cm.unwrap_or(current_depo_cm);
                 
-                print!("MODE: {:15} | POS X:{:5.2} Z:{:5.2} | L-YAW:{:5.2}\r\nSYS: {:15} | CYCLE: {}/2 | PATH: {:35}\r\nDIR: {:15} | CMD: M1:{:4.0} M2:{:4.0} M3:{:4.0} M4:{:4.0} M5:{:4.0} \r\nENC: V_FWD:{:5.2} m/s | ACT: {:.1}cm -> {:.1}cm | DEPO: {:.1}cm -> {:.1}cm\r\nIMU: YAW:{:7.2}° PITCH:{:7.2}° ROLL:{:7.2}°\r\n", 
+                print!("MODE: {:15} | POS X:{:5.2} Z:{:5.2} | L-YAW:{:5.2}\r\nSYS: {:15} | CYCLE: {}/2 | PATH: {:35}\r\nDIR: {:15} | SPEED: {:5.0} RPM | CMD: M1:{:4.0} M2:{:4.0} M3:{:4.0} M4:{:4.0} M5:{:4.0} \r\nENC: V_FWD:{:5.2} m/s | ACT: {:.1}cm -> {:.1}cm | DEPO: {:.1}cm -> {:.1}cm\r\nIMU: YAW:{:7.2}° PITCH:{:7.2}° ROLL:{:7.2}°\r\n", 
                     loc_mode, global_x, global_z, logical_yaw, format!("{:?}", current_state), cycle_count, path_status,
-                    direction_debug, send_rpm_1, send_rpm_2, send_rpm_3, send_rpm_4, send_rpm_5, encoder_v_forward, actual_cm, tgt_act, current_depo_cm, tgt_dep,
+                    direction_debug, base_speed, send_rpm_1, send_rpm_2, send_rpm_3, send_rpm_4, send_rpm_5, encoder_v_forward, actual_cm, tgt_act, current_depo_cm, tgt_dep,
                     imu_yaw_deg, imu_pitch_deg, imu_roll_deg);
                 println!("CONTROLS: 'L'=Loc | 'G'=AUTO | 'M'=Stop | 'o'/'k'=Actuator | 'z'/'y'=Deposition | '1'/'2'/'3'=Test Turns | '7'=Test Excavate | '9'=Test Dump");
             }
