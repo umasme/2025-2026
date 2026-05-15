@@ -85,7 +85,9 @@ const WITH_EXCAVATION: bool = false;
 const WITH_DUMPING: bool = false;
 const FAKE_EXCAVATE_SECS: f32 = 5.0; 
 const FAKE_DUMP_SECS: f32 = 5.0;     
-const ARUCO_CHECK_TIMEOUT_SECS: f32 = 10.0;
+const ARUCO_CHECK_TIMEOUT_SECS: f32 = 30.0;
+const ARUCO_CHECK_SPIN_RPM: f32 = 96.0;
+const ARUCO_CHECK_BREATHE_SECS: f32 = 1.5;
 const ARUCO_TRUST_CLOSE: f32 = 0.85;    
 const ARUCO_TRUST_FAR: f32 = 0.30;     
 const ARUCO_TRUST_CLOSE_DIST: f32 = 1.0; 
@@ -266,6 +268,7 @@ fn main() {
     let mut consecutive_replans: u8 = 0;
     let mut berm_exclusion_active: bool = false;
     let mut base_speed: f32 = 160.0;
+    let mut excavation_speed: f32 = 80.0;
     let mut cmd_m1: f32 = 0.0; 
     let mut cmd_m2: f32 = 0.0; 
     let mut cmd_m3: f32 = 0.0; 
@@ -301,7 +304,8 @@ fn main() {
     let mut aruco_check_pre_yaw: f32 = 0.0;    
     let mut aruco_check_resume_state: u8 = 0;  
     let mut aruco_check_got_fix: bool = false;  
-    let mut aruco_check_timer = Instant::now(); 
+    let mut aruco_check_timer = Instant::now();
+    let mut aruco_check_spin_sign: f32 = 1.0;
     let mut last_kinematics_time = Instant::now();
     let mut imu_turning_active: bool = false;
     let mut imu_turn_start_deg: f32 = 0.0;
@@ -685,7 +689,7 @@ fn main() {
                             logical_yaw += yaw_diff * yaw_trust;
                         }
 
-                        if current_state == RobotState::ArucoCheck && aruco_check_phase == 2 {
+                        if current_state == RobotState::ArucoCheck && (aruco_check_phase == 1 || aruco_check_phase == 2) {
                             aruco_check_got_fix = true;
                         }
                     }
@@ -694,31 +698,35 @@ fn main() {
                     loc_mode = String::from("BLIND (ENC)");
                 }
 
-                for obs in &data.obstacles {
-                    let obs_dist = f32::sqrt(obs.rel_x * obs.rel_x + obs.rel_z * obs.rel_z);
-                    if obs_dist > OBSTACLE_ACCEPT_RANGE_M {
-                        continue;
-                    }
+                let is_spinning = cmd_m1 != 0.0 && cmd_m1 == cmd_m3;
 
-                    let obs_global_x = global_x + (obs.rel_z * logical_yaw.sin()) + (obs.rel_x * logical_yaw.cos());
-                    let obs_global_z = global_z + (obs.rel_z * logical_yaw.cos()) - (obs.rel_x * logical_yaw.sin());
-
-                    let mut found = false;
-                    for tracked in &mut tracked_obstacles {
-                        let dist = f32::sqrt((tracked.x - obs_global_x).powi(2) + (tracked.z - obs_global_z).powi(2));
-                        if dist < OBSTACLE_CLUSTER_RADIUS_M {
-                            tracked.x = tracked.x * 0.8 + obs_global_x * 0.2; 
-                            tracked.z = tracked.z * 0.8 + obs_global_z * 0.2;
-                            tracked.last_seen = Instant::now();
-                            found = true;
-                            break;
+                if !is_spinning {
+                    for obs in &data.obstacles {
+                        let obs_dist = f32::sqrt(obs.rel_x * obs.rel_x + obs.rel_z * obs.rel_z);
+                        if obs_dist > OBSTACLE_ACCEPT_RANGE_M {
+                            continue;
                         }
-                    }
 
-                    if !found {
-                        tracked_obstacles.push(TrackedObstacle {
-                            x: obs_global_x, z: obs_global_z, last_seen: Instant::now(),
-                        });
+                        let obs_global_x = global_x + (obs.rel_z * logical_yaw.sin()) + (obs.rel_x * logical_yaw.cos());
+                        let obs_global_z = global_z + (obs.rel_z * logical_yaw.cos()) - (obs.rel_x * logical_yaw.sin());
+
+                        let mut found = false;
+                        for tracked in &mut tracked_obstacles {
+                            let dist = f32::sqrt((tracked.x - obs_global_x).powi(2) + (tracked.z - obs_global_z).powi(2));
+                            if dist < OBSTACLE_CLUSTER_RADIUS_M {
+                                tracked.x = tracked.x * 0.8 + obs_global_x * 0.2; 
+                                tracked.z = tracked.z * 0.8 + obs_global_z * 0.2;
+                                tracked.last_seen = Instant::now();
+                                found = true;
+                                break;
+                            }
+                        }
+
+                        if !found {
+                            tracked_obstacles.push(TrackedObstacle {
+                                x: obs_global_x, z: obs_global_z, last_seen: Instant::now(),
+                            });
+                        }
                     }
                 }
             }
@@ -1245,33 +1253,42 @@ fn main() {
                     0 => {
                         cmd_m1 = 0.0; cmd_m2 = 0.0; cmd_m3 = 0.0; cmd_m4 = 0.0;
                         aruco_check_pre_yaw = logical_yaw;
-                        let yaw_away_from_marker = f32::atan2(global_x, global_z);
-                        let lock_step = std::f32::consts::PI / 2.0;
-                        let target_yaw = (yaw_away_from_marker / lock_step).round() * lock_step;
-                        turn_target_pos = target_yaw;
-                        while turn_target_pos > std::f32::consts::PI { turn_target_pos -= 2.0 * std::f32::consts::PI; }
-                        while turn_target_pos < -std::f32::consts::PI { turn_target_pos += 2.0 * std::f32::consts::PI; }
-                        
                         aruco_check_got_fix = false;
-                        path_status = format!("ARUCO CHECK: TURNING TO FACE MARKER (yaw {:.2} -> {:.2})", logical_yaw, turn_target_pos);
+                        aruco_check_timer = Instant::now();
+
+                        let yaw_away_from_marker = f32::atan2(global_x, global_z);
+                        let mut angle_to_target = yaw_away_from_marker - logical_yaw;
+                        while angle_to_target > std::f32::consts::PI { angle_to_target -= 2.0 * std::f32::consts::PI; }
+                        while angle_to_target < -std::f32::consts::PI { angle_to_target += 2.0 * std::f32::consts::PI; }
+
+                        aruco_check_spin_sign = if angle_to_target >= 0.0 { 1.0 } else { -1.0 };
+
+                        path_status = format!("ARUCO CHECK: SPINNING {} @ {} RPM", 
+                            if aruco_check_spin_sign > 0.0 { "LEFT" } else { "RIGHT" }, ARUCO_CHECK_SPIN_RPM);
                         aruco_check_phase = 1;
                     },
 
                     1 => {
-                        let mut angle_diff = turn_target_pos - logical_yaw;
-                        while angle_diff > std::f32::consts::PI { angle_diff -= 2.0 * std::f32::consts::PI; }
-                        while angle_diff < -std::f32::consts::PI { angle_diff += 2.0 * std::f32::consts::PI; }
+                        let spin_effort = (ARUCO_CHECK_SPIN_RPM * aruco_check_spin_sign) / base_speed;
+                        cmd_m1 = -spin_effort; cmd_m2 = -spin_effort; 
+                        cmd_m3 = -spin_effort; cmd_m4 = -spin_effort;
 
-                        if angle_diff.abs() <= 0.15 {
+                        let elapsed = aruco_check_timer.elapsed().as_secs_f32();
+
+                        if aruco_check_got_fix {
                             cmd_m1 = 0.0; cmd_m2 = 0.0; cmd_m3 = 0.0; cmd_m4 = 0.0;
                             aruco_check_timer = Instant::now();
-                            path_status = String::from("ARUCO CHECK: WAITING FOR DETECTION...");
+                            path_status = String::from("ARUCO CHECK: FIX ACQUIRED — SETTLING...");
+                            aruco_check_phase = 2;
+                        } else if elapsed >= ARUCO_CHECK_TIMEOUT_SECS {
+                            cmd_m1 = 0.0; cmd_m2 = 0.0; cmd_m3 = 0.0; cmd_m4 = 0.0;
+                            path_status = String::from("ARUCO CHECK: TIMEOUT — NO FIX");
+                            aruco_check_timer = Instant::now();
                             aruco_check_phase = 2;
                         } else {
-                            let constant_turn_rpm = 160.0;
-                            let turn_effort = (constant_turn_rpm * angle_diff.signum()) / base_speed;
-                            cmd_m1 = -turn_effort; cmd_m2 = -turn_effort; 
-                            cmd_m3 = -turn_effort; cmd_m4 = -turn_effort;
+                            path_status = format!("ARUCO CHECK: SPINNING {} ({:.1}s / {:.1}s)", 
+                                if aruco_check_spin_sign > 0.0 { "LEFT" } else { "RIGHT" },
+                                elapsed, ARUCO_CHECK_TIMEOUT_SECS);
                         }
                     },
 
@@ -1279,7 +1296,7 @@ fn main() {
                         cmd_m1 = 0.0; cmd_m2 = 0.0; cmd_m3 = 0.0; cmd_m4 = 0.0;
                         let elapsed = aruco_check_timer.elapsed().as_secs_f32();
 
-                        if aruco_check_got_fix || elapsed >= ARUCO_CHECK_TIMEOUT_SECS {
+                        if elapsed >= ARUCO_CHECK_BREATHE_SECS {
                             match aruco_check_resume_state {
                                 0 => { current_state = RobotState::PlanToBerm; },
                                 1 => { current_state = RobotState::PlanToDig; },
@@ -1293,7 +1310,8 @@ fn main() {
                                 _ => { current_state = RobotState::Manual; },
                             }
                         } else {
-                            path_status = format!("ARUCO CHECK: WAITING...");
+                            path_status = format!("ARUCO CHECK: SETTLING ({:.1}s / {:.1}s)...", 
+                                elapsed, ARUCO_CHECK_BREATHE_SECS);
                         }
                     },
 
@@ -1323,6 +1341,7 @@ fn main() {
                             action_timer = Instant::now();
                         }
                     },
+
                     1 => {
                         cmd_m5 = EXCAVATE_DIG_MOTOR_EFFORT;
                         let creep = EXCAVATE_DRIVE_EFFORT * EXCAVATE_DRIVE_SPEED_SCALE;
@@ -1360,6 +1379,7 @@ fn main() {
                             }
                         }
                     },
+
                     2 => {
                         path_status = String::from("[TEST] EXCAVATE: RETRACTING...");
                         cmd_m5 = 0.0;
@@ -1367,6 +1387,7 @@ fn main() {
                         target_depo_cm = Some(current_depo_cm); 
                         excavate_phase = 3;
                     },
+
                     3 => {
                         path_status = String::from("[TEST] EXCAVATE: WAITING FOR RETRACT...");
                         cmd_m5 = 0.0;
@@ -1377,6 +1398,7 @@ fn main() {
                             current_state = RobotState::Manual;
                         }
                     },
+                    
                     _ => {
                         cmd_m5 = 0.0;
                         current_state = RobotState::Manual;
@@ -1476,7 +1498,7 @@ fn main() {
 
         let send_rpm_1 = base_speed * cmd_m1; let send_rpm_2 = base_speed * cmd_m2;
         let send_rpm_3 = base_speed * cmd_m3; let send_rpm_4 = base_speed * cmd_m4;
-        let send_rpm_5 = base_speed * cmd_m5;
+        let send_rpm_5 = excavation_speed * cmd_m5;
 
         let sim_msg = SimCommand { 
             m1: cmd_m1, m2: cmd_m2, m3: cmd_m3, m4: cmd_m4,
