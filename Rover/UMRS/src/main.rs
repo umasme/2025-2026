@@ -202,6 +202,26 @@ fn is_path_blocked(map: &[[u8; MAP_SIZE]; MAP_SIZE], start_x: f32, start_z: f32,
     false
 }
 
+fn wrap_pi(mut a: f32) -> f32 {
+    while a > std::f32::consts::PI {
+        a -= 2.0 * std::f32::consts::PI;
+    }
+    while a < -std::f32::consts::PI {
+        a += 2.0 * std::f32::consts::PI;
+    }
+    a
+}
+
+fn wrap_deg(mut a: f32) -> f32 {
+    while a > 180.0 {
+        a -= 360.0;
+    }
+    while a < -180.0 {
+        a += 360.0;
+    }
+    a
+}
+
 fn distance_to_boundary(x: f32, z: f32, dx: f32, dz: f32,
                         bx_min: f32, bx_max: f32, bz_min: f32, bz_max: f32) -> f32 {
     let mut t_min = f32::MAX;
@@ -304,8 +324,8 @@ fn main() {
     let mut aruco_check_got_fix: bool = false;  
     let mut aruco_check_timer = Instant::now(); 
     let mut last_kinematics_time = Instant::now();
-    let mut imu_turning_active: bool = false;
-    let mut imu_turn_start_deg: f32 = 0.0;
+    let mut last_imu_yaw_deg: f32 = imu_yaw_deg;
+    let mut imu_yaw_initialized: bool = false;
 
     enable_raw_mode().expect("Failed to enable raw mode");
     execute!(io::stdout(), Clear(ClearType::All)).unwrap();
@@ -674,16 +694,40 @@ fn main() {
                         _ => false,
                     };
 
-                    if at_natural_stop {
-                        global_x = global_x * (1.0 - trust) + aruco_x * trust; 
-                        global_z = global_z * (1.0 - trust) + aruco_z * trust;
-                        
-                        if data.aruco_pos.len() == 3 { 
-                            let mut yaw_diff = data.aruco_pos[2] - logical_yaw;
-                            while yaw_diff > std::f32::consts::PI { yaw_diff -= 2.0 * std::f32::consts::PI; }
-                            while yaw_diff < -std::f32::consts::PI { yaw_diff += 2.0 * std::f32::consts::PI; }
-                            let yaw_trust = trust.min(0.5);
-                            logical_yaw += yaw_diff * yaw_trust;
+                    let moving = cmd_m1 != 0.0 || cmd_m2 != 0.0 || cmd_m3 != 0.0 || cmd_m4 != 0.0;
+
+                    let pos_alpha = if at_natural_stop {
+                        trust.min(0.60)
+                    } else if moving {
+                        trust.min(0.08)
+                    } else {
+                        trust.min(0.25)
+                    };
+
+                    let yaw_alpha = if at_natural_stop {
+                        trust.min(0.70)
+                    } else if moving {
+                        trust.min(0.10)
+                    } else {
+                        trust.min(0.30)
+                    };
+
+                    let pos_err = f32::sqrt((aruco_x - global_x).powi(2) + (aruco_z - global_z).powi(2));
+                    let yaw_err = if data.aruco_pos.len() == 3 {
+                        wrap_pi(data.aruco_pos[2] - logical_yaw).abs()
+                    } else {
+                        0.0
+                    };
+
+                    let aruco_gate_ok = at_natural_stop || (pos_err < 1.0 && yaw_err < 1.2);
+
+                    if aruco_gate_ok {
+                        global_x = global_x * (1.0 - pos_alpha) + aruco_x * pos_alpha;
+                        global_z = global_z * (1.0 - pos_alpha) + aruco_z * pos_alpha;
+
+                        if data.aruco_pos.len() == 3 {
+                            let yaw_correction = wrap_pi(data.aruco_pos[2] - logical_yaw);
+                            logical_yaw = wrap_pi(logical_yaw + yaw_alpha * yaw_correction);
                         }
 
                         if current_state == RobotState::ArucoCheck && aruco_check_phase == 2 {
@@ -800,31 +844,21 @@ fn main() {
         last_kinematics_time = Instant::now();
 
         if dt_kinematics < 0.2 {
-            if current_state != RobotState::Localizing && current_state != RobotState::ArucoCheck {
-                let is_turning = cmd_m1 != 0.0 && cmd_m1 == cmd_m3;
-
-                if is_turning {
-                    if !imu_turning_active {
-                        imu_turn_start_deg = imu_yaw_deg;
-                        imu_turning_active = true;
-                    }
-                    let mut imu_delta_deg = imu_yaw_deg - imu_turn_start_deg;
-                    while imu_delta_deg > 180.0 { imu_delta_deg -= 360.0; }
-                    while imu_delta_deg < -180.0 { imu_delta_deg += 360.0; }
-                    let imu_delta_rad = imu_delta_deg * (std::f32::consts::PI / 180.0);
-                    logical_yaw += imu_delta_rad;
-                    imu_turn_start_deg = imu_yaw_deg;
-                    while logical_yaw > std::f32::consts::PI { logical_yaw -= 2.0 * std::f32::consts::PI; }
-                    while logical_yaw < -std::f32::consts::PI { logical_yaw += 2.0 * std::f32::consts::PI; }
-                } else {
-                    imu_turning_active = false;
-                }
+            // IMU yaw is the continuous heading source.
+            // Encoders only provide forward distance.
+            if !imu_yaw_initialized {
+                last_imu_yaw_deg = imu_yaw_deg;
+                imu_yaw_initialized = true;
             } else {
-                imu_turning_active = false;
+                let imu_delta_deg = wrap_deg(imu_yaw_deg - last_imu_yaw_deg);
+                let imu_delta_rad = imu_delta_deg * (std::f32::consts::PI / 180.0);
+                logical_yaw = wrap_pi(logical_yaw + imu_delta_rad);
+                last_imu_yaw_deg = imu_yaw_deg;
             }
 
-            let delta_d = (encoder_v_forward * dt_kinematics) * FORWARD_SLIP_MULTIPLIER;
-            global_x += delta_d * logical_yaw.sin(); global_z += delta_d * logical_yaw.cos();
+            let delta_d = encoder_v_forward * dt_kinematics * FORWARD_SLIP_MULTIPLIER;
+            global_x += delta_d * logical_yaw.sin();
+            global_z += delta_d * logical_yaw.cos();
         }
 
         if current_state != RobotState::Manual 
@@ -1089,7 +1123,15 @@ fn main() {
                 
                 if distance > 0.15 && !passed_waypoint {
                     let drive_effort = 2.0;
-                    cmd_m1 = -drive_effort; cmd_m2 = -drive_effort; cmd_m3 = drive_effort; cmd_m4 = drive_effort;
+                    let k_yaw = 0.4;
+                    let turn = (k_yaw * angle_diff).clamp(-0.35, 0.35);
+
+                    // Forward: left motors negative, right motors positive.
+                    // If this corrects the wrong way on the rover, change turn to -turn.
+                    cmd_m1 = -drive_effort - turn;
+                    cmd_m2 = -drive_effort - turn;
+                    cmd_m3 =  drive_effort - turn;
+                    cmd_m4 =  drive_effort - turn;
                 } else {
                     waypoints.remove(0);
                     consecutive_replans = 0;
