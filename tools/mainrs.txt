@@ -1,0 +1,659 @@
+use crossterm::cursor::MoveTo;
+use crossterm::event::{poll, read, Event, KeyCode};
+use crossterm::execute;
+use crossterm::terminal::{disable_raw_mode, enable_raw_mode, Clear, ClearType};
+use serde::Deserialize;
+use socketcan::{CanFrame, CanSocket, EmbeddedFrame, Frame, Id, Socket};
+use std::error::Error;
+use std::f32::consts::PI;
+use std::fs::OpenOptions;
+use std::io::{self, Write};
+use std::thread;
+use std::time::{Duration, Instant, SystemTime, UNIX_EPOCH};
+
+const CAN_INTERFACE: &str = "can0";
+const ZMQ_ENDPOINT: &str = "tcp://127.0.0.1:5555";
+const IMU_CAN_ID: u32 = 0x200002;
+
+const LOOP_SLEEP_MS: u64 = 20;
+const LOG_SAMPLES_PER_TRIAL: usize = 50;
+
+// Rear camera convention from perception.py:
+// aruco_pos = [tvec_x_m, tvec_y_m, tvec_z_m, aruco_yaw_rad]
+//
+// OpenCV camera frame:
+// +x = right in image
+// +y = down in image
+// +z = forward out of rear camera toward marker
+//
+// Rover frame assumption for rear camera:
+// rover +z = forward driving direction
+// rover +x = right
+// rear camera looks backward, so:
+// marker_rel_rover_x = -tvec_x
+// marker_rel_rover_z = -tvec_z
+const REAR_CAMERA_X_SIGN: f32 = -1.0;
+const REAR_CAMERA_Z_SIGN: f32 = -1.0;
+
+#[derive(Debug, Deserialize, Default)]
+struct PerceptionPayload {
+    #[serde(default)]
+    localization_mode: String,
+
+    #[serde(default)]
+    aruco_pos: Vec<f32>,
+}
+
+#[derive(Debug, Clone, Copy, Default)]
+struct ArucoMeasurement {
+    tvec_x: f32,
+    tvec_y: f32,
+    tvec_z: f32,
+    aruco_yaw_rad: f32,
+    received_time_s: f64,
+}
+
+#[derive(Debug, Clone, Copy, Default)]
+struct ImuMeasurement {
+    yaw_deg: f32,
+    pitch_deg: f32,
+    roll_deg: f32,
+    yaw_rad: f32,
+    received_time_s: f64,
+}
+
+#[derive(Debug, Clone, Copy)]
+struct YawState {
+    initialized: bool,
+
+    // ArUco yaw at the moment you press i
+    initial_aruco_yaw_rad: f32,
+
+    // IMU yaw at the moment you press i
+    initial_imu_yaw_rad: f32,
+
+    // Current yaw = initial ArUco yaw + IMU delta yaw
+    logical_yaw_rad: f32,
+}
+
+impl Default for YawState {
+    fn default() -> Self {
+        Self {
+            initialized: false,
+            initial_aruco_yaw_rad: 0.0,
+            initial_imu_yaw_rad: 0.0,
+            logical_yaw_rad: 0.0,
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, Default)]
+struct PositionEstimate {
+    valid: bool,
+    x_m: f32,
+    z_m: f32,
+    marker_to_rover_range_m: f32,
+}
+
+struct RawModeGuard;
+
+impl Drop for RawModeGuard {
+    fn drop(&mut self) {
+        let _ = disable_raw_mode();
+    }
+}
+
+fn now_s() -> f64 {
+    SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .unwrap_or_default()
+        .as_secs_f64()
+}
+
+fn wrap_to_pi(mut angle_rad: f32) -> f32 {
+    while angle_rad > PI {
+        angle_rad -= 2.0 * PI;
+    }
+
+    while angle_rad < -PI {
+        angle_rad += 2.0 * PI;
+    }
+
+    angle_rad
+}
+
+fn rad_to_deg(rad: f32) -> f32 {
+    rad * 180.0 / PI
+}
+
+fn parse_i16_le(data: &[u8], start: usize) -> Option<i16> {
+    if data.len() < start + 2 {
+        return None;
+    }
+
+    Some(i16::from_le_bytes([data[start], data[start + 1]]))
+}
+
+fn read_imu_can_frame(frame: &CanFrame) -> Option<ImuMeasurement> {
+    let can_id = match frame.id() {
+        Id::Standard(id) => id.as_raw() as u32,
+        Id::Extended(id) => id.as_raw(),
+    };
+
+    if can_id != IMU_CAN_ID {
+        return None;
+    }
+
+    let data = frame.data();
+
+    if data.len() < 6 {
+        return None;
+    }
+
+    let yaw_x100 = parse_i16_le(data, 0)?;
+    let pitch_x100 = parse_i16_le(data, 2)?;
+    let roll_x100 = parse_i16_le(data, 4)?;
+
+    let yaw_deg = yaw_x100 as f32 / 100.0;
+    let pitch_deg = pitch_x100 as f32 / 100.0;
+    let roll_deg = roll_x100 as f32 / 100.0;
+
+    Some(ImuMeasurement {
+        yaw_deg,
+        pitch_deg,
+        roll_deg,
+        yaw_rad: yaw_deg.to_radians(),
+        received_time_s: now_s(),
+    })
+}
+
+fn parse_perception_payload(msg: &str) -> Option<ArucoMeasurement> {
+    let payload: PerceptionPayload = serde_json::from_str(msg).ok()?;
+
+    if payload.aruco_pos.len() < 4 {
+        return None;
+    }
+
+    Some(ArucoMeasurement {
+        tvec_x: payload.aruco_pos[0],
+        tvec_y: payload.aruco_pos[1],
+        tvec_z: payload.aruco_pos[2],
+        aruco_yaw_rad: payload.aruco_pos[3],
+        received_time_s: now_s(),
+    })
+}
+
+fn update_logical_yaw(yaw_state: &mut YawState, imu: Option<ImuMeasurement>) {
+    if !yaw_state.initialized {
+        return;
+    }
+
+    if let Some(imu_meas) = imu {
+        let imu_delta = wrap_to_pi(imu_meas.yaw_rad - yaw_state.initial_imu_yaw_rad);
+        yaw_state.logical_yaw_rad = wrap_to_pi(yaw_state.initial_aruco_yaw_rad + imu_delta);
+    }
+}
+
+fn initialize_yaw_from_aruco(
+    yaw_state: &mut YawState,
+    aruco: Option<ArucoMeasurement>,
+    imu: Option<ImuMeasurement>,
+) -> bool {
+    let Some(aruco_meas) = aruco else {
+        return false;
+    };
+
+    let Some(imu_meas) = imu else {
+        return false;
+    };
+
+    yaw_state.initialized = true;
+    yaw_state.initial_aruco_yaw_rad = aruco_meas.aruco_yaw_rad;
+    yaw_state.initial_imu_yaw_rad = imu_meas.yaw_rad;
+    yaw_state.logical_yaw_rad = aruco_meas.aruco_yaw_rad;
+
+    true
+}
+
+fn aruco_tvec_to_rover_position(
+    aruco: Option<ArucoMeasurement>,
+    yaw_state: YawState,
+    marker_global_x: f32,
+    marker_global_z: f32,
+) -> PositionEstimate {
+    if !yaw_state.initialized {
+        return PositionEstimate::default();
+    }
+
+    let Some(aruco_meas) = aruco else {
+        return PositionEstimate::default();
+    };
+
+    let tvec_x = aruco_meas.tvec_x;
+    let tvec_z = aruco_meas.tvec_z;
+
+    // Marker position relative to rover, in rover frame.
+    // Rear camera looks backward, so both signs are negative by default.
+    let rel_rover_x = REAR_CAMERA_X_SIGN * tvec_x;
+    let rel_rover_z = REAR_CAMERA_Z_SIGN * tvec_z;
+
+    let yaw = yaw_state.logical_yaw_rad;
+    let c = yaw.cos();
+    let s = yaw.sin();
+
+    // Rotate rover-frame vector into global frame.
+    //
+    // Convention matching your main code:
+    // yaw = 0       -> rover forward is global +Z
+    // yaw = +pi/2   -> rover forward is global +X
+    //
+    // local +z maps to:
+    // global dx = sin(yaw)
+    // global dz = cos(yaw)
+    //
+    // local +x maps to:
+    // global dx = cos(yaw)
+    // global dz = -sin(yaw)
+    let marker_dx_global = rel_rover_x * c + rel_rover_z * s;
+    let marker_dz_global = -rel_rover_x * s + rel_rover_z * c;
+
+    // We know:
+    // marker_global = rover_global + marker_vector_from_rover
+    //
+    // Therefore:
+    // rover_global = marker_global - marker_vector_from_rover
+    let rover_x = marker_global_x - marker_dx_global;
+    let rover_z = marker_global_z - marker_dz_global;
+
+    let range = (tvec_x * tvec_x + aruco_meas.tvec_y * aruco_meas.tvec_y + tvec_z * tvec_z).sqrt();
+
+    PositionEstimate {
+        valid: true,
+        x_m: rover_x,
+        z_m: rover_z,
+        marker_to_rover_range_m: range,
+    }
+}
+
+fn write_csv_header(writer: &mut csv::Writer<std::fs::File>) -> Result<(), Box<dyn Error>> {
+    writer.write_record([
+        "timestamp_s",
+        "trial_number",
+        "sample_in_trial",
+        "yaw_initialized",
+
+        "marker_global_x_m",
+        "marker_global_z_m",
+
+        "rover_x_m",
+        "rover_z_m",
+        "range_m",
+
+        "logical_yaw_rad",
+        "logical_yaw_deg",
+
+        "initial_aruco_yaw_rad",
+        "initial_aruco_yaw_deg",
+        "initial_imu_yaw_rad",
+        "initial_imu_yaw_deg",
+
+        "imu_yaw_deg",
+        "imu_pitch_deg",
+        "imu_roll_deg",
+
+        "aruco_tvec_x_m",
+        "aruco_tvec_y_m",
+        "aruco_tvec_z_m",
+        "aruco_yaw_rad",
+        "aruco_yaw_deg",
+
+        "aruco_age_s",
+        "imu_age_s",
+    ])?;
+
+    Ok(())
+}
+
+fn log_csv_row(
+    writer: &mut csv::Writer<std::fs::File>,
+    trial_number: usize,
+    sample_in_trial: usize,
+    marker_global_x: f32,
+    marker_global_z: f32,
+    yaw_state: YawState,
+    imu: Option<ImuMeasurement>,
+    aruco: Option<ArucoMeasurement>,
+    pos: PositionEstimate,
+) -> Result<(), Box<dyn Error>> {
+    let t = now_s();
+
+    let imu_age_s = imu.map(|v| t - v.received_time_s).unwrap_or(-1.0);
+    let aruco_age_s = aruco.map(|v| t - v.received_time_s).unwrap_or(-1.0);
+
+    let imu_yaw_deg = imu.map(|v| v.yaw_deg).unwrap_or(f32::NAN);
+    let imu_pitch_deg = imu.map(|v| v.pitch_deg).unwrap_or(f32::NAN);
+    let imu_roll_deg = imu.map(|v| v.roll_deg).unwrap_or(f32::NAN);
+
+    let aruco_tvec_x = aruco.map(|v| v.tvec_x).unwrap_or(f32::NAN);
+    let aruco_tvec_y = aruco.map(|v| v.tvec_y).unwrap_or(f32::NAN);
+    let aruco_tvec_z = aruco.map(|v| v.tvec_z).unwrap_or(f32::NAN);
+    let aruco_yaw_rad = aruco.map(|v| v.aruco_yaw_rad).unwrap_or(f32::NAN);
+    let aruco_yaw_deg = aruco.map(|v| rad_to_deg(v.aruco_yaw_rad)).unwrap_or(f32::NAN);
+
+    let rover_x = if pos.valid { pos.x_m } else { f32::NAN };
+    let rover_z = if pos.valid { pos.z_m } else { f32::NAN };
+    let range = if pos.valid {
+        pos.marker_to_rover_range_m
+    } else {
+        f32::NAN
+    };
+
+    writer.write_record([
+        format!("{:.6}", t),
+        trial_number.to_string(),
+        sample_in_trial.to_string(),
+        yaw_state.initialized.to_string(),
+
+        format!("{:.6}", marker_global_x),
+        format!("{:.6}", marker_global_z),
+
+        format!("{:.6}", rover_x),
+        format!("{:.6}", rover_z),
+        format!("{:.6}", range),
+
+        format!("{:.6}", yaw_state.logical_yaw_rad),
+        format!("{:.6}", rad_to_deg(yaw_state.logical_yaw_rad)),
+
+        format!("{:.6}", yaw_state.initial_aruco_yaw_rad),
+        format!("{:.6}", rad_to_deg(yaw_state.initial_aruco_yaw_rad)),
+        format!("{:.6}", yaw_state.initial_imu_yaw_rad),
+        format!("{:.6}", rad_to_deg(yaw_state.initial_imu_yaw_rad)),
+
+        format!("{:.6}", imu_yaw_deg),
+        format!("{:.6}", imu_pitch_deg),
+        format!("{:.6}", imu_roll_deg),
+
+        format!("{:.6}", aruco_tvec_x),
+        format!("{:.6}", aruco_tvec_y),
+        format!("{:.6}", aruco_tvec_z),
+        format!("{:.6}", aruco_yaw_rad),
+        format!("{:.6}", aruco_yaw_deg),
+
+        format!("{:.6}", aruco_age_s),
+        format!("{:.6}", imu_age_s),
+    ])?;
+
+    Ok(())
+}
+
+fn print_screen(
+    marker_global_x: f32,
+    marker_global_z: f32,
+    yaw_state: YawState,
+    imu: Option<ImuMeasurement>,
+    aruco: Option<ArucoMeasurement>,
+    pos: PositionEstimate,
+    trial_number: usize,
+    logging_remaining: usize,
+) -> Result<(), Box<dyn Error>> {
+    let mut stdout = io::stdout();
+    execute!(stdout, Clear(ClearType::All), MoveTo(0, 0))?;
+
+    println!("==============================================");
+    println!(" ArUco + IMU Localization Test");
+    println!("==============================================");
+    println!("Controls:");
+    println!("  i      initialize logical yaw from ArUco yaw");
+    println!("  SPACE  log 50 rows to CSV");
+    println!("  q      quit");
+    println!("----------------------------------------------");
+    println!("Marker global position:");
+    println!("  marker_x = {:.3} m", marker_global_x);
+    println!("  marker_z = {:.3} m", marker_global_z);
+    println!("----------------------------------------------");
+
+    println!("Yaw initialized: {}", yaw_state.initialized);
+
+    if yaw_state.initialized {
+        println!(
+            "Logical yaw: {:.3} rad / {:.2} deg",
+            yaw_state.logical_yaw_rad,
+            rad_to_deg(yaw_state.logical_yaw_rad)
+        );
+        println!(
+            "Initial ArUco yaw: {:.3} rad / {:.2} deg",
+            yaw_state.initial_aruco_yaw_rad,
+            rad_to_deg(yaw_state.initial_aruco_yaw_rad)
+        );
+        println!(
+            "Initial IMU yaw:   {:.3} rad / {:.2} deg",
+            yaw_state.initial_imu_yaw_rad,
+            rad_to_deg(yaw_state.initial_imu_yaw_rad)
+        );
+    }
+
+    println!("----------------------------------------------");
+
+    if let Some(imu_meas) = imu {
+        println!(
+            "IMU: yaw={:.2} deg, pitch={:.2} deg, roll={:.2} deg",
+            imu_meas.yaw_deg, imu_meas.pitch_deg, imu_meas.roll_deg
+        );
+    } else {
+        println!("IMU: no CAN yaw received yet");
+    }
+
+    if let Some(aruco_meas) = aruco {
+        println!(
+            "ArUco tvec: x={:.3} m, y={:.3} m, z={:.3} m",
+            aruco_meas.tvec_x, aruco_meas.tvec_y, aruco_meas.tvec_z
+        );
+        println!(
+            "ArUco yaw diagnostic: {:.3} rad / {:.2} deg",
+            aruco_meas.aruco_yaw_rad,
+            rad_to_deg(aruco_meas.aruco_yaw_rad)
+        );
+    } else {
+        println!("ArUco: no detection received yet");
+    }
+
+    println!("----------------------------------------------");
+
+    if pos.valid {
+        println!("Rover estimate from ArUco tvec + IMU yaw:");
+        println!("  x = {:.3} m", pos.x_m);
+        println!("  z = {:.3} m", pos.z_m);
+        println!("  range = {:.3} m", pos.marker_to_rover_range_m);
+    } else {
+        println!("Rover estimate: invalid until yaw initialized and ArUco detected");
+    }
+
+    println!("----------------------------------------------");
+    println!("Trial number: {}", trial_number);
+
+    if logging_remaining > 0 {
+        println!(
+            "LOGGING: {} rows remaining in this trial",
+            logging_remaining
+        );
+    } else {
+        println!("LOGGING: idle");
+    }
+
+    stdout.flush()?;
+    Ok(())
+}
+
+fn main() -> Result<(), Box<dyn Error>> {
+    println!("==============================================");
+    println!(" ArUco + IMU Localization Test");
+    println!("==============================================");
+    println!("Select marker global position:");
+    println!("  1: marker at x=0, z=0");
+    println!("  2: marker at x=0, z=6");
+    print!("Select 1 or 2: ");
+    io::stdout().flush()?;
+
+    let mut input = String::new();
+    io::stdin().read_line(&mut input)?;
+
+    let (marker_global_x, marker_global_z) = if input.trim() == "2" {
+        (0.0_f32, 6.0_f32)
+    } else {
+        (0.0_f32, 0.0_f32)
+    };
+
+    let can_socket = CanSocket::open(CAN_INTERFACE)?;
+    can_socket.set_nonblocking(true)?;
+
+    let zmq_context = zmq::Context::new();
+    let zmq_socket = zmq_context.socket(zmq::SUB)?;
+    zmq_socket.connect(ZMQ_ENDPOINT)?;
+    zmq_socket.set_subscribe(b"")?;
+
+    let csv_file = OpenOptions::new()
+        .create(true)
+        .write(true)
+        .truncate(true)
+        .open("aruco_imu_localization_test.csv")?;
+
+    let mut csv_writer = csv::Writer::from_writer(csv_file);
+    write_csv_header(&mut csv_writer)?;
+
+    enable_raw_mode()?;
+    let _raw_guard = RawModeGuard;
+
+    let mut latest_imu: Option<ImuMeasurement> = None;
+    let mut latest_aruco: Option<ArucoMeasurement> = None;
+    let mut yaw_state = YawState::default();
+
+    let mut trial_number: usize = 0;
+    let mut logging_remaining: usize = 0;
+    let mut sample_in_trial: usize = 0;
+
+    let mut last_screen_update = Instant::now();
+
+    loop {
+        // Read all pending CAN frames.
+        loop {
+            match can_socket.read_frame() {
+                Ok(frame) => {
+                    if let Some(imu_meas) = read_imu_can_frame(&frame) {
+                        latest_imu = Some(imu_meas);
+                    }
+                }
+                Err(_) => {
+                    break;
+                }
+            }
+        }
+
+        // Read all pending ZMQ messages.
+        loop {
+            match zmq_socket.recv_string(zmq::DONTWAIT) {
+                Ok(Ok(msg)) => {
+                    if let Some(aruco_meas) = parse_perception_payload(&msg) {
+                        latest_aruco = Some(aruco_meas);
+                    }
+                }
+                Ok(Err(_bytes)) => {
+                    break;
+                }
+                Err(_e) => {
+                    break;
+                }
+            }
+        }
+
+        update_logical_yaw(&mut yaw_state, latest_imu);
+
+        let pos = aruco_tvec_to_rover_position(
+            latest_aruco,
+            yaw_state,
+            marker_global_x,
+            marker_global_z,
+        );
+
+        // Keyboard handling.
+        if poll(Duration::from_millis(1))? {
+            if let Event::Key(key_event) = read()? {
+                match key_event.code {
+                    KeyCode::Char('q') => {
+                        break;
+                    }
+
+                    KeyCode::Char('i') => {
+                        let ok = initialize_yaw_from_aruco(
+                            &mut yaw_state,
+                            latest_aruco,
+                            latest_imu,
+                        );
+
+                        if !ok {
+                            let mut stdout = io::stdout();
+                            execute!(stdout, MoveTo(0, 22))?;
+                            println!("Could not initialize yaw: need valid ArUco and IMU.");
+                            stdout.flush()?;
+                            thread::sleep(Duration::from_millis(700));
+                        }
+                    }
+
+                    KeyCode::Char(' ') => {
+                        trial_number += 1;
+                        logging_remaining = LOG_SAMPLES_PER_TRIAL;
+                        sample_in_trial = 0;
+                    }
+
+                    _ => {}
+                }
+            }
+        }
+
+        // Log 50 rows after SPACE is pressed.
+        if logging_remaining > 0 {
+            sample_in_trial += 1;
+
+            log_csv_row(
+                &mut csv_writer,
+                trial_number,
+                sample_in_trial,
+                marker_global_x,
+                marker_global_z,
+                yaw_state,
+                latest_imu,
+                latest_aruco,
+                pos,
+            )?;
+
+            logging_remaining -= 1;
+
+            if logging_remaining == 0 {
+                csv_writer.flush()?;
+            }
+        }
+
+        if last_screen_update.elapsed() >= Duration::from_millis(100) {
+            print_screen(
+                marker_global_x,
+                marker_global_z,
+                yaw_state,
+                latest_imu,
+                latest_aruco,
+                pos,
+                trial_number,
+                logging_remaining,
+            )?;
+
+            last_screen_update = Instant::now();
+        }
+
+        thread::sleep(Duration::from_millis(LOOP_SLEEP_MS));
+    }
+
+    csv_writer.flush()?;
+
+    println!();
+    println!("Saved CSV to: aruco_imu_localization_test.csv");
+
+    Ok(())
+}
